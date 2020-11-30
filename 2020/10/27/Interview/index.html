@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Interview | Joker Won&#39;s blogs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="HTML 和 CSS1. HTML语义化多媒体SEO2. CSS布局水平垂直居中 定位12345678910111213141516.father &amp;#123;  position: relative;&amp;#125;.son &amp;#123;  position: absolute;  top: 50%;  left: 50%;  width: 200px;  height: 100px;  backg">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Interview">
+<meta property="og:url" content="http://example.com/2020/10/27/Interview/index.html">
+<meta property="og:site_name" content="Joker Won&#39;s blogs">
+<meta property="og:description" content="HTML 和 CSS1. HTML语义化多媒体SEO2. CSS布局水平垂直居中 定位12345678910111213141516.father &amp;#123;  position: relative;&amp;#125;.son &amp;#123;  position: absolute;  top: 50%;  left: 50%;  width: 200px;  height: 100px;  backg">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-10-27T14:36:03.466Z">
+<meta property="article:modified_time" content="2020-11-30T02:21:06.090Z">
+<meta property="article:author" content="Joker Won">
+<meta property="article:tag" content="blog 博客 前端">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Joker Won&#39;s blogs" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Joker Won&#39;s blogs</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Interview" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/10/27/Interview/" class="article-date">
+  <time datetime="2020-10-27T14:36:03.466Z" itemprop="datePublished">2020-10-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Interview
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="HTML-和-CSS"><a href="#HTML-和-CSS" class="headerlink" title="HTML 和 CSS"></a>HTML 和 CSS</h2><h3 id="1-HTML"><a href="#1-HTML" class="headerlink" title="1. HTML"></a>1. HTML</h3><h4 id="语义化"><a href="#语义化" class="headerlink" title="语义化"></a>语义化</h4><h4 id="多媒体"><a href="#多媒体" class="headerlink" title="多媒体"></a>多媒体</h4><h4 id="SEO"><a href="#SEO" class="headerlink" title="SEO"></a>SEO</h4><h3 id="2-CSS"><a href="#2-CSS" class="headerlink" title="2. CSS"></a>2. CSS</h3><h4 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h4><h5 id="水平垂直居中"><a href="#水平垂直居中" class="headerlink" title="水平垂直居中"></a>水平垂直居中</h5><ol>
+<li><h5 id="定位"><a href="#定位" class="headerlink" title="定位"></a>定位</h5><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.father</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: relative;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.son</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="attribute">top</span>: <span class="number">50%</span>;</span><br><span class="line">  <span class="attribute">left</span>: <span class="number">50%</span>;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">200px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#2797ff</span>;</span><br><span class="line">  <span class="comment">/* 已知宽高 */</span></span><br><span class="line">  <span class="attribute">margin-top</span>: -<span class="number">50px</span>;</span><br><span class="line">  <span class="attribute">margin-left</span>: -<span class="number">100px</span>;</span><br><span class="line">  <span class="comment">/* 未知宽高 */</span></span><br><span class="line">  <span class="attribute">transform</span>: <span class="built_in">translate</span>(-<span class="number">50%</span>, -<span class="number">50%</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><h5 id="flex"><a href="#flex" class="headerlink" title="flex"></a>flex</h5><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.father</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: flex;</span><br><span class="line">  <span class="attribute">justify-content</span>: center;</span><br><span class="line">  <span class="attribute">aligh-items</span>: center</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h5 id="双飞翼布局"><a href="#双飞翼布局" class="headerlink" title="双飞翼布局"></a>双飞翼布局</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span> <span class="attr">class</span>=<span class="string">&quot;clearfix&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;container&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;center&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span>    </span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;left&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;right&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">float</span>: left;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.center</span> &#123;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">200px</span>;</span><br><span class="line">  <span class="attribute">margin-left</span>: <span class="number">110px</span>;</span><br><span class="line">  <span class="attribute">margin-right</span>: <span class="number">220px</span>;</span><br><span class="line">  <span class="attribute">background</span>: green;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.center</span><span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">  <span class="attribute">display</span>: block;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">zoom</span>: <span class="number">1</span>;</span><br><span class="line">  <span class="attribute">clear</span>: both;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.left</span> &#123;</span><br><span class="line">  <span class="attribute">float</span>: left;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">200px</span>;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">margin-left</span>: -<span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">background</span>: red;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.right</span> &#123;</span><br><span class="line">  <span class="attribute">float</span>: right;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">200px</span>;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">200px</span>;</span><br><span class="line">  <span class="attribute">margin-left</span>: -<span class="number">200px</span>;</span><br><span class="line">  <span class="attribute">background</span>: blue;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="圣杯布局"><a href="#圣杯布局" class="headerlink" title="圣杯布局"></a>圣杯布局</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;container clearfix&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;center&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;left&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;right&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">margin-left</span>: <span class="number">120px</span>;</span><br><span class="line">  <span class="attribute">margin-right</span>: <span class="number">220px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.main</span> &#123;</span><br><span class="line">  <span class="attribute">float</span>: left;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">300px</span>;</span><br><span class="line">  <span class="attribute">background</span>: green;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.left</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: relative;</span><br><span class="line">  <span class="attribute">left</span>: -<span class="number">120px</span>;</span><br><span class="line">  <span class="attribute">float</span>: left;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">300px</span>;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">margin-left</span>: -<span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">background</span>: red;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.right</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: relative;</span><br><span class="line">  <span class="attribute">right</span>: -<span class="number">220px</span>;</span><br><span class="line">  <span class="attribute">float</span>: right;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">300px</span>;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">200px</span>;</span><br><span class="line">  <span class="attribute">margin-left</span>: -<span class="number">200px</span>;</span><br><span class="line">  <span class="attribute">background</span>: blue;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="盒子模型"><a href="#盒子模型" class="headerlink" title="盒子模型"></a>盒子模型</h4><h5 id="标准盒模型（content-box）"><a href="#标准盒模型（content-box）" class="headerlink" title="标准盒模型（content-box）"></a>标准盒模型（content-box）</h5><p>盒子大小 = content(width) + padding + border + margin</p>
+<h5 id="怪异盒模型（旧版本IE）-border-box"><a href="#怪异盒模型（旧版本IE）-border-box" class="headerlink" title="怪异盒模型（旧版本IE）(border-box)"></a>怪异盒模型（旧版本IE）(border-box)</h5><p>盒子大小 = (content + padding + border)(width) + margin</p>
+<h5 id="Flex-盒模型"><a href="#Flex-盒模型" class="headerlink" title="Flex 盒模型"></a>Flex 盒模型</h5><h4 id="BFC"><a href="#BFC" class="headerlink" title="BFC"></a>BFC</h4><ul>
+<li><p>触发条件</p>
+<ul>
+<li>body 根元素</li>
+<li>浮动元素：float 除 none 以外的值</li>
+<li>绝对定位元素：position (absolute、fixed)</li>
+<li>display 为 inline-block、table-cells、flex</li>
+<li>overflow 除了 visible 以外的值 (hidden、auto、scroll)</li>
+</ul>
+</li>
+<li><p>特性及应用</p>
+<ol>
+<li>同一个 BFC 下外边距会发生折叠。</li>
+<li>BFC 可以包含浮动元素。（应用场景：清除浮动）</li>
+<li>BFC 可以阻止元素被浮动元素覆盖。</li>
+</ol>
+</li>
+</ul>
+<h4 id="Flex"><a href="#Flex" class="headerlink" title="Flex"></a>Flex</h4><h5 id="容器属性"><a href="#容器属性" class="headerlink" title="容器属性"></a>容器属性</h5><ul>
+<li><p>flex-direction</p>
+<p>主轴方向，row ｜ column ｜ row-reverse ｜ column-reverse</p>
+</li>
+<li><p>flex-wrap</p>
+<p>换行方式，nowrap ｜ wrap ｜ wrap-reverse</p>
+</li>
+<li><p>flex-flow</p>
+<p><flex-direction> || <flex-wrap>，默认 row  nowrap。</p>
+</li>
+<li><p>justify-content</p>
+<p>定义主轴的对齐方式。</p>
+<ul>
+<li><code>flex-start</code>（默认值）：左对齐</li>
+<li><code>flex-end</code>：右对齐</li>
+<li><code>center</code>： 居中</li>
+<li><code>space-between</code>：两端对齐，项目之间的间隔都相等。</li>
+<li><code>space-around</code>：每个项目两侧的间隔相等。所以，项目之间的间隔比项目与边框的间隔大一倍。</li>
+</ul>
+</li>
+<li><p>align-items</p>
+<p>定义交叉轴的对齐方式。</p>
+<ul>
+<li><code>flex-start</code>：交叉轴的起点对齐。</li>
+<li><code>flex-end</code>：交叉轴的终点对齐。</li>
+<li><code>center</code>：交叉轴的中点对齐。</li>
+<li><code>baseline</code>: 项目的第一行文字的基线对齐。</li>
+<li><code>stretch</code>（默认值）：如果项目未设置高度或设为auto，将占满整个容器的高度。</li>
+</ul>
+</li>
+<li><p>align-content</p>
+<p>定义多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用。</p>
+<ul>
+<li><p><code>stretch</code>（默认值）：轴线占满整个交叉轴。</p>
+</li>
+<li><p><code>flex-start</code>：与交叉轴的起点对齐。</p>
+</li>
+<li><p><code>flex-end</code>：与交叉轴的终点对齐。</p>
+</li>
+<li><p><code>center</code>：与交叉轴的中点对齐。</p>
+</li>
+<li><p><code>space-between</code>：与交叉轴两端对齐，轴线之间的间隔平均分布。</p>
+</li>
+<li><p><code>space-around</code>：每根轴线两侧的间隔都相等。所以，轴线之间的间隔比轴线与边框的间隔大一倍。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="项目属性"><a href="#项目属性" class="headerlink" title="项目属性"></a>项目属性</h5><ul>
+<li><p>order</p>
+<p>定义项目的排列顺序。数值越小，排列越靠前，默认为0。</p>
+</li>
+<li><p>flex-grow</p>
+<p>定义项目的放大比例，默认为<code>0</code>，即如果存在剩余空间，也不放大。如果所有项目的<code>flex-grow</code>属性都为1，则它们将等分剩余空间（如果有的话）。如果一个项目的<code>flex-grow</code>属性为2，其他项目都为1，则前者占据的剩余空间将比其他项多一倍。</p>
+</li>
+<li><p>flex-shrink</p>
+<p>定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小。如果所有项目的<code>flex-shrink</code>属性都为1，当空间不足时，都将等比例缩小。如果一个项目的<code>flex-shrink</code>属性为0，其他项目都为1，则空间不足时，前者不缩小。</p>
+</li>
+<li><p>flex-basis</p>
+<p>定义了在分配多余空间之前，项目占据的主轴空间（main size）。浏览器根据这个属性，计算主轴是否有多余空间。它的默认值为<code>auto</code>，即项目的本来大小。它可以设为跟<code>width</code>或<code>height</code>属性一样的值（比如350px），则项目将占据固定空间。</p>
+</li>
+<li><p>flex</p>
+<p><code>flex</code>属性是<code>flex-grow</code>, <code>flex-shrink</code> 和 <code>flex-basis</code>的简写，默认值为<code>0 1 auto</code>。后两个属性可选。</p>
+<p>该属性有两个快捷值：<code>auto</code> (<code>1 1 auto</code>) 和 none (<code>0 0 auto</code>)。</p>
+</li>
+<li><p>align-self</p>
+<p><code>align-self</code>属性允许单个项目有与其他项目不一样的对齐方式，可覆盖<code>align-items</code>属性。默认值为<code>auto</code>，表示继承父元素的<code>align-items</code>属性，如果没有父元素，则等同于<code>stretch</code>。</p>
+</li>
+</ul>
+<h4 id="Grid"><a href="#Grid" class="headerlink" title="Grid"></a>Grid</h4><h5 id="容器属性-1"><a href="#容器属性-1" class="headerlink" title="容器属性"></a>容器属性</h5><ul>
+<li><p>grid-template-columns &amp; grid-template-rows</p>
+<p><code>grid-template-columns</code>属性定义每一列的列宽，<code>grid-template-rows</code>属性定义每一行的行高。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: grid;</span><br><span class="line">  <span class="attribute">grid-template-columns</span>: <span class="number">100px</span> <span class="number">100px</span> <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">grid-template-rows</span>: <span class="number">33.33%</span> <span class="number">33.33%</span> <span class="number">33.33%</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>repeat()</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: grid;</span><br><span class="line">  <span class="attribute">grid-template-columns</span>: <span class="built_in">repeat</span>(<span class="number">3</span>, <span class="number">100px</span>);</span><br><span class="line">  <span class="attribute">grid-template-rows</span>: <span class="built_in">repeat</span>(<span class="number">3</span>, <span class="number">33.33%</span>);</span><br><span class="line">  <span class="comment">/* 重复某种模式 */</span></span><br><span class="line">  <span class="attribute">grid-template-columns</span>: <span class="built_in">repeat</span>(<span class="number">2</span>, <span class="number">100px</span> <span class="number">20px</span> <span class="number">80px</span>);</span><br><span class="line">  <span class="comment">/* 相当于 */</span></span><br><span class="line">  <span class="attribute">grid-template-columns</span>: <span class="number">100px</span> <span class="number">20px</span> <span class="number">80px</span> <span class="number">100px</span> <span class="number">20px</span> <span class="number">80px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>auto-fill 关键字</p>
+<p>有时，单元格的大小是固定的，但是容器的大小不确定。如果希望每一行（或每一列）容纳尽可能多的单元格，这时可以使用<code>auto-fill</code>关键字表示自动填充。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 表示每列宽度100px，然后自动填充，直到容器不能放置更多的列 */</span></span><br><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: grid;</span><br><span class="line">  <span class="attribute">grid-template-columns</span>: <span class="built_in">repeat</span>(auto-fill, <span class="number">100px</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>fr 关键字</p>
+<p>为了方便表示比例关系，网格布局提供了<code>fr</code>关键字（fraction 的缩写，意为”片段”）, 表示剩余空间。如果两列的宽度分别为<code>1fr</code>和<code>2fr</code>，就表示后者是前者的两倍。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: grid;</span><br><span class="line">  <span class="attribute">grid-template-columns</span>: <span class="number">150px</span> <span class="number">1</span>fr <span class="number">2</span>fr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>minmax()</p>
+<p><code>minmax()</code>函数产生一个长度范围，表示长度就在这个范围之中。它接受两个参数，分别为最小值和最大值。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 列宽不小于100px，不大于1fr */</span></span><br><span class="line"><span class="selector-tag">grid-template-columns</span>: 1<span class="selector-tag">fr</span> 1<span class="selector-tag">fr</span> <span class="selector-tag">minmax</span>(100<span class="selector-tag">px</span>, 1<span class="selector-tag">fr</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>auto 关键字</p>
+<p>表示由浏览器自己决定长度。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 第二列的宽度，基本上等于该列单元格的最大宽度，除非单元格内容设置了min-width，且这个值大于最大宽度 */</span></span><br><span class="line"><span class="selector-tag">grid-template-columns</span>: 100<span class="selector-tag">px</span> <span class="selector-tag">auto</span> 100<span class="selector-tag">px</span>;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>grid-row-gap &amp; grid-column-gap &amp; grid-gap</p>
+<p><code>grid-row-gap</code>属性设置行与行的间隔（行间距），<code>grid-column-gap</code>属性设置列与列的间隔（列间距）。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">grid-row-gap</span>: <span class="number">20px</span>;</span><br><span class="line">  <span class="attribute">grid-column-gap</span>: <span class="number">20px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>grid-gap</code>属性是<code>grid-column-gap</code>和<code>grid-row-gap</code>的合并简写形式，语法如下。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">grid-gap</span>: &lt;<span class="selector-tag">grid-row-gap</span>&gt; &lt;<span class="selector-tag">grid-column-gap</span>&gt;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>grid-template-areas</p>
+<p>网格布局允许指定”区域”（area），一个区域由单个或多个单元格组成。<code>grid-template-areas</code>属性用于定义区域。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 先划分出9个单元格，然后将其定名为a到i的九个区域，分别对应这九个单元格 */</span></span><br><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: grid;</span><br><span class="line">  <span class="attribute">grid-template-columns</span>: <span class="number">100px</span> <span class="number">100px</span> <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">grid-template-rows</span>: <span class="number">100px</span> <span class="number">100px</span> <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">grid-template-areas</span>: <span class="string">&#x27;a b c&#x27;</span></span><br><span class="line">                       <span class="string">&#x27;d e f&#x27;</span></span><br><span class="line">                       <span class="string">&#x27;g h i&#x27;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>重名的单元格会合并</strong>：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 顶部是页眉区域header，底部是页脚区域footer，中间部分则为main和sidebar */</span></span><br><span class="line"><span class="selector-tag">grid-template-areas</span>: &quot;<span class="selector-tag">header</span> <span class="selector-tag">header</span> <span class="selector-tag">header</span>&quot;</span><br><span class="line">                     &quot;<span class="selector-tag">main</span> <span class="selector-tag">main</span> <span class="selector-tag">sidebar</span>&quot;</span><br><span class="line">                     &quot;<span class="selector-tag">footer</span> <span class="selector-tag">footer</span> <span class="selector-tag">footer</span>&quot;;</span><br></pre></td></tr></table></figure>
+
+<p>不需要利用的区域可以用 <code>.</code> 来表示：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 中间一列为点，表示没有用到该单元格，或者该单元格不属于任何区域 */</span></span><br><span class="line">grid-template-areas: &#x27;a . c&#x27;</span><br><span class="line">                     &#x27;d . f&#x27;</span><br><span class="line">                     &#x27;g . i&#x27;;</span><br></pre></td></tr></table></figure>
+
+<p>⚠️ 注意</p>
+<p>区域的命名会影响到网格线。每个区域的起始网格线，会自动命名为<code>区域名-start</code>，终止网格线自动命名为<code>区域名-end</code>。</p>
+<p>比如，区域名为<code>header</code>，则起始位置的水平网格线和垂直网格线叫做<code>header-start</code>，终止位置的水平网格线和垂直网格线叫做<code>header-end</code>。</p>
+</li>
+<li><p>justify-items &amp; align-items &amp; place-items （<strong>设置单元格对齐方式</strong>）</p>
+<p><code>justify-items</code> 属性设置单元格内容的水平位置（左中右），<code>align-items</code> 属性设置单元格内容的垂直位置（上中下）。</p>
+<ul>
+<li><code>start</code>：对齐单元格的起始边缘。</li>
+<li><code>end</code>：对齐单元格的结束边缘。</li>
+<li><code>center</code>：单元格内部居中。</li>
+<li><code>stretch</code>：拉伸，占满单元格的整个宽度（默认值）。</li>
+</ul>
+<p><code>place-items</code> 属性是 <code>align-items</code> 属性和 <code>justify-items</code> 属性的合并简写形式。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">place-items</span>: &lt;<span class="selector-tag">align-items</span>&gt; &lt;<span class="selector-tag">justify-items</span>&gt;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>justify-content &amp; align-content &amp; place-content</p>
+<p><code>justify-content</code> 属性是整个内容区域在容器里面的水平位置（左中右），<code>align-content</code> 属性是整个内容区域的垂直位置（上中下）。</p>
+<ul>
+<li><code>start</code> : 对齐容器的起始边框。</li>
+<li><code>end</code> : 对齐容器的结束边框。</li>
+<li><code>center</code> : 容器内部居中。</li>
+<li><code>stretch</code> : 项目大小没有指定时，拉伸占据整个网格容器。</li>
+<li><code>space-around</code> : 每个项目两侧的间隔相等。所以，项目之间的间隔比项目与容器边框的间隔大一倍。</li>
+<li><code>space-between</code> : 项目与项目的间隔相等，项目与容器边框之间没有间隔。</li>
+<li><code>space-evenly</code> : 项目与项目的间隔相等，项目与容器边框之间也是同样长度的间隔。</li>
+</ul>
+<p><code>place-content</code> 属性是 <code>align-content</code> 属性和 <code>justify-content</code> 属性的合并简写形式。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">place-content</span>: &lt;<span class="selector-tag">align-content</span>&gt; &lt;<span class="selector-tag">justify-content</span>&gt;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h5 id="项目属性-1"><a href="#项目属性-1" class="headerlink" title="项目属性"></a>项目属性</h5><ul>
+<li><p>grid-column-start：左边框所在的垂直网格线<br>grid-column-end：右边框所在的垂直网格线<br>grid-row-start：上边框所在的水平网格线<br>grid-row-end：下边框所在的水平网格线</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 左边框是第二根垂直网格线，右边框是第四根垂直网格线，上下边框使用默认配置 */</span></span><br><span class="line"><span class="selector-class">.item-1</span> &#123;</span><br><span class="line">  <span class="attribute">grid-column-start</span>: <span class="number">2</span>;</span><br><span class="line">  <span class="attribute">grid-column-end</span>: <span class="number">4</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>grid-column</code>属性是<code>grid-column-start</code>和<code>grid-column-end</code>的合并简写形式，<code>grid-row</code>属性是<code>grid-row-start</code>属性和<code>grid-row-end</code>的合并简写形式。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item</span> &#123;</span><br><span class="line">  <span class="attribute">grid-column</span>: &lt;start-line&gt; / &lt;end-line&gt;;</span><br><span class="line">  <span class="attribute">grid-row</span>: &lt;start-line&gt; / &lt;end-line&gt;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.item-1</span> &#123;</span><br><span class="line">  <span class="attribute">grid-column</span>: <span class="number">1</span> / <span class="number">3</span>;</span><br><span class="line">  <span class="attribute">grid-row</span>: <span class="number">1</span> / <span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 等同于 */</span></span><br><span class="line"><span class="selector-class">.item-1</span> &#123;</span><br><span class="line">  <span class="attribute">grid-column-start</span>: <span class="number">1</span>;</span><br><span class="line">  <span class="attribute">grid-column-end</span>: <span class="number">3</span>;</span><br><span class="line">  <span class="attribute">grid-row-start</span>: <span class="number">1</span>;</span><br><span class="line">  <span class="attribute">grid-row-end</span>: <span class="number">2</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>斜杠以及后面的部分可以省略，默认跨越一个网格。</p>
+</li>
+<li><p>grid-area</p>
+<p>指定项目放在哪一个区域。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item-1</span> &#123;</span><br><span class="line">  <span class="attribute">grid-area</span>: e;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>grid-area</code>属性还可用作<code>grid-row-start</code>、<code>grid-column-start</code>、<code>grid-row-end</code>、<code>grid-column-end</code>的合并简写形式，直接指定项目的位置。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item</span> &#123;</span><br><span class="line">  <span class="attribute">grid-area</span>: &lt;row-start&gt; / &lt;column-start&gt; / &lt;row-end&gt; / &lt;column-end&gt;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.item-1</span> &#123;</span><br><span class="line">  <span class="attribute">grid-area</span>: <span class="number">1</span> / <span class="number">1</span> / <span class="number">3</span> / <span class="number">3</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>justify-self &amp; align-self &amp; place-self</p>
+<p><code>justify-self</code>属性设置单元格内容的水平位置（左中右），跟<code>justify-items</code>属性的用法完全一致，但只作用于单个项目。</p>
+<p><code>align-self</code>属性设置单元格内容的垂直位置（上中下），跟<code>align-items</code>属性的用法完全一致，也是只作用于单个项目。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item</span> &#123;</span><br><span class="line">  <span class="attribute">justify-self</span>: start | end | center | stretch;</span><br><span class="line">  <span class="attribute">align-self</span>: start | end | center | stretch;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>place-self</code>属性是<code>align-self</code>属性和<code>justify-self</code>属性的合并简写形式。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">place-self</span>: &lt;<span class="selector-tag">align-self</span>&gt; &lt;<span class="selector-tag">justify-self</span>&gt;;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<h4 id="响应式布局"><a href="#响应式布局" class="headerlink" title="响应式布局"></a>响应式布局</h4><h5 id="1-media"><a href="#1-media" class="headerlink" title="1. @media"></a>1. @media</h5><h5 id="2-rem"><a href="#2-rem" class="headerlink" title="2. rem"></a>2. rem</h5><h5 id="3-flex"><a href="#3-flex" class="headerlink" title="3. flex"></a>3. flex</h5><h5 id="4-vh-vw"><a href="#4-vh-vw" class="headerlink" title="4. vh/vw"></a>4. vh/vw</h5><h2 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h2><h3 id="1-闭包"><a href="#1-闭包" class="headerlink" title="1. 闭包"></a>1. 闭包</h3><p>闭包是指有权访问另一个函数作用域中的变量的函数。当产生闭包时，闭包中的变量会常驻内存，所以使用时要注意内存泄漏问题。</p>
+<p>在定时器、事件监听、ajax 请求等任务中，只要使用了回调函数，实际上就是在使用闭包。</p>
+<p>闭包一般被用来封装私有变量，例如 IIFE 中就利用了闭包来进行封装。</p>
+<h3 id="2-作用域"><a href="#2-作用域" class="headerlink" title="2. 作用域"></a>2. 作用域</h3><h4 id="词法作用域"><a href="#词法作用域" class="headerlink" title="词法作用域"></a>词法作用域</h4><p>词法作用域就是定义在词法阶段的作用域，简单来说可以指编写代码时所产生的作用域。与词法作用域对应的是动态作用域。</p>
+<h4 id="函数作用域"><a href="#函数作用域" class="headerlink" title="函数作用域"></a>函数作用域</h4><p>函数作用域是指属于这个函数的全部变量可以在整个函数范围内（包括其内部嵌套的函数作用域）使用以及复用。在函数作用域外部无法直接访问内部的变量。</p>
+<p>浏览器中存在一个全局作用域，指向 <code>window</code> 对象。Node 环境中的全局作用域指向的是 <code>global</code> 对象。</p>
+<h4 id="作用域链"><a href="#作用域链" class="headerlink" title="作用域链"></a>作用域链</h4><p><strong>由内层的函数作用域层层牵引到全局作用域的这个过程，产生了一条作用域链。</strong>作用域链是为了保证对执行环境有权访问的所有变量和函数的有序访问。</p>
+<h4 id="块级作用域"><a href="#块级作用域" class="headerlink" title="块级作用域"></a>块级作用域</h4><p>在 ES6 之前，大概只有 <code>with</code> 和<code> try...catch...</code> 的 <code>catch</code>分支中存在块级作用域。ES6 新增了 <code>let</code>  和 <code>const</code> 关键字，从而方便地实现了块级作用域。</p>
+<p>在有 <code>let</code> 或 <code>const</code> 声明的块级作用域中，会产生一个暂时性死区，就是说由 <code>let</code> 声明的变量，在声明之前都是无法使用的，这意味着 <code>let</code> 和 <code>const</code> 不存在变量提升，由其声明的变量也无法重复声明。</p>
+<h3 id="3-原型"><a href="#3-原型" class="headerlink" title="3. 原型"></a>3. 原型</h3><h4 id="原型对象"><a href="#原型对象" class="headerlink" title="原型对象"></a>原型对象</h4><p>无论什么时候，只要创建了一个新函数，就会根据一组特定的规则为该函数创建一个 <code>prototype</code> 属性，这个属性指向函数的原型对象。在默认情况（重写原型对象可能会造成 <code>constructor</code> 属性丢失），所有原型对象会自动获得一个 <code>constructor</code> 属性，指向 <code>prototype</code> 所在的函数。在检索某个对象的属性时，会先从对象本身开始搜索，如果搜索到则直接返回，否则会去对象的 <code>[[prototype]]</code> 所指向的原型对象中搜索。</p>
+<h4 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h4><p>如果让原型对象指向另一个类型的实例，那么原型对象中将包含一个指向另一个原型的指针（<code>[[prototype]]</code>），加入另一个原型也是其他某一个类型的实例，那么上述关系依然成立，如此层层递进，就构成了原型链。</p>
+<h3 id="4-创建对象的方法"><a href="#4-创建对象的方法" class="headerlink" title="4. 创建对象的方法"></a>4. 创建对象的方法</h3><h4 id="1-工厂模式"><a href="#1-工厂模式" class="headerlink" title="1) 工厂模式"></a>1) 工厂模式</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createPerson</span>(<span class="params">name, age, job</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> o = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">  o.name= name;</span><br><span class="line">  o.age = age;</span><br><span class="line">  o.job = job;</span><br><span class="line">  <span class="keyword">return</span> o;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> person1 = createPerson(<span class="string">&quot;Sam&quot;</span>, <span class="number">22</span>, <span class="string">&quot;FE&quot;</span>);</span><br><span class="line"><span class="keyword">let</span> person2 = createPerson(<span class="string">&quot;Tam&quot;</span>, <span class="number">24</span>, <span class="string">&quot;BE&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p><strong>问题：</strong></p>
+<ol>
+<li>无法识别对象类型</li>
+</ol>
+<h4 id="2-构造函数"><a href="#2-构造函数" class="headerlink" title="2) 构造函数"></a>2) 构造函数</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name, age, job</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">this</span>.name = name;</span><br><span class="line">  <span class="built_in">this</span>.age = age;</span><br><span class="line">  <span class="built_in">this</span>.job = job;</span><br><span class="line">  <span class="built_in">this</span>.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">this</span>.name);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> person1 = <span class="keyword">new</span> Person(<span class="string">&quot;Sam&quot;</span>, <span class="number">22</span>, <span class="string">&quot;FE&quot;</span>);</span><br><span class="line"><span class="keyword">let</span> person2 = <span class="keyword">new</span> Person(<span class="string">&quot;Tam&quot;</span>, <span class="number">24</span>, <span class="string">&quot;BE&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p><strong>问题：</strong></p>
+<ol>
+<li>无法共享方法</li>
+</ol>
+<h4 id="3-原型模式"><a href="#3-原型模式" class="headerlink" title="3) 原型模式"></a>3) 原型模式</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">Person.prototype.name = <span class="string">&quot;Sam&quot;</span>;</span><br><span class="line">Person.prototype.age = <span class="number">22</span>;</span><br><span class="line">Person.prototype.job = <span class="string">&quot;FE&quot;</span>;</span><br><span class="line">Person.prototype.friends = [<span class="string">&quot;Tim&quot;</span>, <span class="string">&quot;Cat&quot;</span>];</span><br><span class="line">Person.prototype.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="built_in">this</span>.name);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">let</span> person1 = <span class="keyword">new</span> Person();</span><br><span class="line"><span class="keyword">let</span> person2 = <span class="keyword">new</span> Person();</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意：</strong></p>
+<ol>
+<li>原型的动态性：由于在原型中查找值的过程是一次搜索，所以原型对象的任何修改都能立即在从实例上反映出来。</li>
+</ol>
+<p><strong>问题：</strong></p>
+<ol>
+<li>未单独初始化属性，每个实例属性默认值都相同。</li>
+<li>复杂数据类型共享问题。</li>
+</ol>
+<h4 id="4-组合使用构造函数模式和原型模式"><a href="#4-组合使用构造函数模式和原型模式" class="headerlink" title="4) 组合使用构造函数模式和原型模式"></a>4) 组合使用构造函数模式和原型模式</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name, age, job</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">this</span>.name = name;</span><br><span class="line">  <span class="built_in">this</span>.age = age;</span><br><span class="line">  <span class="built_in">this</span>.job = job;</span><br><span class="line">  <span class="built_in">this</span>.friends = [<span class="string">&quot;Tim&quot;</span>, <span class="string">&quot;Cat&quot;</span>];</span><br><span class="line">&#125;</span><br><span class="line">Person.prototype.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="built_in">this</span>.name);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">let</span> person1 = <span class="keyword">new</span> Person(<span class="string">&quot;Sam&quot;</span>, <span class="number">22</span>, <span class="string">&quot;FE&quot;</span>);</span><br><span class="line"><span class="keyword">let</span> person2 = <span class="keyword">new</span> Person(<span class="string">&quot;Tam&quot;</span>, <span class="number">24</span>, <span class="string">&quot;BE&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p><strong>问题：</strong></p>
+<ol>
+<li>属性和方法分开定义。</li>
+</ol>
+<h4 id="5-动态原型模式"><a href="#5-动态原型模式" class="headerlink" title="5) 动态原型模式"></a>5) 动态原型模式</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name, age, job</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">this</span>.name = name;</span><br><span class="line">  <span class="built_in">this</span>.age = age;</span><br><span class="line">  <span class="built_in">this</span>.job = job;</span><br><span class="line">  <span class="built_in">this</span>.friends = [<span class="string">&quot;Tim&quot;</span>, <span class="string">&quot;Cat&quot;</span>];</span><br><span class="line">  <span class="keyword">if</span>(<span class="keyword">typeof</span> <span class="built_in">this</span>.sayName != <span class="string">&quot;function&quot;</span>) &#123;</span><br><span class="line">    Person.prototype.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  		<span class="built_in">console</span>.log(<span class="built_in">this</span>.name);</span><br><span class="line">		&#125;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> person1 = <span class="keyword">new</span> Person(<span class="string">&quot;Sam&quot;</span>, <span class="number">22</span>, <span class="string">&quot;FE&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h4 id="6-寄生构造函数模式"><a href="#6-寄生构造函数模式" class="headerlink" title="6) 寄生构造函数模式"></a>6) 寄生构造函数模式</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name, age, job</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> o = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">  o.name = name;</span><br><span class="line">  o.age = age;</span><br><span class="line">  o.job = job;</span><br><span class="line">  o.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">this</span>.name);</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="keyword">return</span> o;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> person1 = <span class="keyword">new</span> Person(<span class="string">&quot;Sam&quot;</span>, <span class="number">22</span>, <span class="string">&quot;FE&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p><strong>问题：</strong></p>
+<ol>
+<li>无法用 <code>instanceof</code> 来确定对象类型。</li>
+</ol>
+<h4 id="7-稳妥构造函数模式"><a href="#7-稳妥构造函数模式" class="headerlink" title="7) 稳妥构造函数模式"></a>7) 稳妥构造函数模式</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name, age, job</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> o = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">  <span class="comment">//在此处定义私有成员和方法</span></span><br><span class="line">  ...</span><br><span class="line">  o.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(name);  <span class="comment">// 不使用 this</span></span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="keyword">return</span> o;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 只有 sayName 可以访问成员</span></span><br></pre></td></tr></table></figure>
+
+<p>稳妥对象：指没有公共属性，其方法也不引用 <code>this</code> 的对象。</p>
+<p>与寄生构造函数模式有两点不同：</p>
+<ol>
+<li>新创建对象的实例方法不引用 <code>this</code>。</li>
+<li>不适用 <code>new</code> 操作符调用构造函数。</li>
+</ol>
+<h3 id="5-继承"><a href="#5-继承" class="headerlink" title="5. 继承"></a>5. 继承</h3><h4 id="1-原型链继承"><a href="#1-原型链继承" class="headerlink" title="1) 原型链继承"></a>1) 原型链继承</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Super</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Sub</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">Sub.prototype = <span class="keyword">new</span> Super();</span><br><span class="line">Sub.prototype.constructor = Sub;</span><br></pre></td></tr></table></figure>
+
+<p><strong>问题：</strong></p>
+<ol>
+<li>包含引用类型属性的原型存在共享问题。</li>
+<li>创建子类时无法向父类构造函数传参。</li>
+</ol>
+<h4 id="2-借用构造函数"><a href="#2-借用构造函数" class="headerlink" title="2) 借用构造函数"></a>2) 借用构造函数</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Super</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Sub</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  Super.call(<span class="built_in">this</span>, ...args);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>优势：</strong></p>
+<ol>
+<li>可以向父类构造函数传参。</li>
+</ol>
+<p><strong>问题：</strong></p>
+<ol>
+<li>当父类方法在原型中定义时，无法进行函数复用，即<strong>无法继承父类的原型中的属性</strong>。</li>
+</ol>
+<h4 id="3-组合继承"><a href="#3-组合继承" class="headerlink" title="3) 组合继承"></a>3) 组合继承</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Super</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Sub</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  Super.call(<span class="built_in">this</span>, ...args);  <span class="comment">// 第二次调用父类构造函数</span></span><br><span class="line">&#125;</span><br><span class="line">Sub.prototype = <span class="keyword">new</span> Super();  <span class="comment">// 第一次调用父类构造函数</span></span><br><span class="line">Sub.prototype.constructor = Sub;</span><br></pre></td></tr></table></figure>
+
+<p><strong>问题：</strong></p>
+<ol>
+<li>调用两次父类构造函数。</li>
+</ol>
+<h4 id="4-原型式继承"><a href="#4-原型式继承" class="headerlink" title="4) 原型式继承"></a>4) 原型式继承</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">object</span>(<span class="params">o</span>) </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">F</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">  F.prototype = o;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> F();</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> person = &#123;</span><br><span class="line">  name: <span class="string">&quot;John&quot;</span>,</span><br><span class="line">  friends: [<span class="string">&quot;Tim&quot;</span>, <span class="string">&quot;Cat&quot;</span>]</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> anotherPerson = object(person);  <span class="comment">// 可以用 Object.create(person)</span></span><br><span class="line">anotherPerson.name = <span class="string">&quot;Tam&quot;</span>;</span><br><span class="line">anotherPerson.friends.push(<span class="string">&quot;Jerry&quot;</span>);</span><br><span class="line">person.friends  <span class="comment">// [&quot;Tim&quot;, &quot;Cat&quot;, &quot;Jerry&quot;],修改了原型中的属性</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>说明：</strong></p>
+<ol>
+<li><code>Object.create()</code> 只传一个参数时的行为与 <code>object()</code> 相同。</li>
+<li>其第二个参数与 <code>Object.defineProperties()</code> 的第二个参数相同，用于覆盖原型对象上的同名属性。</li>
+</ol>
+<h4 id="5-寄生式继承"><a href="#5-寄生式继承" class="headerlink" title="5) 寄生式继承"></a>5) 寄生式继承</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createAnother</span>(<span class="params">original</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> clone = object(original);  <span class="comment">// 可以用 Object.create(person)</span></span><br><span class="line">  clone.sayHi = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;hi&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="6-寄生组合式继承"><a href="#6-寄生组合式继承" class="headerlink" title="6) 寄生组合式继承"></a>6) 寄生组合式继承</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">inheritPrototype</span>(<span class="params">subType, superType</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> prototype = object(superType.prototype);  <span class="comment">// 可以用 Object.create(person)</span></span><br><span class="line">  prototype.constructor = subType;</span><br><span class="line">  subType.prototype = prototype;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Super</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Sub</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">  Super.call(<span class="built_in">this</span>, ...args);  <span class="comment">// 第二次调用父类构造函数</span></span><br><span class="line">  <span class="built_in">this</span>.name = name</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Sub.prototype = new Super();  // 第一次调用父类构造函数</span></span><br><span class="line">inheritPrototype(Sub, Super);</span><br><span class="line">Sub.prototype.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="built_in">this</span>.name)</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="6-new"><a href="#6-new" class="headerlink" title="6. new"></a>6. new</h3><ol>
+<li>创建一个空的简单JavaScript对象（即<code>&#123;&#125;</code>）；</li>
+<li>链接该对象（即设置该对象的构造函数）到另一个对象（构造器的原型对象） ；</li>
+<li>将步骤1新创建的对象作为<code>this</code>的上下文 ；</li>
+<li>如果该函数没有返回对象，则返回<code>this</code>。</li>
+</ol>
+<h3 id="7-this"><a href="#7-this" class="headerlink" title="7. this"></a>7. this</h3><h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><p><code>this</code> 是在运行时进行绑定的，而非编写时绑定。当一个函数被调用时，会创建一个活动记录（执行上下文）。这个记录会包含函数被调用的位置、函数的调用方式、传入的参数等信息。<code>this</code> 是这个记录的一个属性，会在函数执行的过程中用到。</p>
+<h4 id="绑定规则"><a href="#绑定规则" class="headerlink" title="绑定规则"></a>绑定规则</h4><h5 id="1-默认绑定"><a href="#1-默认绑定" class="headerlink" title="1) 默认绑定"></a>1) 默认绑定</h5><p>独立函数调用。如果使用严格模式（strict mode），则不能将全局对象用于默认绑定，因此this会绑定到 <code>undefined</code> 。</p>
+<h5 id="2-隐式绑定"><a href="#2-隐式绑定" class="headerlink" title="2) 隐式绑定"></a>2) 隐式绑定</h5><p>调用位置有上下文对象，或者被某个对象拥有或者包含时，可能会产生隐式绑定。当函数引用有上下文对象时，隐式绑定规则会把函数调用中的this绑定到这个上下文对象。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="built_in">this</span>.a);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> obj2 = &#123;</span><br><span class="line">  a: <span class="number">42</span>,</span><br><span class="line">  foo: foo</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">let</span> obj1 = &#123;</span><br><span class="line">  a: <span class="number">2</span>,</span><br><span class="line">  obj2: obj2</span><br><span class="line">&#125;;</span><br><span class="line">obj1.obj2.foo();  <span class="comment">// 42</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>隐式丢失</strong></p>
+<p>一个最常见的this绑定问题就是被隐式绑定的函数会丢失绑定对象，也就是说它会应用默认绑定，从而把 <code>this</code> 绑定到全局对象或者 <code>undefined</code> 上，取决于是否是严格模式。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="built_in">this</span>.a);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">doFoo</span>(<span class="params">fn</span>) </span>&#123;</span><br><span class="line">  fn();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">  a: <span class="number">2</span>,</span><br><span class="line">  foo: foo</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> a = <span class="string">&quot;ops, global&quot;</span>;</span><br><span class="line">doFoo(obj.foo);  <span class="comment">// ops, gloabal</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="3-显示绑定"><a href="#3-显示绑定" class="headerlink" title="3) 显示绑定"></a>3) 显示绑定</h5><p>直接指定this的绑定对象。</p>
+<p><strong>硬绑定</strong></p>
+<p>使用 <code>call</code>, <code>apply</code> , <code>bind</code> 进行 <code>this</code> 绑定。</p>
+<p><strong>API 调用的上下文</strong></p>
+<p>例如 <code>forEach</code> 的第二个参数。</p>
+<h5 id="4-new-绑定"><a href="#4-new-绑定" class="headerlink" title="4) new 绑定"></a>4) new 绑定</h5><p>使用 <code>new</code> 来调用构造函数时会创建一个新对象，并把该对象绑定到构造函数调用中的 <code>this</code> 上。</p>
+<h5 id="优先级"><a href="#优先级" class="headerlink" title="优先级"></a>优先级</h5><p>一般情况下，new绑定 &gt; 显示绑定 &gt; 隐式绑定 &gt; 默认绑定。</p>
+<p>如果将 this 利用<code>call</code>,  <code>apply</code> 或 <code>bind</code>显示绑定到 <code>null</code> 或者 <code>undefined</code> 上，这些值会被忽略，实际应用的是默认绑定。</p>
+<p>间接引用时，调用函数会应用默认绑定。</p>
+<h3 id="8-事件循环"><a href="#8-事件循环" class="headerlink" title="8. 事件循环"></a>8. 事件循环</h3><h3 id="9-垃圾回收"><a href="#9-垃圾回收" class="headerlink" title="9. 垃圾回收"></a>9. 垃圾回收</h3><ul>
+<li><strong>标记清除</strong></li>
+<li><strong>引用计数</strong></li>
+</ul>
+<h3 id="10-DOM-和-BOM"><a href="#10-DOM-和-BOM" class="headerlink" title="10. DOM 和 BOM"></a>10. DOM 和 BOM</h3><h3 id="11-模块化"><a href="#11-模块化" class="headerlink" title="11. 模块化"></a>11. 模块化</h3><h3 id="12-跨域"><a href="#12-跨域" class="headerlink" title="12. 跨域"></a>12. 跨域</h3><h4 id="12-1-JSONP"><a href="#12-1-JSONP" class="headerlink" title="12.1 JSONP"></a>12.1 JSONP</h4><h4 id="12-2-document-domain-iframe"><a href="#12-2-document-domain-iframe" class="headerlink" title="12.2 document.domain + iframe"></a>12.2 document.domain + iframe</h4><h4 id="12-3-location-hash-iframe"><a href="#12-3-location-hash-iframe" class="headerlink" title="12.3 location.hash + iframe"></a>12.3 location.hash + iframe</h4><h4 id="12-4-window-name-iframe"><a href="#12-4-window-name-iframe" class="headerlink" title="12.4 window.name + iframe"></a>12.4 window.name + iframe</h4><h4 id="12-5-postMessage"><a href="#12-5-postMessage" class="headerlink" title="12.5 postMessage"></a>12.5 postMessage</h4><h4 id="12-6-CORS-跨域资源共享"><a href="#12-6-CORS-跨域资源共享" class="headerlink" title="12.6 CORS(跨域资源共享)"></a>12.6 CORS(跨域资源共享)</h4><h4 id="12-7-nginx-代理"><a href="#12-7-nginx-代理" class="headerlink" title="12.7 nginx 代理"></a>12.7 nginx 代理</h4><h4 id="12-8-nodejs-中间件代理"><a href="#12-8-nodejs-中间件代理" class="headerlink" title="12.8 nodejs 中间件代理"></a>12.8 nodejs 中间件代理</h4><h4 id="12-9-websocket"><a href="#12-9-websocket" class="headerlink" title="12.9 websocket"></a>12.9 websocket</h4><h3 id="13-客户端存储"><a href="#13-客户端存储" class="headerlink" title="13. 客户端存储"></a>13. 客户端存储</h3><h2 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h2>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/10/27/Interview/" data-id="cki3xln9j000i1q2v6z1r9cen" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/10/27/Vue%E6%BA%90%E7%A0%81/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Vue 源码
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/10/27/Babel/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Babel</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/11/23/JavaScript/">JavaScript</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/23/UML/">OOP</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/23/while%E9%98%BB%E5%A1%9E/">Promise 控制 while 循环时需要注意的问题以及阻塞 while 的方案</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/27/web%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">Web 性能优化</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/27/%E8%B8%A9%E5%9D%91%E6%97%A5%E5%BF%97/">踩坑日志</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Joker Won<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

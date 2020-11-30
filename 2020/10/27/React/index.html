@@ -5,15 +5,17 @@
   
 
   
-  <title>归档: 2020/11 | Joker Won&#39;s blogs</title>
+  <title>React | Joker Won&#39;s blogs</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="翁建凯的个人博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Joker Won&#39;s blogs">
-<meta property="og:url" content="http://example.com/archives/2020/11/index.html">
+  <meta name="description" content="注意：  render函数return前不能使用 setState()，会造成死循环。 构造函数是唯一可以给 this.state 赋值的地方。   State 的更新可能是异步的  12345678910&#x2F;&#x2F; Wrong，无法更新计数器this.setState(&amp;#123;  counter: this.state.counter + this.props.increment,&amp;#125;);">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React">
+<meta property="og:url" content="http://example.com/2020/10/27/React/index.html">
 <meta property="og:site_name" content="Joker Won&#39;s blogs">
-<meta property="og:description" content="翁建凯的个人博客">
+<meta property="og:description" content="注意：  render函数return前不能使用 setState()，会造成死循环。 构造函数是唯一可以给 this.state 赋值的地方。   State 的更新可能是异步的  12345678910&#x2F;&#x2F; Wrong，无法更新计数器this.setState(&amp;#123;  counter: this.state.counter + this.props.increment,&amp;#125;);">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-10-27T14:36:03.467Z">
+<meta property="article:modified_time" content="2020-11-30T02:23:13.708Z">
 <meta property="article:author" content="Joker Won">
 <meta property="article:tag" content="blog 博客 前端">
 <meta name="twitter:card" content="summary">
@@ -65,78 +67,75 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/11/23/JavaScript/" class="archive-article-date">
-  <time datetime="2020-11-22T16:41:52.320Z" itemprop="datePublished">11月 23</time>
+        <section id="main"><article id="post-React" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/10/27/React/" class="article-date">
+  <time datetime="2020-10-27T14:36:03.467Z" itemprop="datePublished">2020-10-27</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/11/23/JavaScript/">JavaScript</a>
+    <h1 class="article-title" itemprop="name">
+      React
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/11/23/UML/" class="archive-article-date">
-  <time datetime="2020-11-22T16:41:52.320Z" itemprop="datePublished">11月 23</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/11/23/UML/">OOP</a>
-    </h1>
-  
+        <p>注意：</p>
+<ol>
+<li>render函数return前不能使用 setState()，会造成死循环。</li>
+<li>构造函数是唯一可以给 this.state 赋值的地方。</li>
+</ol>
+<ul>
+<li>State 的更新可能是异步的</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Wrong，无法更新计数器</span></span><br><span class="line"><span class="built_in">this</span>.setState(&#123;</span><br><span class="line">  counter: <span class="built_in">this</span>.state.counter + <span class="built_in">this</span>.props.increment,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Correct</span></span><br><span class="line"><span class="comment">// setState() 接收一个函数而非对象,用上一个 state 作为第一个参数，将此次更新被应用时的 props 做为第二个参数</span></span><br><span class="line"><span class="built_in">this</span>.setState(<span class="function">(<span class="params">state, props</span>) =&gt;</span> (&#123;</span><br><span class="line">  counter: state.counter + props.increment</span><br><span class="line">&#125;));</span><br></pre></td></tr></table></figure>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/11/23/while%E9%98%BB%E5%A1%9E/" class="archive-article-date">
-  <time datetime="2020-11-22T16:41:52.320Z" itemprop="datePublished">11月 23</time>
-</a>
+
+
+<ul>
+<li>State 的更新会被合并</li>
+</ul>
+
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/11/23/while%E9%98%BB%E5%A1%9E/">Promise 控制 while 循环时需要注意的问题以及阻塞 while 的方案</a>
-    </h1>
-  
-
-    </header>
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/10/27/React/" data-id="cki3xln9500071q2v5mj3ei3e" class="article-share-link">Share</a>
+      
+      
+    </footer>
   </div>
-</article>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/10/27/Linux/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Linux
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2020/10/27/Sass/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Sass</div>
+    </a>
   
+</nav>
 
+  
+</article>
 
 </section>
         

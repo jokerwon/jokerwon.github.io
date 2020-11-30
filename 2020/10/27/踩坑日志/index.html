@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>踩坑日志 | Joker Won&#39;s blogs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="1.  Exception in thread “main” org.springframework.beans.factory.BeanCreationException: Error creating bean with name ‘student’ defined in file […]导入jar包 aspectj.weaver-1.6.8.RELEASE 2. IDEA 的 AOP 需要手">
+<meta property="og:type" content="article">
+<meta property="og:title" content="踩坑日志">
+<meta property="og:url" content="http://example.com/2020/10/27/%E8%B8%A9%E5%9D%91%E6%97%A5%E5%BF%97/index.html">
+<meta property="og:site_name" content="Joker Won&#39;s blogs">
+<meta property="og:description" content="1.  Exception in thread “main” org.springframework.beans.factory.BeanCreationException: Error creating bean with name ‘student’ defined in file […]导入jar包 aspectj.weaver-1.6.8.RELEASE 2. IDEA 的 AOP 需要手">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-10-27T14:36:03.477Z">
+<meta property="article:modified_time" content="2020-11-30T02:19:43.406Z">
+<meta property="article:author" content="Joker Won">
+<meta property="article:tag" content="blog 博客 前端">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Joker Won&#39;s blogs" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Joker Won&#39;s blogs</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-踩坑日志" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/10/27/%E8%B8%A9%E5%9D%91%E6%97%A5%E5%BF%97/" class="article-date">
+  <time datetime="2020-10-27T14:36:03.477Z" itemprop="datePublished">2020-10-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      踩坑日志
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1-Exception-in-thread-“main”-org-springframework-beans-factory-BeanCreationException-Error-creating-bean-with-name-‘student’-defined-in-file-…"><a href="#1-Exception-in-thread-“main”-org-springframework-beans-factory-BeanCreationException-Error-creating-bean-with-name-‘student’-defined-in-file-…" class="headerlink" title="1.  Exception in thread “main” org.springframework.beans.factory.BeanCreationException: Error creating bean with name ‘student’ defined in file […]"></a>1.  Exception in thread “main” org.springframework.beans.factory.BeanCreationException: Error creating bean with name ‘student’ defined in file […]</h3><p>导入jar包 aspectj.weaver-1.6.8.RELEASE</p>
+<h3 id="2-IDEA-的-AOP-需要手动导入aspectj的jar包"><a href="#2-IDEA-的-AOP-需要手动导入aspectj的jar包" class="headerlink" title="2. IDEA 的 AOP 需要手动导入aspectj的jar包"></a>2. IDEA 的 AOP 需要手动导入aspectj的jar包</h3><h3 id="3-Servlet-service-for-servlet-dispatcherServlet-in-context-with-path-threw-exception-Request-processing-failed-nested-exception-is-java-lang-NullPointerException-with-root-cause"><a href="#3-Servlet-service-for-servlet-dispatcherServlet-in-context-with-path-threw-exception-Request-processing-failed-nested-exception-is-java-lang-NullPointerException-with-root-cause" class="headerlink" title="3.Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.NullPointerException] with root cause"></a>3.Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.NullPointerException] with root cause</h3><p>以上报错原因一般都是所在controller中引入service时候，service上面忘记写@Resource或者@Autowired注解导致的</p>
+<h3 id="3-java-sql-SQLException-The-server-time-zone-value-‘OÐ¹u±e×¼E±¼a’-is-unrecognized-or-represents-more-than-one-time-zone-You-must-configure-either-the-server-or-JDBC-driver-via-the-serverTimezone-configuration-property-to-use-a-more-specifc-time-zone-value-if-you-want-to-utilize-time-zone-support"><a href="#3-java-sql-SQLException-The-server-time-zone-value-‘OÐ¹u±e×¼E±¼a’-is-unrecognized-or-represents-more-than-one-time-zone-You-must-configure-either-the-server-or-JDBC-driver-via-the-serverTimezone-configuration-property-to-use-a-more-specifc-time-zone-value-if-you-want-to-utilize-time-zone-support" class="headerlink" title="3. java.sql.SQLException: The server time zone value ‘ÖÐ¹ú±ê×¼Ê±¼ä’ is unrecognized or represents more than one time zone. You must configure either the server or JDBC driver (via the serverTimezone configuration property) to use a more specifc time zone value if you want to utilize time zone support."></a>3. java.sql.SQLException: The server time zone value ‘ÖÐ¹ú±ê×¼Ê±¼ä’ is unrecognized or represents more than one time zone. You must configure either the server or JDBC driver (via the serverTimezone configuration property) to use a more specifc time zone value if you want to utilize time zone support.</h3><p>改时区</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span> <span class="keyword">global</span> <span class="keyword">time_zone</span>=<span class="string">&#x27;+8:00&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="4-Redis-切换数据库"><a href="#4-Redis-切换数据库" class="headerlink" title="4. Redis 切换数据库"></a>4. Redis 切换数据库</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">JedisConnectionFactory connectionFactory =(JedisConnectionFactory)redisTemplate.getConnectionFactory();</span><br><span class="line">connectionFactory.setDatabase(<span class="number">1</span>);</span><br><span class="line"><span class="comment">//上述方法已废弃，使用 LettuceConnectionFactory 切换 redis 数据库</span></span><br><span class="line">LettuceConnectionFactory lettuceConnectionFactory = (LettuceConnectionFactory) redisTemplate.getConnectionFactory();lettuceConnectionFactory.setDatabase(<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="5-ElementUI-对嵌套对象的表单校验"><a href="#5-ElementUI-对嵌套对象的表单校验" class="headerlink" title="5. ElementUI 对嵌套对象的表单校验"></a>5. ElementUI 对嵌套对象的表单校验</h3><p>校验规则也要嵌套形式</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">form: &#123;</span><br><span class="line">    person: &#123;</span><br><span class="line">        name: <span class="string">&#x27;joker&#x27;</span>,</span><br><span class="line">        age: <span class="number">22</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">rules: &#123;</span><br><span class="line">    <span class="string">&#x27;person.name&#x27;</span>: [</span><br><span class="line">        &#123; <span class="attr">required</span>: <span class="literal">true</span>, <span class="attr">message</span>: <span class="string">&#x27;...&#x27;</span>, <span class="attr">trigger</span>: <span class="string">&#x27;blur&#x27;</span> &#125;,</span><br><span class="line">        &#123; <span class="attr">validator</span>: <span class="function"><span class="keyword">function</span>(<span class="params">rule, value, callback</span>)</span>&#123;...&#125;, <span class="attr">trigger</span>: <span class="string">&#x27;blur&#x27;</span> &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="6-Thymeleaf-渲染-js-二维数组会报错"><a href="#6-Thymeleaf-渲染-js-二维数组会报错" class="headerlink" title="6. Thymeleaf 渲染 js 二维数组会报错"></a>6. Thymeleaf 渲染 js 二维数组会报错</h3><h3 id="7-js-时间格式化"><a href="#7-js-时间格式化" class="headerlink" title="7.  js 时间格式化"></a>7.  js 时间格式化</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Date</span>.prototype.format = <span class="function"><span class="keyword">function</span> (<span class="params">format</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">const</span> o = &#123;</span><br><span class="line">            <span class="string">&quot;M+&quot;</span>: <span class="built_in">this</span>.getMonth() + <span class="number">1</span>, <span class="comment">//month</span></span><br><span class="line">            <span class="string">&quot;d+&quot;</span>: <span class="built_in">this</span>.getDate(), <span class="comment">//day</span></span><br><span class="line">            <span class="string">&quot;H+&quot;</span>: <span class="built_in">this</span>.getHours(), <span class="comment">//hour</span></span><br><span class="line">            <span class="string">&quot;m+&quot;</span>: <span class="built_in">this</span>.getMinutes(), <span class="comment">//minute</span></span><br><span class="line">            <span class="string">&quot;s+&quot;</span>: <span class="built_in">this</span>.getSeconds(), <span class="comment">//second</span></span><br><span class="line">            <span class="string">&quot;q+&quot;</span>: <span class="built_in">Math</span>.floor((<span class="built_in">this</span>.getMonth() + <span class="number">3</span>) / <span class="number">3</span>), <span class="comment">//quarter</span></span><br><span class="line">            <span class="string">&quot;S&quot;</span>: <span class="built_in">this</span>.getMilliseconds() <span class="comment">//millisecond</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (<span class="regexp">/(y+)/</span>.test(format)) &#123;</span><br><span class="line">            format = format.replace(<span class="built_in">RegExp</span>.$1, (<span class="built_in">this</span>.getFullYear() + <span class="string">&quot;&quot;</span>).substr(<span class="number">4</span> - <span class="built_in">RegExp</span>.$1.length));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> k <span class="keyword">in</span> o) &#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">&quot;(&quot;</span> + k + <span class="string">&quot;)&quot;</span>).test(format)) &#123;</span><br><span class="line">                format = format.replace(<span class="built_in">RegExp</span>.$1, <span class="built_in">RegExp</span>.$1.length == <span class="number">1</span> ? o[k] : (<span class="string">&quot;00&quot;</span> + o[k]).substr((<span class="string">&quot;&quot;</span> + o[k]).length));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> format;</span><br><span class="line">    &#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="8-el-table-当宽度足够时为列加上-fixed-属性会导致该列最后一格分裂"><a href="#8-el-table-当宽度足够时为列加上-fixed-属性会导致该列最后一格分裂" class="headerlink" title="8. el-table 当宽度足够时为列加上 fixed 属性会导致该列最后一格分裂"></a>8. el-table 当宽度足够时为列加上 fixed 属性会导致该列最后一格分裂</h3><h3 id="9-vue的v-for和v-if不能同时使用，如果必要，可以利用-template-标签"><a href="#9-vue的v-for和v-if不能同时使用，如果必要，可以利用-template-标签" class="headerlink" title="9. vue的v-for和v-if不能同时使用，如果必要，可以利用 template 标签"></a>9. vue的v-for和v-if不能同时使用，如果必要，可以利用 template 标签</h3><h3 id="10-es6在webpack中使用require-，直接使用变量会报错，如果想动态获取可以使用-webpack-提供的-require-context。"><a href="#10-es6在webpack中使用require-，直接使用变量会报错，如果想动态获取可以使用-webpack-提供的-require-context。" class="headerlink" title="10. es6在webpack中使用require()，直接使用变量会报错，如果想动态获取可以使用 webpack 提供的 require.context。"></a>10. es6在webpack中使用require()，直接使用变量会报错，如果想动态获取可以使用 webpack 提供的 require.context。</h3><h3 id="11-nginx-代理失效时检查代理路径末尾是否添加-“-”"><a href="#11-nginx-代理失效时检查代理路径末尾是否添加-“-”" class="headerlink" title="11. nginx 代理失效时检查代理路径末尾是否添加 “ / ”"></a>11. nginx 代理失效时检查代理路径末尾是否添加 “ / ”</h3><h3 id="12-PageHelper对联合查询的结果分页会出错。"><a href="#12-PageHelper对联合查询的结果分页会出错。" class="headerlink" title="12. PageHelper对联合查询的结果分页会出错。"></a>12. PageHelper对联合查询的结果分页会出错。</h3><h3 id="13-微服务之间接口的调用"><a href="#13-微服务之间接口的调用" class="headerlink" title="13. 微服务之间接口的调用"></a>13. 微服务之间接口的调用</h3><ol>
+<li>直接使用 http 请求。</li>
+<li>通过 eureka 和 RestTemplate 配合。</li>
+</ol>
+<ol>
+<li>添加依赖</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>de.codecentric<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-admin-starter-client<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-netflix-eureka-client<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">dependencyManagement</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-dependencies<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>Greenwich.SR1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">type</span>&gt;</span>pom<span class="tag">&lt;/<span class="name">type</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">scope</span>&gt;</span>import<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>de.codecentric<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-admin-dependencies<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.1.6<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">type</span>&gt;</span>pom<span class="tag">&lt;/<span class="name">type</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">scope</span>&gt;</span>import<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencyManagement</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>开启eureka注册</li>
+</ol>
+<p>在 SpringBoot 的启动器上添加注解 <strong>@EnableDiscoveryClient</strong></p>
+<ol start="3">
+<li>添加配置项</li>
+</ol>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">eureka:</span></span><br><span class="line">  <span class="attr">client:</span></span><br><span class="line">    <span class="attr">serviceUrl:</span></span><br><span class="line">      <span class="comment">#注册中心的地址</span></span><br><span class="line">      <span class="attr">defaultZone:</span> <span class="string">http://10.72.66.141:8000/eureka/,http://10.72.66.141:8001/eureka/</span></span><br><span class="line">  <span class="attr">instance:</span></span><br><span class="line">    <span class="attr">prefer-ip-address:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>配置 RestTemplate</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="meta">@LoadBalanced</span>  <span class="comment">//在注册中心获取注册列表，负载均衡</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> RestTemplate <span class="title">restTemplate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> RestTemplate();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>发送 http 请求</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Autowired</span></span><br><span class="line">RestTemplate restTemplate;</span><br><span class="line">String result = restTemplate.getForObject(<span class="string">&quot;http://$&#123;注册中心的微服务名称&#125;/$&#123;请求路径&#125;&quot;</span>, String.class)</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="14-小程序使用-catch-event-代替-bind-event-来阻止冒泡"><a href="#14-小程序使用-catch-event-代替-bind-event-来阻止冒泡" class="headerlink" title="14. 小程序使用 catch:event 代替 bind:event 来阻止冒泡"></a>14. 小程序使用 catch:event 代替 bind:event 来阻止冒泡</h3>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/10/27/%E8%B8%A9%E5%9D%91%E6%97%A5%E5%BF%97/" data-id="cki3xln9d000h1q2v7dfta3ly" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/10/27/web%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Web 性能优化
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/10/27/Webpack/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Webpack</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/11/23/JavaScript/">JavaScript</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/23/UML/">OOP</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/23/while%E9%98%BB%E5%A1%9E/">Promise 控制 while 循环时需要注意的问题以及阻塞 while 的方案</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/27/web%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">Web 性能优化</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/27/%E8%B8%A9%E5%9D%91%E6%97%A5%E5%BF%97/">踩坑日志</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Joker Won<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
