@@ -149,6 +149,290 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/10/27/Kafka/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Joker Won">
+      <meta itemprop="description" content="翁建凯的个人博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Joker Won's blogs">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/10/27/Kafka/" class="post-title-link" itemprop="url">Kafka</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-10-27 22:36:03" itemprop="dateCreated datePublished" datetime="2020-10-27T22:36:03+08:00">2020-10-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-11-30 10:22:09" itemprop="dateModified" datetime="2020-11-30T10:22:09+08:00">2020-11-30</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="一、初识-Kafka"><a href="#一、初识-Kafka" class="headerlink" title="一、初识 Kafka"></a>一、初识 Kafka</h3><p>消息：Kafka 的数据单元，相较于数据库的一个数据行或一条记录。</p>
+<p>批次：一组消息，这些消息属于同一个主题和分区。</p>
+<p>主题：Kafka 的消息通过主题分类，相较于数据库的表，或者文件系统的文件夹。</p>
+<p>分区：主题可以被分为若干个分区，一个分区就是一个提交日志。消息以追加的方式写入分区，然后以先入先出的顺序读取。<strong>分区可以分布在不同的服务器上，也就是说一个主题可以横跨多个服务器。</strong></p>
+<p>Kafka 特点：</p>
+<ol>
+<li>多个生产者</li>
+<li>多个消费者</li>
+<li>基于磁盘的数据存储</li>
+<li>伸缩性</li>
+<li>高性能</li>
+</ol>
+<h3 id="二、生产者"><a href="#二、生产者" class="headerlink" title="二、生产者"></a>二、生产者</h3><h4 id="2-1-生产者配置"><a href="#2-1-生产者配置" class="headerlink" title="2.1  生产者配置"></a>2.1  生产者配置</h4><p><strong>必选配置</strong></p>
+<h5 id="1-bootstrap-servers"><a href="#1-bootstrap-servers" class="headerlink" title="1.  bootstrap.servers"></a>1.  bootstrap.servers</h5><p>指定 broker 的地址清单，地址的格式为 host:port。</p>
+<h5 id="2-key-serializer"><a href="#2-key-serializer" class="headerlink" title="2.  key.serializer"></a>2.  key.serializer</h5><p>必选设置（<strong>即使不发送键</strong>），且必须被设置为一个实现了 org.apache.kafka.common.serialization.Seralizer 接口的类。Kafka 客户端默认提供了 ByteArraySerializer、StringSerializer 和 IntegerSerializer，因此常见的几种 Java 对象类型就没必要实现自己的序列化器。</p>
+<h5 id="3-value-serializer"><a href="#3-value-serializer" class="headerlink" title="3.  value.serializer"></a>3.  value.serializer</h5><p>同 key.serializer。</p>
+<hr>
+**其他配置**
+
+<h5 id="4-acks"><a href="#4-acks" class="headerlink" title="4.  acks"></a>4.  acks</h5><p>acks 指定必须要有多少个分区副本收到消息，生产者才会认为消息写入是成功的。</p>
+<ul>
+<li>acks=0，生产者在成功写入消息之前不会等待任何来自服务器的响应。</li>
+<li>acks=1，只要集群首领节点收到消息，生产者就会收到来自服务器的成功响应。</li>
+<li>acks=all，只有当所有参与复制的节点全部收到消息时，生产者才会收到成功响应。</li>
+</ul>
+<h5 id="5-buffer-memory"><a href="#5-buffer-memory" class="headerlink" title="5.  buffer.memory"></a>5.  buffer.memory</h5><p>设置生产者内存缓冲区的大小，生产者用它缓冲要发送到服务器的消息。如果应用程序发送消息的速度超过发送到服务器的速度，会导致生产者缓冲区空间不足。此时 send() 方法调用会被阻塞或抛出异常，这取决于 <strong>max.block.ms</strong> 参数（表示抛出异常前可以阻塞的时间）。</p>
+<h5 id="6-compression-type"><a href="#6-compression-type" class="headerlink" title="6.  compression.type"></a>6.  compression.type</h5><p>默认情况下消息发送时不会被压缩。该参数可设置为 snappy、gzip 或 lz4，指定消息被发送给 broker 之前使用哪一种算法进行压缩。</p>
+<h5 id="7-retries"><a href="#7-retries" class="headerlink" title="7.  retries"></a>7.  retries</h5><p>指定生产者可以重发消息的次数，如果达到这个次数，生产者会放弃重试并返回错误。默认情况下，生产者会在每次重试之间等待 100ms，不过可以通过 <strong>retry.backoff.ms</strong> 参数来设置这个时间间隔。</p>
+<h5 id="8-batch-size"><a href="#8-batch-size" class="headerlink" title="8.  batch.size"></a>8.  batch.size</h5><p>当有多个消息需要被发送到同一个分区时，生产者会把它们放在同一个批次里。该参数指定了一个批次可以使用的内存大小，按照<strong>字节数</strong>计算（而不是消息个数）。当批次被填满，批次里的所有消息会被发送出去。不过生产者并不一定都会等到批次被填满才发送，半满的批次甚至只包含一个消息的批次也有可能被发送。</p>
+<h5 id="9-linger-ms"><a href="#9-linger-ms" class="headerlink" title="9  linger.ms"></a>9  linger.ms</h5><p>指定生产者在发送批次之前等待更多消息加入批次的时间， KafkaProducer 会在批次填满或 linger.ms 达到上限时把批次发送出去。默认情况下，只要有可用的线程，生产者就会把消息发送出去，就算批次里只有一个消息。所以把该参数设置成一个比 0 大的数能提升吞吐量。</p>
+<h5 id="10-client-id"><a href="#10-client-id" class="headerlink" title="10.  client.id"></a>10.  client.id</h5><p>该参数可以是任意的字符串，服务器会用它来识别消息的来源，还可以用在日志和配额指标里。</p>
+<h5 id="11-max-in-flight-requests-per-connection"><a href="#11-max-in-flight-requests-per-connection" class="headerlink" title="11.  max.in.flight.requests.per.connection"></a>11.  max.in.flight.requests.per.connection</h5><p>指定生产者在收到服务器响应之前可以发送的最大请求数。它的值越高就会占用越多的内存，但是吞吐量也会越高。将其<strong>设为 1 可以保证消息是按照发送的顺序写入服务器</strong>的，即使发生了重试。</p>
+<h5 id="12-timeout-ms、request-timeout-ms、metadata-fetch-timeout-ms"><a href="#12-timeout-ms、request-timeout-ms、metadata-fetch-timeout-ms" class="headerlink" title="12.  timeout.ms、request.timeout.ms、metadata.fetch.timeout.ms"></a>12.  timeout.ms、request.timeout.ms、metadata.fetch.timeout.ms</h5><p>request.timeout.ms 指定了生产者在发送数据时等待服务器返回响应的时间；metadata.fetch.timeout.ms 指定了生产者在获取元数据（比如目标分区的首领是谁）时等待服务器返回响应的时间；timeout.ms 指定了 broker 等待同步副本返回消息确认的时间，与 acks 的配置相匹配——如果在指定时间内没有收到同步副本的确认，那么 broker 就会返回一个错误。</p>
+<h5 id="13-max-block-ms"><a href="#13-max-block-ms" class="headerlink" title="13.  max.block.ms"></a>13.  max.block.ms</h5><p>指定在调用 send() 方法或使用 partitionsFor() 方法获取元数据时生产者的阻塞时间。当生产者的发送缓冲区已满，或者没有可用的元数据时，这些方法就会阻塞，当阻塞时间达到该参数设置的值时，生产者会抛出超时异常。</p>
+<h5 id="14-max-request-size"><a href="#14-max-request-size" class="headerlink" title="14.  max.request.size"></a>14.  max.request.size</h5><p>用于控制生产者发送的请求大小。它可以指能发送的单个消息的最大值，也可以指单个请求里所有消息总的大小。例如，假设该参数值为 1MB，那么可以发送的单个最大消息为 1MB，或者生产者可以在单个请求里发送一个批次，该批次包含了 1000 个消息，每个消息的大小为 1KB。另外，broker 对可接收的消息最大值也有自己的限制（<strong>message.max.bytes</strong>），所以两边的配置最好可以匹配，避免生产者发送的消息被 broker 拒绝。</p>
+<h5 id="15-receive-buffer-bytes-和-send-buffer-bytes"><a href="#15-receive-buffer-bytes-和-send-buffer-bytes" class="headerlink" title="15.  receive.buffer.bytes 和 send.buffer.bytes"></a>15.  receive.buffer.bytes 和 send.buffer.bytes</h5><p>分别指定了 TCP socket 接收和发送数据包的缓冲区大小。如果它们被设置为 -1，就使用操作系统的默认值。</p>
+<h4 id="2-2-分区"><a href="#2-2-分区" class="headerlink" title="2.2  分区"></a>2.2  分区</h4><p>Kafka 消息的键有两个用途：①作为消息的附加信息；②用来决定消息被写到主题的哪个分区。这就导致，如果一个进程只从一个主题的分区读取数据，那么具有相同键的所有消息都会被该消费者读取。</p>
+<p>如果消息的键为 null，并且使用了默认的分区器，那么消息将被分区器使用<strong>轮询</strong>算法随机均衡地发送到主题内的各个可用的分区。</p>
+<p>如果消息的键不为 null，并且使用了默认的分区器，那么 Kafka  会对键进行散列，然后根据散列值把消息映射到特定的分区上。<strong>同一个键总是被映射到同一个分区上，因此映射时所有的分区会被使用</strong>，而不仅仅是可用分区。如果写入数据的分区是不可用的，就会发生错误。</p>
+<h3 id="四、消费者"><a href="#四、消费者" class="headerlink" title="四、消费者"></a>四、消费者</h3><p>Kafka 消费者从属于消费者组。一个群组里的消费者订阅的是同一个主题，每个消费者接收主题一部分分区的消息。</p>
+<p>消费者组之间互不影响。</p>
+<p>再均衡：分区的所有权从一个消费者转移到另一个消费者。再均衡期间，消费者无法读取消息，整个群组小段时间不可用。当分区被重新分配给另一个消费者时，消费者当前的读取状态会丢失，它有可能还需要去刷新缓存，在它重新恢复状态之前会拖慢应用程序。</p>
+<p>消费者通过向被指派为<strong>群组协调器</strong>的broker（不同的群组可以有不同的协调器）发送<strong>心跳</strong>来维持从属关系和它们对分区的所有权关系。如果消费者停止发送心跳的时间足够长，会被认为已死亡，再均衡就会被触发。</p>
+<h4 id="4-1-消费者配置"><a href="#4-1-消费者配置" class="headerlink" title="4.1  消费者配置"></a>4.1  消费者配置</h4><p><strong>必选配置</strong></p>
+<h5 id="1-bootstrap-servers-1"><a href="#1-bootstrap-servers-1" class="headerlink" title="1.  bootstrap.servers"></a>1.  bootstrap.servers</h5><h5 id="2-key-deserializer"><a href="#2-key-deserializer" class="headerlink" title="2.  key.deserializer"></a>2.  key.deserializer</h5><h5 id="3-value-deserializer"><a href="#3-value-deserializer" class="headerlink" title="3.  value.deserializer"></a>3.  value.deserializer</h5><hr>
+
+<p><strong>其他配置</strong></p>
+<h5 id="4-group-id"><a href="#4-group-id" class="headerlink" title="4.  group.id"></a>4.  group.id</h5><p>指定消费者属于哪一个消费者群组。</p>
+<h5 id="5-fetch-min-bytes"><a href="#5-fetch-min-bytes" class="headerlink" title="5.  fetch.min.bytes"></a>5.  fetch.min.bytes</h5><p>指定消费者从服务器获取消息的最小字节数。broker 在收到消费者的数据请求时，如果可用的数据量小于该参数指定的大小，那么它会等到有足够的可用数据时才把数据返回给消费者。</p>
+<h5 id="6-fetch-max-wait-ms"><a href="#6-fetch-max-wait-ms" class="headerlink" title="6.  fetch.max.wait.ms"></a>6.  fetch.max.wait.ms</h5><p>指定 broker 的等待时间，默认值为 500ms。如果没有足够的数据流入 Kafka ，消费者获取 最小数据量的要求就得不到满足，最终会导致 500ms 的延迟。</p>
+<h5 id="7-max-partiton-fetch-bytes"><a href="#7-max-partiton-fetch-bytes" class="headerlink" title="7.  max.partiton.fetch.bytes"></a>7.  max.partiton.fetch.bytes</h5><p>指定服务器从每个分区里返回给消费者的最大字节数，默认值为 1MB。</p>
+<h5 id="8-session-timeout-ms"><a href="#8-session-timeout-ms" class="headerlink" title="8.  session.timeout.ms"></a>8.  session.timeout.ms</h5><p>指定消费者在被认为死亡之前可以与服务器断开连接的时间，默认为 3s。如果消费者没有在该参数指定的时间内发送心跳给群组协调器，就被认为已经死亡。该参数与  <strong>heartbeat.interval.ms</strong> 紧密相关。heartbeat.interval.ms 指定消费者向协调器发送心跳的频率，而 session.timeout.ms 则指定了消费者可以多久不发送心跳。一般 heartbeat.interval.ms 设置的值是 session.timeout.ms 的三分之一。</p>
+<h5 id="9-auto-offset-reset"><a href="#9-auto-offset-reset" class="headerlink" title="9. auto.offset.reset"></a>9. auto.offset.reset</h5><p>指定消费者在读取一个没有偏移量的分区或者偏移量无效的情况（因消费者长时间失效，包含偏移量的记录已经过时并被删除）该如何处理，默认值是 latest，即在偏移量无效的情况下，消费者将从最新的记录开始读取数据（在消费者启动之后生成的记录）。另一个值是 earliest，即从起始位置读取分区的记录。</p>
+<h5 id="10-enable-auto-commit"><a href="#10-enable-auto-commit" class="headerlink" title="10.  enable.auto.commit"></a>10.  enable.auto.commit</h5><p>指定消费者是否自动提交偏移量，默认为 true。如果该参数设置为 true，还可通过设置 <strong>auto.commit.interval.ms</strong> 属性来控制提交的频率。</p>
+<h5 id="11-client-id"><a href="#11-client-id" class="headerlink" title="11.  client.id"></a>11.  client.id</h5><p>用来标识从客户端发送过来的消息，通常被用在日志、度量指标和配额里。</p>
+<h5 id="12-max-poll-records"><a href="#12-max-poll-records" class="headerlink" title="12.  max.poll.records"></a>12.  max.poll.records</h5><p>用于控制单词调用 call() 方法能够返回的记录数量，可以控制在轮询里需要处理的数据量。</p>
+<h5 id="13-receive-buffer-bytes-和-send-buffer-bytes"><a href="#13-receive-buffer-bytes-和-send-buffer-bytes" class="headerlink" title="13.  receive.buffer.bytes 和 send.buffer.bytes"></a>13.  receive.buffer.bytes 和 send.buffer.bytes</h5><p>用来设置 socket 在读写数据时用到的 TCP 缓冲区的大小。如果被设置为 -1，就使用操作系统的默认值。</p>
+<h5 id="14-partition-assignment-strategy"><a href="#14-partition-assignment-strategy" class="headerlink" title="14.  partition.assignment.strategy"></a>14.  partition.assignment.strategy</h5><p>指定分区的分配策略。Kafka 有两个默认的分配策略，分别是 <strong>Range</strong> 和 <strong>RoundRobin</strong>。也可以使用自定义策略，此时该参数的值就是自定义类的名字。</p>
+<p><strong>Range</strong>：默认使用的是 org.apache.kafka.clients.consumer.RangeAssignor 。该策略把若干个连续的分区分配给消费者。</p>
+<p><strong>RoundRobin</strong>：该策略把主题的所有分区逐个分配给消费者。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/10/27/Maven/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Joker Won">
+      <meta itemprop="description" content="翁建凯的个人博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Joker Won's blogs">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/10/27/Maven/" class="post-title-link" itemprop="url">Maven</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-10-27 22:36:03" itemprop="dateCreated datePublished" datetime="2020-10-27T22:36:03+08:00">2020-10-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-11-30 10:22:56" itemprop="dateModified" datetime="2020-11-30T10:22:56+08:00">2020-11-30</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="一、-环境的搭建"><a href="#一、-环境的搭建" class="headerlink" title="一、 环境的搭建"></a>一、 环境的搭建</h3><h4 id="1-1-检查-JDK-的安装"><a href="#1-1-检查-JDK-的安装" class="headerlink" title="1.1  检查 JDK 的安装"></a>1.1  检查 JDK 的安装</h4><p>​    <em>Maven 可运行在 JDK 1.4 及以上的版本。</em></p>
+<p>​    Windows 环境下，打开 cmd 命令窗口，键入</p>
+<p>​    <code>java -version</code></p>
+<p>​    结果如下</p>
+<p><img src="C:\Users\ZNV\Desktop\Notes\images\1552449175(1).jpg" alt="1552449175(1)"></p>
+<h4 id="1-2-下载Maven"><a href="#1-2-下载Maven" class="headerlink" title="1. 2  下载Maven"></a>1. 2  下载Maven</h4><ul>
+<li> 从<a target="_blank" rel="noopener" href="http://maven.apache.org/download.cgi">Maven官网</a>下载压缩包，然后解压</li>
+</ul>
+<p><img src="C:\Users\ZNV\Desktop\Notes\images\download.png" alt="download"></p>
+<ul>
+<li>添加系统环境变量</li>
+</ul>
+<p><img src="C:\Users\ZNV\Desktop\Notes\images\system_path0.png" alt="system_path0"></p>
+<p><img src="C:\Users\ZNV\Desktop\Notes\images\system_path1.png" alt="system_path1"></p>
+<ul>
+<li><p>检查 Maven 是否安装成功</p>
+<p>Windows 环境下，打开 cmd 命令窗口，键入</p>
+<p><code>mvn -v</code></p>
+<p>结果如下</p>
+<p><img src="C:\Users\ZNV\Desktop\Notes\images\mvn-v.png" alt="mvn-v"></p>
+</li>
+<li><p>至此，完成对 Maven 的环境配置。</p>
+</li>
+</ul>
+<h3 id="二、-使用入门"><a href="#二、-使用入门" class="headerlink" title="二、 使用入门"></a>二、 使用入门</h3><h4 id="2-1-认识-Maven-目录"><a href="#2-1-认识-Maven-目录" class="headerlink" title="2.1  认识 Maven 目录"></a>2.1  认识 Maven 目录</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">project_name</span><br><span class="line">    |-- src</span><br><span class="line">        |—— main</span><br><span class="line">            |-- java</span><br><span class="line">            |-- resources</span><br><span class="line">        |-- test</span><br><span class="line">            |-- java</span><br><span class="line">            |-- resources</span><br><span class="line">    |-- target</span><br><span class="line">    |-- pom.xml</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="Maven-项目标准目录结构（官方文档）"><a href="#Maven-项目标准目录结构（官方文档）" class="headerlink" title="Maven 项目标准目录结构（官方文档）"></a>Maven 项目标准目录结构<a target="_blank" rel="noopener" href="http://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html">（官方文档）</a></h5></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Directory</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>src/main/java</code></td>
+<td>Application/Library sources</td>
+</tr>
+<tr>
+<td><code>src/main/resources</code></td>
+<td>Application/Library resources</td>
+</tr>
+<tr>
+<td><code>src/main/filters</code></td>
+<td>Resource filter files</td>
+</tr>
+<tr>
+<td><code>src/main/webapp</code></td>
+<td>Web application sources</td>
+</tr>
+<tr>
+<td><code>src/test/java</code></td>
+<td>Test sources</td>
+</tr>
+<tr>
+<td><code>src/test/resources</code></td>
+<td>Test resources</td>
+</tr>
+<tr>
+<td><code>src/test/filters</code></td>
+<td>Test resource filter files</td>
+</tr>
+<tr>
+<td><code>src/it</code></td>
+<td>Integration Tests (primarily for plugins)</td>
+</tr>
+<tr>
+<td><code>src/assembly</code></td>
+<td>Assembly descriptors</td>
+</tr>
+<tr>
+<td><code>src/site</code></td>
+<td>Site</td>
+</tr>
+<tr>
+<td><code>LICENSE.txt</code></td>
+<td>Project’s license</td>
+</tr>
+<tr>
+<td><code>NOTICE.txt</code></td>
+<td>Notices and attributions required by libraries that the project depends on</td>
+</tr>
+<tr>
+<td><code>README.txt</code></td>
+<td>Project’s readme</td>
+</tr>
+</tbody></table>
+<h4 id="2-2-编写-POM"><a href="#2-2-编写-POM" class="headerlink" title="2.2  编写 POM"></a>2.2  编写 POM</h4><p>​    POM（Project  Object  Model，项目对象模型）定义了项目的基本信息，用于描述项目如何构建，声明项目依赖等。pom.xml 文件是 Maven 项目的核心。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">project</span> <span class="attr">xmlns</span>=<span class="string">&quot;http://maven.apache.org/POM/4.0.0&quot;</span> <span class="attr">xmlns:xsi</span>=<span class="string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xsi:schemaLocation</span>=<span class="string">&quot;http://maven.apache.org/POM/4.0.0 		 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 当前pom的版本,对于 Maven 2 及 Maven 3 来说，它只能是 4.0.0 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">modelVersion</span>&gt;</span>4.0.0<span class="tag">&lt;/<span class="name">modelVersion</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- GAV坐标，必需 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>cn.edu.myapp<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>app-parent<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>0.0.1-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 默认是jar，可选值有war，zip，pom等 --&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 所有带有子模块的项目的packaging都为pom。</span></span><br><span class="line"><span class="comment">    packaging如果不进行配置，它的默认值是jar，代表Maven会将项目打成一个jar包。 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">packaging</span>&gt;</span>pom<span class="tag">&lt;/<span class="name">packaging</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- 项目描述名 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>maven-study<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 项目地址 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://maven.apache.org<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 开发人员信息 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">developers</span>&gt;</span><span class="tag">&lt;/<span class="name">developers</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 项目描述 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">description</span>&gt;</span><span class="tag">&lt;/<span class="name">description</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 许可信息 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">licenses</span>&gt;</span><span class="tag">&lt;/<span class="name">licenses</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 组织信息 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">organization</span>&gt;</span><span class="tag">&lt;/<span class="name">organization</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- 配置参数 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 配置项目编译编码为UTF-8 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">project.build.sourceEncoding</span>&gt;</span>UTF-8<span class="tag">&lt;/<span class="name">project.build.sourceEncoding</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">&lt;!-- 依赖集，用于配置依赖 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.8.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">            </span><br><span class="line">            <span class="comment">&lt;!-- 依赖范围：这个jar包只在范围内生效，范围外引用会报错，这里让junit只在test时被依赖。</span></span><br><span class="line"><span class="comment">                 其他一些情况，如：servlet-api.jar，在编译阶段需要引用，而在服务器运行阶段则不需要引				   用，就可以使用scope</span></span><br><span class="line"><span class="comment">			--&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line"></span><br><span class="line">            <span class="comment">&lt;!-- 默认为false，即子项目默认都继承；true时子项目必须显式引用 --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">optional</span>&gt;</span>false<span class="tag">&lt;/<span class="name">optional</span>&gt;</span></span><br><span class="line"></span><br><span class="line">            <span class="comment">&lt;!-- 排除依赖列表：用于去除传递依赖等 --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">exclusions</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">exclusion</span>&gt;</span><span class="tag">&lt;/<span class="name">exclusion</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">exclusions</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">&lt;!-- </span></span><br><span class="line"><span class="comment">		依赖管理：用于帮助管理chidren的dependencies。</span></span><br><span class="line"><span class="comment">		例如如果parent使用dependencyManagement定义了一个dependency on junit:junit4.0,那么它的children就可以只引用 groupId和artifactId,而version就可以通过parent来设置。</span></span><br><span class="line"><span class="comment">     --&gt;</span>     </span><br><span class="line">    <span class="tag">&lt;<span class="name">dependencyManagement</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">dependency</span>&gt;</span><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependencyManagement</span>&gt;</span> </span><br><span class="line">    </span><br><span class="line">    <span class="comment">&lt;!-------------------------------- 构建项目需要的信息 ---------------------------&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 该元素设置了项目源码目录，当构建项目的时候，构建系统会编译目录里的源码。该路径是相对</span></span><br><span class="line"><span class="comment">             于pom.xml的相对路径。 --&gt;</span> </span><br><span class="line">        <span class="tag">&lt;<span class="name">sourceDirectory</span>&gt;</span><span class="tag">&lt;/<span class="name">sourceDirectory</span>&gt;</span> </span><br><span class="line">        </span><br><span class="line">        <span class="comment">&lt;!-- 该元素设置了项目单元测试使用的源码目录，当测试项目的时候，构建系统会编译目录里的源码。</span></span><br><span class="line"><span class="comment">             该路径是相对于pom.xml的相对路径。 --&gt;</span> </span><br><span class="line">        <span class="tag">&lt;<span class="name">testSourceDirectory</span>&gt;</span><span class="tag">&lt;/<span class="name">testSourceDirectory</span>&gt;</span> </span><br><span class="line"></span><br><span class="line">        <span class="comment">&lt;!-- 被编译过的应用程序class文件存放的目录。 --&gt;</span> </span><br><span class="line">        <span class="tag">&lt;<span class="name">outputDirectory</span>&gt;</span><span class="tag">&lt;/<span class="name">outputDirectory</span>&gt;</span> </span><br><span class="line"></span><br><span class="line">        <span class="comment">&lt;!-- 被编译过的测试class文件存放的目录。 --&gt;</span> </span><br><span class="line">        <span class="tag">&lt;<span class="name">testOutputDirectory</span>&gt;</span><span class="tag">&lt;/<span class="name">testOutputDirectory</span>&gt;</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment">&lt;!-- 这个元素描述了项目相关的所有资源路径列表，例如和项目相关的属性文件，这些资源被包含在</span></span><br><span class="line"><span class="comment">             最终的打包文件里。 --&gt;</span> </span><br><span class="line">        <span class="tag">&lt;<span class="name">resources</span>&gt;</span> </span><br><span class="line">            <span class="comment">&lt;!-- 这个元素描述了项目相关或测试相关的所有资源路径 --&gt;</span> </span><br><span class="line">            <span class="tag">&lt;<span class="name">resource</span>&gt;</span> </span><br><span class="line">                <span class="comment">&lt;!-- 描述了资源的目标路径。该路径相对target/classes目录（例如	  								 $&#123;project.build.outputDirectory&#125;）。</span></span><br><span class="line"><span class="comment">                     举个例子，如果你想资源在特定的包里(org.apache.maven.messages)，你就必须该元素 					   设置为org/apache/maven/messages。然而，如果你只是想把资源放到源码目录结构里，					   就不需要该配置。 --&gt;</span> </span><br><span class="line">                <span class="tag">&lt;<span class="name">targetPath</span>&gt;</span><span class="tag">&lt;/<span class="name">targetPath</span>&gt;</span> </span><br><span class="line"></span><br><span class="line">                <span class="comment">&lt;!-- 描述存放资源的目录，该路径相对POM路径 --&gt;</span> </span><br><span class="line">                <span class="tag">&lt;<span class="name">directory</span>&gt;</span><span class="tag">&lt;/<span class="name">directory</span>&gt;</span></span><br><span class="line"></span><br><span class="line">                <span class="comment">&lt;!-- 包含的模式列表，例如**/*.xml. --&gt;</span> </span><br><span class="line">                <span class="tag">&lt;<span class="name">includes</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">include</span>&gt;</span><span class="tag">&lt;/<span class="name">include</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">includes</span>&gt;</span></span><br><span class="line"></span><br><span class="line">                <span class="comment">&lt;!-- 排除的模式列表，例如**/*.xml --&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">excludes</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">exclude</span>&gt;</span><span class="tag">&lt;/<span class="name">exclude</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">excludes</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">resource</span>&gt;</span> </span><br><span class="line">        <span class="tag">&lt;/<span class="name">resources</span>&gt;</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment">&lt;!--------- 该项目使用的插件列表。---------&gt;</span> </span><br><span class="line">        <span class="tag">&lt;<span class="name">plugins</span>&gt;</span> </span><br><span class="line">            <span class="comment">&lt;!-- plugin元素包含描述插件所需要的信息。 --&gt;</span> </span><br><span class="line">            <span class="tag">&lt;<span class="name">plugin</span>&gt;</span> </span><br><span class="line">                <span class="comment">&lt;!-- 插件在仓库里的group ID --&gt;</span> </span><br><span class="line">                <span class="tag">&lt;<span class="name">groupId</span>&gt;</span><span class="tag">&lt;/<span class="name">groupId</span>&gt;</span> </span><br><span class="line"></span><br><span class="line">                <span class="comment">&lt;!-- 插件在仓库里的artifact ID --&gt;</span> </span><br><span class="line">                <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span><span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span> </span><br><span class="line"></span><br><span class="line">                <span class="comment">&lt;!-- 被使用的插件的版本（或版本范围） --&gt;</span> </span><br><span class="line">                <span class="tag">&lt;<span class="name">version</span>&gt;</span><span class="tag">&lt;/<span class="name">version</span>&gt;</span> </span><br><span class="line">                </span><br><span class="line">                <span class="comment">&lt;!-- 作为DOM对象的配置 --&gt;</span> </span><br><span class="line">                <span class="tag">&lt;<span class="name">configuration</span>&gt;</span><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span> </span><br><span class="line">            <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span> </span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">&lt;!-- 指定父模块 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">parent</span>&gt;</span></span><br><span class="line">    	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span><span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span><span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span><span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- relativePath: 可选，父项目的pom.xml文件的相对路径。默认值是 ../pom.xml 。</span></span><br><span class="line"><span class="comment">             Maven首先在构建当前项目的地方寻找父项目的pom，其次在文件系统的这个位置（relativePath位</span></span><br><span class="line"><span class="comment">			 置），然后在本地仓库，最后在远程仓库寻找父项目的pom。 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">relativePath</span>&gt;</span><span class="tag">&lt;/<span class="name">relativePath</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">parent</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- 用于聚合编译多个maven模块 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">modules</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">module</span>&gt;</span>app-util<span class="tag">&lt;/<span class="name">module</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">module</span>&gt;</span>app-dao<span class="tag">&lt;/<span class="name">module</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">module</span>&gt;</span>app-service<span class="tag">&lt;/<span class="name">module</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">module</span>&gt;</span>app-web<span class="tag">&lt;/<span class="name">module</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">modules</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">project</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>点<a target="_blank" rel="noopener" href="https://www.cnblogs.com/hafiz/p/5360195.html">这里</a>，参阅更详细的pom.xml配置</strong>。</p>
+<p><a target="_blank" rel="noopener" href="http://maven.apache.org/guides/introduction/introduction-to-the-pom.html"><strong>官方文档</strong></a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2020/10/27/React/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -384,290 +668,6 @@
 <li>继承遵从<code>css</code>层叠的规则。当两个不同的<code>css</code>规则应用到同一个<code>html</code>元素上时，并且这两个不同的<code>css</code>规则对同一属性的修饰存在不同的值，<code>css</code>层叠规则会决定应用哪个样式。相当直观：通常权重更高的选择器胜出，如果权重相同，定义在后边的规则胜出。</li>
 </ul>
 <p><em>此章节是对 <a target="_blank" rel="noopener" href="https://www.sass.hk/guide/">https://www.sass.hk/guide/</a> 的精简概括，目的在于帮助自己快速使用 SASS。</em></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/10/27/Maven/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Joker Won">
-      <meta itemprop="description" content="翁建凯的个人博客">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Joker Won's blogs">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/10/27/Maven/" class="post-title-link" itemprop="url">Maven</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-10-27 22:36:03" itemprop="dateCreated datePublished" datetime="2020-10-27T22:36:03+08:00">2020-10-27</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-11-30 10:22:56" itemprop="dateModified" datetime="2020-11-30T10:22:56+08:00">2020-11-30</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="一、-环境的搭建"><a href="#一、-环境的搭建" class="headerlink" title="一、 环境的搭建"></a>一、 环境的搭建</h3><h4 id="1-1-检查-JDK-的安装"><a href="#1-1-检查-JDK-的安装" class="headerlink" title="1.1  检查 JDK 的安装"></a>1.1  检查 JDK 的安装</h4><p>​    <em>Maven 可运行在 JDK 1.4 及以上的版本。</em></p>
-<p>​    Windows 环境下，打开 cmd 命令窗口，键入</p>
-<p>​    <code>java -version</code></p>
-<p>​    结果如下</p>
-<p><img src="C:\Users\ZNV\Desktop\Notes\images\1552449175(1).jpg" alt="1552449175(1)"></p>
-<h4 id="1-2-下载Maven"><a href="#1-2-下载Maven" class="headerlink" title="1. 2  下载Maven"></a>1. 2  下载Maven</h4><ul>
-<li> 从<a target="_blank" rel="noopener" href="http://maven.apache.org/download.cgi">Maven官网</a>下载压缩包，然后解压</li>
-</ul>
-<p><img src="C:\Users\ZNV\Desktop\Notes\images\download.png" alt="download"></p>
-<ul>
-<li>添加系统环境变量</li>
-</ul>
-<p><img src="C:\Users\ZNV\Desktop\Notes\images\system_path0.png" alt="system_path0"></p>
-<p><img src="C:\Users\ZNV\Desktop\Notes\images\system_path1.png" alt="system_path1"></p>
-<ul>
-<li><p>检查 Maven 是否安装成功</p>
-<p>Windows 环境下，打开 cmd 命令窗口，键入</p>
-<p><code>mvn -v</code></p>
-<p>结果如下</p>
-<p><img src="C:\Users\ZNV\Desktop\Notes\images\mvn-v.png" alt="mvn-v"></p>
-</li>
-<li><p>至此，完成对 Maven 的环境配置。</p>
-</li>
-</ul>
-<h3 id="二、-使用入门"><a href="#二、-使用入门" class="headerlink" title="二、 使用入门"></a>二、 使用入门</h3><h4 id="2-1-认识-Maven-目录"><a href="#2-1-认识-Maven-目录" class="headerlink" title="2.1  认识 Maven 目录"></a>2.1  认识 Maven 目录</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">project_name</span><br><span class="line">    |-- src</span><br><span class="line">        |—— main</span><br><span class="line">            |-- java</span><br><span class="line">            |-- resources</span><br><span class="line">        |-- test</span><br><span class="line">            |-- java</span><br><span class="line">            |-- resources</span><br><span class="line">    |-- target</span><br><span class="line">    |-- pom.xml</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><h5 id="Maven-项目标准目录结构（官方文档）"><a href="#Maven-项目标准目录结构（官方文档）" class="headerlink" title="Maven 项目标准目录结构（官方文档）"></a>Maven 项目标准目录结构<a target="_blank" rel="noopener" href="http://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html">（官方文档）</a></h5></li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>Directory</th>
-<th>Role</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>src/main/java</code></td>
-<td>Application/Library sources</td>
-</tr>
-<tr>
-<td><code>src/main/resources</code></td>
-<td>Application/Library resources</td>
-</tr>
-<tr>
-<td><code>src/main/filters</code></td>
-<td>Resource filter files</td>
-</tr>
-<tr>
-<td><code>src/main/webapp</code></td>
-<td>Web application sources</td>
-</tr>
-<tr>
-<td><code>src/test/java</code></td>
-<td>Test sources</td>
-</tr>
-<tr>
-<td><code>src/test/resources</code></td>
-<td>Test resources</td>
-</tr>
-<tr>
-<td><code>src/test/filters</code></td>
-<td>Test resource filter files</td>
-</tr>
-<tr>
-<td><code>src/it</code></td>
-<td>Integration Tests (primarily for plugins)</td>
-</tr>
-<tr>
-<td><code>src/assembly</code></td>
-<td>Assembly descriptors</td>
-</tr>
-<tr>
-<td><code>src/site</code></td>
-<td>Site</td>
-</tr>
-<tr>
-<td><code>LICENSE.txt</code></td>
-<td>Project’s license</td>
-</tr>
-<tr>
-<td><code>NOTICE.txt</code></td>
-<td>Notices and attributions required by libraries that the project depends on</td>
-</tr>
-<tr>
-<td><code>README.txt</code></td>
-<td>Project’s readme</td>
-</tr>
-</tbody></table>
-<h4 id="2-2-编写-POM"><a href="#2-2-编写-POM" class="headerlink" title="2.2  编写 POM"></a>2.2  编写 POM</h4><p>​    POM（Project  Object  Model，项目对象模型）定义了项目的基本信息，用于描述项目如何构建，声明项目依赖等。pom.xml 文件是 Maven 项目的核心。</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">project</span> <span class="attr">xmlns</span>=<span class="string">&quot;http://maven.apache.org/POM/4.0.0&quot;</span> <span class="attr">xmlns:xsi</span>=<span class="string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xsi:schemaLocation</span>=<span class="string">&quot;http://maven.apache.org/POM/4.0.0 		 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 当前pom的版本,对于 Maven 2 及 Maven 3 来说，它只能是 4.0.0 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">modelVersion</span>&gt;</span>4.0.0<span class="tag">&lt;/<span class="name">modelVersion</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- GAV坐标，必需 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>cn.edu.myapp<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>app-parent<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>0.0.1-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 默认是jar，可选值有war，zip，pom等 --&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 所有带有子模块的项目的packaging都为pom。</span></span><br><span class="line"><span class="comment">    packaging如果不进行配置，它的默认值是jar，代表Maven会将项目打成一个jar包。 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">packaging</span>&gt;</span>pom<span class="tag">&lt;/<span class="name">packaging</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- 项目描述名 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>maven-study<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 项目地址 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://maven.apache.org<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 开发人员信息 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">developers</span>&gt;</span><span class="tag">&lt;/<span class="name">developers</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 项目描述 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">description</span>&gt;</span><span class="tag">&lt;/<span class="name">description</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 许可信息 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">licenses</span>&gt;</span><span class="tag">&lt;/<span class="name">licenses</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 组织信息 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">organization</span>&gt;</span><span class="tag">&lt;/<span class="name">organization</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- 配置参数 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 配置项目编译编码为UTF-8 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">project.build.sourceEncoding</span>&gt;</span>UTF-8<span class="tag">&lt;/<span class="name">project.build.sourceEncoding</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">&lt;!-- 依赖集，用于配置依赖 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.8.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">            </span><br><span class="line">            <span class="comment">&lt;!-- 依赖范围：这个jar包只在范围内生效，范围外引用会报错，这里让junit只在test时被依赖。</span></span><br><span class="line"><span class="comment">                 其他一些情况，如：servlet-api.jar，在编译阶段需要引用，而在服务器运行阶段则不需要引				   用，就可以使用scope</span></span><br><span class="line"><span class="comment">			--&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line"></span><br><span class="line">            <span class="comment">&lt;!-- 默认为false，即子项目默认都继承；true时子项目必须显式引用 --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">optional</span>&gt;</span>false<span class="tag">&lt;/<span class="name">optional</span>&gt;</span></span><br><span class="line"></span><br><span class="line">            <span class="comment">&lt;!-- 排除依赖列表：用于去除传递依赖等 --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">exclusions</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">exclusion</span>&gt;</span><span class="tag">&lt;/<span class="name">exclusion</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">exclusions</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">&lt;!-- </span></span><br><span class="line"><span class="comment">		依赖管理：用于帮助管理chidren的dependencies。</span></span><br><span class="line"><span class="comment">		例如如果parent使用dependencyManagement定义了一个dependency on junit:junit4.0,那么它的children就可以只引用 groupId和artifactId,而version就可以通过parent来设置。</span></span><br><span class="line"><span class="comment">     --&gt;</span>     </span><br><span class="line">    <span class="tag">&lt;<span class="name">dependencyManagement</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">dependency</span>&gt;</span><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependencyManagement</span>&gt;</span> </span><br><span class="line">    </span><br><span class="line">    <span class="comment">&lt;!-------------------------------- 构建项目需要的信息 ---------------------------&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 该元素设置了项目源码目录，当构建项目的时候，构建系统会编译目录里的源码。该路径是相对</span></span><br><span class="line"><span class="comment">             于pom.xml的相对路径。 --&gt;</span> </span><br><span class="line">        <span class="tag">&lt;<span class="name">sourceDirectory</span>&gt;</span><span class="tag">&lt;/<span class="name">sourceDirectory</span>&gt;</span> </span><br><span class="line">        </span><br><span class="line">        <span class="comment">&lt;!-- 该元素设置了项目单元测试使用的源码目录，当测试项目的时候，构建系统会编译目录里的源码。</span></span><br><span class="line"><span class="comment">             该路径是相对于pom.xml的相对路径。 --&gt;</span> </span><br><span class="line">        <span class="tag">&lt;<span class="name">testSourceDirectory</span>&gt;</span><span class="tag">&lt;/<span class="name">testSourceDirectory</span>&gt;</span> </span><br><span class="line"></span><br><span class="line">        <span class="comment">&lt;!-- 被编译过的应用程序class文件存放的目录。 --&gt;</span> </span><br><span class="line">        <span class="tag">&lt;<span class="name">outputDirectory</span>&gt;</span><span class="tag">&lt;/<span class="name">outputDirectory</span>&gt;</span> </span><br><span class="line"></span><br><span class="line">        <span class="comment">&lt;!-- 被编译过的测试class文件存放的目录。 --&gt;</span> </span><br><span class="line">        <span class="tag">&lt;<span class="name">testOutputDirectory</span>&gt;</span><span class="tag">&lt;/<span class="name">testOutputDirectory</span>&gt;</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment">&lt;!-- 这个元素描述了项目相关的所有资源路径列表，例如和项目相关的属性文件，这些资源被包含在</span></span><br><span class="line"><span class="comment">             最终的打包文件里。 --&gt;</span> </span><br><span class="line">        <span class="tag">&lt;<span class="name">resources</span>&gt;</span> </span><br><span class="line">            <span class="comment">&lt;!-- 这个元素描述了项目相关或测试相关的所有资源路径 --&gt;</span> </span><br><span class="line">            <span class="tag">&lt;<span class="name">resource</span>&gt;</span> </span><br><span class="line">                <span class="comment">&lt;!-- 描述了资源的目标路径。该路径相对target/classes目录（例如	  								 $&#123;project.build.outputDirectory&#125;）。</span></span><br><span class="line"><span class="comment">                     举个例子，如果你想资源在特定的包里(org.apache.maven.messages)，你就必须该元素 					   设置为org/apache/maven/messages。然而，如果你只是想把资源放到源码目录结构里，					   就不需要该配置。 --&gt;</span> </span><br><span class="line">                <span class="tag">&lt;<span class="name">targetPath</span>&gt;</span><span class="tag">&lt;/<span class="name">targetPath</span>&gt;</span> </span><br><span class="line"></span><br><span class="line">                <span class="comment">&lt;!-- 描述存放资源的目录，该路径相对POM路径 --&gt;</span> </span><br><span class="line">                <span class="tag">&lt;<span class="name">directory</span>&gt;</span><span class="tag">&lt;/<span class="name">directory</span>&gt;</span></span><br><span class="line"></span><br><span class="line">                <span class="comment">&lt;!-- 包含的模式列表，例如**/*.xml. --&gt;</span> </span><br><span class="line">                <span class="tag">&lt;<span class="name">includes</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">include</span>&gt;</span><span class="tag">&lt;/<span class="name">include</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">includes</span>&gt;</span></span><br><span class="line"></span><br><span class="line">                <span class="comment">&lt;!-- 排除的模式列表，例如**/*.xml --&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">excludes</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">exclude</span>&gt;</span><span class="tag">&lt;/<span class="name">exclude</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">excludes</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">resource</span>&gt;</span> </span><br><span class="line">        <span class="tag">&lt;/<span class="name">resources</span>&gt;</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment">&lt;!--------- 该项目使用的插件列表。---------&gt;</span> </span><br><span class="line">        <span class="tag">&lt;<span class="name">plugins</span>&gt;</span> </span><br><span class="line">            <span class="comment">&lt;!-- plugin元素包含描述插件所需要的信息。 --&gt;</span> </span><br><span class="line">            <span class="tag">&lt;<span class="name">plugin</span>&gt;</span> </span><br><span class="line">                <span class="comment">&lt;!-- 插件在仓库里的group ID --&gt;</span> </span><br><span class="line">                <span class="tag">&lt;<span class="name">groupId</span>&gt;</span><span class="tag">&lt;/<span class="name">groupId</span>&gt;</span> </span><br><span class="line"></span><br><span class="line">                <span class="comment">&lt;!-- 插件在仓库里的artifact ID --&gt;</span> </span><br><span class="line">                <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span><span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span> </span><br><span class="line"></span><br><span class="line">                <span class="comment">&lt;!-- 被使用的插件的版本（或版本范围） --&gt;</span> </span><br><span class="line">                <span class="tag">&lt;<span class="name">version</span>&gt;</span><span class="tag">&lt;/<span class="name">version</span>&gt;</span> </span><br><span class="line">                </span><br><span class="line">                <span class="comment">&lt;!-- 作为DOM对象的配置 --&gt;</span> </span><br><span class="line">                <span class="tag">&lt;<span class="name">configuration</span>&gt;</span><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span> </span><br><span class="line">            <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span> </span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">&lt;!-- 指定父模块 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">parent</span>&gt;</span></span><br><span class="line">    	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span><span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span><span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span><span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- relativePath: 可选，父项目的pom.xml文件的相对路径。默认值是 ../pom.xml 。</span></span><br><span class="line"><span class="comment">             Maven首先在构建当前项目的地方寻找父项目的pom，其次在文件系统的这个位置（relativePath位</span></span><br><span class="line"><span class="comment">			 置），然后在本地仓库，最后在远程仓库寻找父项目的pom。 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">relativePath</span>&gt;</span><span class="tag">&lt;/<span class="name">relativePath</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">parent</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- 用于聚合编译多个maven模块 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">modules</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">module</span>&gt;</span>app-util<span class="tag">&lt;/<span class="name">module</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">module</span>&gt;</span>app-dao<span class="tag">&lt;/<span class="name">module</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">module</span>&gt;</span>app-service<span class="tag">&lt;/<span class="name">module</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">module</span>&gt;</span>app-web<span class="tag">&lt;/<span class="name">module</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">modules</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">project</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-
-
-<p><strong>点<a target="_blank" rel="noopener" href="https://www.cnblogs.com/hafiz/p/5360195.html">这里</a>，参阅更详细的pom.xml配置</strong>。</p>
-<p><a target="_blank" rel="noopener" href="http://maven.apache.org/guides/introduction/introduction-to-the-pom.html"><strong>官方文档</strong></a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/10/27/Kafka/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Joker Won">
-      <meta itemprop="description" content="翁建凯的个人博客">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Joker Won's blogs">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/10/27/Kafka/" class="post-title-link" itemprop="url">Kafka</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-10-27 22:36:03" itemprop="dateCreated datePublished" datetime="2020-10-27T22:36:03+08:00">2020-10-27</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-11-30 10:22:09" itemprop="dateModified" datetime="2020-11-30T10:22:09+08:00">2020-11-30</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="一、初识-Kafka"><a href="#一、初识-Kafka" class="headerlink" title="一、初识 Kafka"></a>一、初识 Kafka</h3><p>消息：Kafka 的数据单元，相较于数据库的一个数据行或一条记录。</p>
-<p>批次：一组消息，这些消息属于同一个主题和分区。</p>
-<p>主题：Kafka 的消息通过主题分类，相较于数据库的表，或者文件系统的文件夹。</p>
-<p>分区：主题可以被分为若干个分区，一个分区就是一个提交日志。消息以追加的方式写入分区，然后以先入先出的顺序读取。<strong>分区可以分布在不同的服务器上，也就是说一个主题可以横跨多个服务器。</strong></p>
-<p>Kafka 特点：</p>
-<ol>
-<li>多个生产者</li>
-<li>多个消费者</li>
-<li>基于磁盘的数据存储</li>
-<li>伸缩性</li>
-<li>高性能</li>
-</ol>
-<h3 id="二、生产者"><a href="#二、生产者" class="headerlink" title="二、生产者"></a>二、生产者</h3><h4 id="2-1-生产者配置"><a href="#2-1-生产者配置" class="headerlink" title="2.1  生产者配置"></a>2.1  生产者配置</h4><p><strong>必选配置</strong></p>
-<h5 id="1-bootstrap-servers"><a href="#1-bootstrap-servers" class="headerlink" title="1.  bootstrap.servers"></a>1.  bootstrap.servers</h5><p>指定 broker 的地址清单，地址的格式为 host:port。</p>
-<h5 id="2-key-serializer"><a href="#2-key-serializer" class="headerlink" title="2.  key.serializer"></a>2.  key.serializer</h5><p>必选设置（<strong>即使不发送键</strong>），且必须被设置为一个实现了 org.apache.kafka.common.serialization.Seralizer 接口的类。Kafka 客户端默认提供了 ByteArraySerializer、StringSerializer 和 IntegerSerializer，因此常见的几种 Java 对象类型就没必要实现自己的序列化器。</p>
-<h5 id="3-value-serializer"><a href="#3-value-serializer" class="headerlink" title="3.  value.serializer"></a>3.  value.serializer</h5><p>同 key.serializer。</p>
-<hr>
-**其他配置**
-
-<h5 id="4-acks"><a href="#4-acks" class="headerlink" title="4.  acks"></a>4.  acks</h5><p>acks 指定必须要有多少个分区副本收到消息，生产者才会认为消息写入是成功的。</p>
-<ul>
-<li>acks=0，生产者在成功写入消息之前不会等待任何来自服务器的响应。</li>
-<li>acks=1，只要集群首领节点收到消息，生产者就会收到来自服务器的成功响应。</li>
-<li>acks=all，只有当所有参与复制的节点全部收到消息时，生产者才会收到成功响应。</li>
-</ul>
-<h5 id="5-buffer-memory"><a href="#5-buffer-memory" class="headerlink" title="5.  buffer.memory"></a>5.  buffer.memory</h5><p>设置生产者内存缓冲区的大小，生产者用它缓冲要发送到服务器的消息。如果应用程序发送消息的速度超过发送到服务器的速度，会导致生产者缓冲区空间不足。此时 send() 方法调用会被阻塞或抛出异常，这取决于 <strong>max.block.ms</strong> 参数（表示抛出异常前可以阻塞的时间）。</p>
-<h5 id="6-compression-type"><a href="#6-compression-type" class="headerlink" title="6.  compression.type"></a>6.  compression.type</h5><p>默认情况下消息发送时不会被压缩。该参数可设置为 snappy、gzip 或 lz4，指定消息被发送给 broker 之前使用哪一种算法进行压缩。</p>
-<h5 id="7-retries"><a href="#7-retries" class="headerlink" title="7.  retries"></a>7.  retries</h5><p>指定生产者可以重发消息的次数，如果达到这个次数，生产者会放弃重试并返回错误。默认情况下，生产者会在每次重试之间等待 100ms，不过可以通过 <strong>retry.backoff.ms</strong> 参数来设置这个时间间隔。</p>
-<h5 id="8-batch-size"><a href="#8-batch-size" class="headerlink" title="8.  batch.size"></a>8.  batch.size</h5><p>当有多个消息需要被发送到同一个分区时，生产者会把它们放在同一个批次里。该参数指定了一个批次可以使用的内存大小，按照<strong>字节数</strong>计算（而不是消息个数）。当批次被填满，批次里的所有消息会被发送出去。不过生产者并不一定都会等到批次被填满才发送，半满的批次甚至只包含一个消息的批次也有可能被发送。</p>
-<h5 id="9-linger-ms"><a href="#9-linger-ms" class="headerlink" title="9  linger.ms"></a>9  linger.ms</h5><p>指定生产者在发送批次之前等待更多消息加入批次的时间， KafkaProducer 会在批次填满或 linger.ms 达到上限时把批次发送出去。默认情况下，只要有可用的线程，生产者就会把消息发送出去，就算批次里只有一个消息。所以把该参数设置成一个比 0 大的数能提升吞吐量。</p>
-<h5 id="10-client-id"><a href="#10-client-id" class="headerlink" title="10.  client.id"></a>10.  client.id</h5><p>该参数可以是任意的字符串，服务器会用它来识别消息的来源，还可以用在日志和配额指标里。</p>
-<h5 id="11-max-in-flight-requests-per-connection"><a href="#11-max-in-flight-requests-per-connection" class="headerlink" title="11.  max.in.flight.requests.per.connection"></a>11.  max.in.flight.requests.per.connection</h5><p>指定生产者在收到服务器响应之前可以发送的最大请求数。它的值越高就会占用越多的内存，但是吞吐量也会越高。将其<strong>设为 1 可以保证消息是按照发送的顺序写入服务器</strong>的，即使发生了重试。</p>
-<h5 id="12-timeout-ms、request-timeout-ms、metadata-fetch-timeout-ms"><a href="#12-timeout-ms、request-timeout-ms、metadata-fetch-timeout-ms" class="headerlink" title="12.  timeout.ms、request.timeout.ms、metadata.fetch.timeout.ms"></a>12.  timeout.ms、request.timeout.ms、metadata.fetch.timeout.ms</h5><p>request.timeout.ms 指定了生产者在发送数据时等待服务器返回响应的时间；metadata.fetch.timeout.ms 指定了生产者在获取元数据（比如目标分区的首领是谁）时等待服务器返回响应的时间；timeout.ms 指定了 broker 等待同步副本返回消息确认的时间，与 acks 的配置相匹配——如果在指定时间内没有收到同步副本的确认，那么 broker 就会返回一个错误。</p>
-<h5 id="13-max-block-ms"><a href="#13-max-block-ms" class="headerlink" title="13.  max.block.ms"></a>13.  max.block.ms</h5><p>指定在调用 send() 方法或使用 partitionsFor() 方法获取元数据时生产者的阻塞时间。当生产者的发送缓冲区已满，或者没有可用的元数据时，这些方法就会阻塞，当阻塞时间达到该参数设置的值时，生产者会抛出超时异常。</p>
-<h5 id="14-max-request-size"><a href="#14-max-request-size" class="headerlink" title="14.  max.request.size"></a>14.  max.request.size</h5><p>用于控制生产者发送的请求大小。它可以指能发送的单个消息的最大值，也可以指单个请求里所有消息总的大小。例如，假设该参数值为 1MB，那么可以发送的单个最大消息为 1MB，或者生产者可以在单个请求里发送一个批次，该批次包含了 1000 个消息，每个消息的大小为 1KB。另外，broker 对可接收的消息最大值也有自己的限制（<strong>message.max.bytes</strong>），所以两边的配置最好可以匹配，避免生产者发送的消息被 broker 拒绝。</p>
-<h5 id="15-receive-buffer-bytes-和-send-buffer-bytes"><a href="#15-receive-buffer-bytes-和-send-buffer-bytes" class="headerlink" title="15.  receive.buffer.bytes 和 send.buffer.bytes"></a>15.  receive.buffer.bytes 和 send.buffer.bytes</h5><p>分别指定了 TCP socket 接收和发送数据包的缓冲区大小。如果它们被设置为 -1，就使用操作系统的默认值。</p>
-<h4 id="2-2-分区"><a href="#2-2-分区" class="headerlink" title="2.2  分区"></a>2.2  分区</h4><p>Kafka 消息的键有两个用途：①作为消息的附加信息；②用来决定消息被写到主题的哪个分区。这就导致，如果一个进程只从一个主题的分区读取数据，那么具有相同键的所有消息都会被该消费者读取。</p>
-<p>如果消息的键为 null，并且使用了默认的分区器，那么消息将被分区器使用<strong>轮询</strong>算法随机均衡地发送到主题内的各个可用的分区。</p>
-<p>如果消息的键不为 null，并且使用了默认的分区器，那么 Kafka  会对键进行散列，然后根据散列值把消息映射到特定的分区上。<strong>同一个键总是被映射到同一个分区上，因此映射时所有的分区会被使用</strong>，而不仅仅是可用分区。如果写入数据的分区是不可用的，就会发生错误。</p>
-<h3 id="四、消费者"><a href="#四、消费者" class="headerlink" title="四、消费者"></a>四、消费者</h3><p>Kafka 消费者从属于消费者组。一个群组里的消费者订阅的是同一个主题，每个消费者接收主题一部分分区的消息。</p>
-<p>消费者组之间互不影响。</p>
-<p>再均衡：分区的所有权从一个消费者转移到另一个消费者。再均衡期间，消费者无法读取消息，整个群组小段时间不可用。当分区被重新分配给另一个消费者时，消费者当前的读取状态会丢失，它有可能还需要去刷新缓存，在它重新恢复状态之前会拖慢应用程序。</p>
-<p>消费者通过向被指派为<strong>群组协调器</strong>的broker（不同的群组可以有不同的协调器）发送<strong>心跳</strong>来维持从属关系和它们对分区的所有权关系。如果消费者停止发送心跳的时间足够长，会被认为已死亡，再均衡就会被触发。</p>
-<h4 id="4-1-消费者配置"><a href="#4-1-消费者配置" class="headerlink" title="4.1  消费者配置"></a>4.1  消费者配置</h4><p><strong>必选配置</strong></p>
-<h5 id="1-bootstrap-servers-1"><a href="#1-bootstrap-servers-1" class="headerlink" title="1.  bootstrap.servers"></a>1.  bootstrap.servers</h5><h5 id="2-key-deserializer"><a href="#2-key-deserializer" class="headerlink" title="2.  key.deserializer"></a>2.  key.deserializer</h5><h5 id="3-value-deserializer"><a href="#3-value-deserializer" class="headerlink" title="3.  value.deserializer"></a>3.  value.deserializer</h5><hr>
-
-<p><strong>其他配置</strong></p>
-<h5 id="4-group-id"><a href="#4-group-id" class="headerlink" title="4.  group.id"></a>4.  group.id</h5><p>指定消费者属于哪一个消费者群组。</p>
-<h5 id="5-fetch-min-bytes"><a href="#5-fetch-min-bytes" class="headerlink" title="5.  fetch.min.bytes"></a>5.  fetch.min.bytes</h5><p>指定消费者从服务器获取消息的最小字节数。broker 在收到消费者的数据请求时，如果可用的数据量小于该参数指定的大小，那么它会等到有足够的可用数据时才把数据返回给消费者。</p>
-<h5 id="6-fetch-max-wait-ms"><a href="#6-fetch-max-wait-ms" class="headerlink" title="6.  fetch.max.wait.ms"></a>6.  fetch.max.wait.ms</h5><p>指定 broker 的等待时间，默认值为 500ms。如果没有足够的数据流入 Kafka ，消费者获取 最小数据量的要求就得不到满足，最终会导致 500ms 的延迟。</p>
-<h5 id="7-max-partiton-fetch-bytes"><a href="#7-max-partiton-fetch-bytes" class="headerlink" title="7.  max.partiton.fetch.bytes"></a>7.  max.partiton.fetch.bytes</h5><p>指定服务器从每个分区里返回给消费者的最大字节数，默认值为 1MB。</p>
-<h5 id="8-session-timeout-ms"><a href="#8-session-timeout-ms" class="headerlink" title="8.  session.timeout.ms"></a>8.  session.timeout.ms</h5><p>指定消费者在被认为死亡之前可以与服务器断开连接的时间，默认为 3s。如果消费者没有在该参数指定的时间内发送心跳给群组协调器，就被认为已经死亡。该参数与  <strong>heartbeat.interval.ms</strong> 紧密相关。heartbeat.interval.ms 指定消费者向协调器发送心跳的频率，而 session.timeout.ms 则指定了消费者可以多久不发送心跳。一般 heartbeat.interval.ms 设置的值是 session.timeout.ms 的三分之一。</p>
-<h5 id="9-auto-offset-reset"><a href="#9-auto-offset-reset" class="headerlink" title="9. auto.offset.reset"></a>9. auto.offset.reset</h5><p>指定消费者在读取一个没有偏移量的分区或者偏移量无效的情况（因消费者长时间失效，包含偏移量的记录已经过时并被删除）该如何处理，默认值是 latest，即在偏移量无效的情况下，消费者将从最新的记录开始读取数据（在消费者启动之后生成的记录）。另一个值是 earliest，即从起始位置读取分区的记录。</p>
-<h5 id="10-enable-auto-commit"><a href="#10-enable-auto-commit" class="headerlink" title="10.  enable.auto.commit"></a>10.  enable.auto.commit</h5><p>指定消费者是否自动提交偏移量，默认为 true。如果该参数设置为 true，还可通过设置 <strong>auto.commit.interval.ms</strong> 属性来控制提交的频率。</p>
-<h5 id="11-client-id"><a href="#11-client-id" class="headerlink" title="11.  client.id"></a>11.  client.id</h5><p>用来标识从客户端发送过来的消息，通常被用在日志、度量指标和配额里。</p>
-<h5 id="12-max-poll-records"><a href="#12-max-poll-records" class="headerlink" title="12.  max.poll.records"></a>12.  max.poll.records</h5><p>用于控制单词调用 call() 方法能够返回的记录数量，可以控制在轮询里需要处理的数据量。</p>
-<h5 id="13-receive-buffer-bytes-和-send-buffer-bytes"><a href="#13-receive-buffer-bytes-和-send-buffer-bytes" class="headerlink" title="13.  receive.buffer.bytes 和 send.buffer.bytes"></a>13.  receive.buffer.bytes 和 send.buffer.bytes</h5><p>用来设置 socket 在读写数据时用到的 TCP 缓冲区的大小。如果被设置为 -1，就使用操作系统的默认值。</p>
-<h5 id="14-partition-assignment-strategy"><a href="#14-partition-assignment-strategy" class="headerlink" title="14.  partition.assignment.strategy"></a>14.  partition.assignment.strategy</h5><p>指定分区的分配策略。Kafka 有两个默认的分配策略，分别是 <strong>Range</strong> 和 <strong>RoundRobin</strong>。也可以使用自定义策略，此时该参数的值就是自定义类的名字。</p>
-<p><strong>Range</strong>：默认使用的是 org.apache.kafka.clients.consumer.RangeAssignor 。该策略把若干个连续的分区分配给消费者。</p>
-<p><strong>RoundRobin</strong>：该策略把主题的所有分区逐个分配给消费者。</p>
 
       
     </div>
@@ -1144,70 +1144,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/10/27/Babel/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Joker Won">
-      <meta itemprop="description" content="翁建凯的个人博客">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Joker Won's blogs">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/10/27/Babel/" class="post-title-link" itemprop="url">Babel</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-10-27 22:36:03" itemprop="dateCreated datePublished" datetime="2020-10-27T22:36:03+08:00">2020-10-27</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-11-30 10:20:23" itemprop="dateModified" datetime="2020-11-30T10:20:23+08:00">2020-11-30</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2020/10/27/Android/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1363,6 +1299,70 @@
 <h4 id="2-5-4-singleInstance"><a href="#2-5-4-singleInstance" class="headerlink" title="2.5.4 singleInstance"></a>2.5.4 singleInstance</h4><p>指定为 singleInstance模式的活动会启用一个新的返回栈来管理这个活动（其实如果 singleTask模式指定了不同的 taskAffinity，也会启动一个新的返回栈）。那么这样做有什么意义呢？想象以下场景，假设我们的程序中有一个活动是允许其他程序调用的，如果我们想实现其他程序和我们的程序可以共享这个活动的实例，应该如何实现呢？使用前面 3种启动模式肯定是做不到的，因为每个应用程序都会有自己的返回栈，同一个活动在不同的返回栈中入栈时必然是创建了新的实例。而使用 singleInstance模式就可以解决这个问题，在这种模式下会有一个单独的返回栈来管理这个活动，不管是哪个应用程序来访问这个活动，都共用的同一个返回栈，也就解决了共享活动实例的问题。</p>
 <p><img src="C:\Users\0049003261.ZNV\AppData\Roaming\Typora\typora-user-images\1587636187847.png" alt="1587636187847"></p>
 
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/10/27/Babel/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Joker Won">
+      <meta itemprop="description" content="翁建凯的个人博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Joker Won's blogs">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/10/27/Babel/" class="post-title-link" itemprop="url">Babel</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-10-27 22:36:03" itemprop="dateCreated datePublished" datetime="2020-10-27T22:36:03+08:00">2020-10-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-11-30 10:20:23" itemprop="dateModified" datetime="2020-11-30T10:20:23+08:00">2020-11-30</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
       
     </div>
 
