@@ -64,7 +64,7 @@
 
 
 <body>
-  <header style="height: 10vh;">
+  <header style="height: 30vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -153,7 +153,7 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/img/default.png') no-repeat center center;
+         style="background: url('/images/banner.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -280,7 +280,7 @@
 
 <h4 id="6-4-6-Expect"><a href="#6-4-6-Expect" class="headerlink" title="6.4.6 Expect"></a>6.4.6 Expect</h4><p>Expect 首部字段来告知服务器，期望出现的某种特定行为。因服务器无法理解客户端的期望作出回应而发生错误时，会返回状态码417 Expectation Failed。</p>
 <p>客户端可以利用该首部字段，写明所期望的扩展。虽然HTTP/1.1规范只定义了100-continue（状态码100 Continue之意）。等待状态码100响应的客户端在发生请求时，需要指定Expect:100-continue。</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs vim">Expec<span class="hljs-variable">t:</span> <span class="hljs-number">100</span>-<span class="hljs-keyword">continue</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs groovy"><span class="hljs-attr">Expect:</span> <span class="hljs-number">100</span>-<span class="hljs-keyword">continue</span><br></code></pre></td></tr></table></figure>
 
 <h4 id="6-4-7-From"><a href="#6-4-7-From" class="headerlink" title="6.4.7 From"></a>6.4.7 From</h4><p>From 首部字段用来告知服务器使用用户代理的用户的电子邮件地址。通常，其使用目的就是为了显示搜索引擎等用户代理的负责人的电子邮件联系方式。使用代理时，应尽可能包含From首部字段（但可能会因代理不同，将电子邮件地址记录在User-Agent首部字段内）。</p>
 <figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs less"><span class="hljs-attribute">From</span>: hello<span class="hljs-variable">@email</span>.com<br></code></pre></td></tr></table></figure>
@@ -307,7 +307,7 @@
 
 <h4 id="6-4-14-Max-Forwards"><a href="#6-4-14-Max-Forwards" class="headerlink" title="6.4.14 Max-Forwards"></a>6.4.14 Max-Forwards</h4><p>通过 <code>TRACE</code> 方法或 <code>OPTIONS</code> 方法，发送包含首部字段 Max-Forwards 的请求时，该字段以十进制整数形式指定可经过的服务器最大数目。服务器在往下一个服务器转发请求之前，会将 Max-Forwards 的值减1后重新赋值。当服务器接收到 Max-Forwards 值为 0 的请求时，则不再进行转发，而是直接返回响应。</p>
 <p>使用 HTTP协议通信时，请求可能会经过代理等多台服务器。途中，如果代理服务器由于某些原因导致请求转发失败，客户端也就等不到服务器返回的响应了。对此，我们无从可知。可以灵活使用首部字段 Max-Forwards，针对以上问题产生的原因展开调查。由于当 Max-Forwards 字段值为0时，服务器就会立即返回响应，由此我们至少可以对以那台服务器为终点的传输路径的通信状况有所把握。</p>
-<figure class="highlight lasso"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs lasso"><span class="hljs-keyword">Max</span><span class="hljs-params">-Forwards</span>: <span class="hljs-number">10</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">Max</span>-Forwards: <span class="hljs-number">10</span><br></code></pre></td></tr></table></figure>
 
 <h4 id="6-4-15-Proxy-Authorization"><a href="#6-4-15-Proxy-Authorization" class="headerlink" title="6.4.15 Proxy-Authorization"></a>6.4.15 Proxy-Authorization</h4><p>接收到从代理服务器发来的认证质询时，客户端会发送包含首部字段 Proxy-Authorization 的请求，以告知服务器认证所需要的信息。</p>
 <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">Proxy</span>-Authorization: Basic sDa<span class="hljs-number">4</span>mSUYJ<span class="hljs-number">89</span>dfY<span class="hljs-number">5</span><br></code></pre></td></tr></table></figure>
@@ -325,7 +325,7 @@
 <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">TE</span>: gzip, delate;q=<span class="hljs-number">0</span>.<span class="hljs-number">5</span><br></code></pre></td></tr></table></figure>
 
 <p>首部字段TE除指定传输编码之外，还可以指定伴随trailer字段的分块传输编码的方式。应用后者时，只需把trailers赋值给该字段值。</p>
-<figure class="highlight ldif"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ldif"><span class="hljs-attribute">TE</span>: trailers<br></code></pre></td></tr></table></figure>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs avrasm"><span class="hljs-symbol">TE:</span> trailers<br></code></pre></td></tr></table></figure>
 
 <h4 id="6-4-19-User-Agent"><a href="#6-4-19-User-Agent" class="headerlink" title="6.4.19 User-Agent"></a>6.4.19 User-Agent</h4><p>User-Agent 首部字段会将创建请求的浏览器和用户代理名称等信息传达给服务器。</p>
 <p>由网络爬虫发起请求时，有可能会在字段内添加爬虫作者的电子邮件地址。此外，如果请求经过代理，那么中间也很可能被添加上代理服务器的名称。</p>
@@ -334,11 +334,11 @@
 <h3 id="6-5-响应首部字段"><a href="#6-5-响应首部字段" class="headerlink" title="6.5 响应首部字段"></a>6.5 响应首部字段</h3><p>响应首部字段是由服务器端向客户端返回响应报文中所使用的字段，用于补充响应的附加信息、服务器信息，以及对客户端的附加要求等信息。</p>
 <h4 id="6-5-1-Accept-Ranges"><a href="#6-5-1-Accept-Ranges" class="headerlink" title="6.5.1 Accept-Ranges"></a>6.5.1 Accept-Ranges</h4><p>首部字段 Accept-Ranges 是用来告知客户端服务器是否能处理范围请求，以指定获取服务器端某个部分的资源。</p>
 <p>可指定的字段值有两种，可处理范围请求时指定其为bytes，反之则指定其为 none。</p>
-<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs makefile"><span class="hljs-section">Accept-Ranges: bytes</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ada"><span class="hljs-keyword">Accept</span>-Ranges: bytes<br></code></pre></td></tr></table></figure>
 
 <h4 id="6-5-2-Age"><a href="#6-5-2-Age" class="headerlink" title="6.5.2 Age"></a>6.5.2 Age</h4><p>首部字段 Age 能告知客户端，源服务器在多久前创建了响应以及消息对象在缓存代理服务器中存贮的时长。<strong>字段值的单位为秒</strong>。</p>
 <p>若创建该响应的服务器是缓存服务器，Age 值是指缓存后的响应再次发起认证到认证完成的时间值。代理创建响应时必须加上首部字段Age。</p>
-<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs http"><span class="hljs-attribute">Age</span>: 600<br></code></pre></td></tr></table></figure>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">Age</span>: <span class="hljs-number">600</span><br></code></pre></td></tr></table></figure>
 
 <h4 id="6-5-3-ETag"><a href="#6-5-3-ETag" class="headerlink" title="6.5.3 ETag"></a>6.5.3 ETag</h4><p>首部字段 ETag 能告知客户端实体标识。它是一种可将资源以字符串形式做唯一性标识的方式。服务器会为每份资源分配对应的 ETag 值。当资源更新时，ETag 值也需要更新。</p>
 <figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs avrasm"><span class="hljs-symbol">ETag:</span> <span class="hljs-string">&quot;5eba265e-57256&quot;</span><br></code></pre></td></tr></table></figure>
@@ -386,10 +386,10 @@
 
 <h3 id="6-6-实体首部字段"><a href="#6-6-实体首部字段" class="headerlink" title="6.6 实体首部字段"></a>6.6 实体首部字段</h3><p>实体首部字段是包含在请求报文和响应报文中的实体部分所使用的首部，用于补充内容的更新时间等与实体相关的信息。其位置可能分布在请求首部或响应首部中。</p>
 <h4 id="6-6-1-Allow"><a href="#6-6-1-Allow" class="headerlink" title="6.6.1 Allow"></a>6.6.1 Allow</h4><p>首部字段 Allow 用于通知客户端能够支持Request-URI指定资源的所有HTTP方法。当服务器接收到不支持的 HTTP 方法时，会以状态码 405 Method Not Allowed 作为响应返回。与此同时，还会把所有能支持的 HTTP 方法写入首部字段 Allow 后返回。</p>
-<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs less"><span class="hljs-attribute">Allow</span>: GET, HEAD<br></code></pre></td></tr></table></figure>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute"><span class="hljs-nomarkup">Allow</span></span>: GET, HEAD<br></code></pre></td></tr></table></figure>
 
 <h4 id="6-6-2-Content-Encoding"><a href="#6-6-2-Content-Encoding" class="headerlink" title="6.6.2 Content-Encoding"></a>6.6.2 Content-Encoding</h4><p>首部字段 Content-Encoding 会告知客户端服务器对实体的主体部分选用的内容编码方式。内容编码是指在不丢失实体信息的前提下所进行的压缩。</p>
-<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs less"><span class="hljs-attribute">Content-Encoding</span>: gzip<br></code></pre></td></tr></table></figure>
+<figure class="highlight csp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs csp"><span class="hljs-attribute">Content-Encoding</span>: gzip<br></code></pre></td></tr></table></figure>
 
 <p>常用的编码方式：</p>
 <ul>
@@ -399,7 +399,7 @@
 <li>identity</li>
 </ul>
 <h4 id="6-6-3-Content-Language"><a href="#6-6-3-Content-Language" class="headerlink" title="6.6.3 Content-Language"></a>6.6.3 Content-Language</h4><p>首部字段 Content-Language 会告知客户端，实体主体使用的自然语言（指中文或英文等语言）。</p>
-<figure class="highlight ldif"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ldif"><span class="hljs-attribute">Content-Language</span>: zh-CN<br></code></pre></td></tr></table></figure>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs armasm"><span class="hljs-symbol">Content</span>-Language: zh-<span class="hljs-meta">CN</span><br></code></pre></td></tr></table></figure>
 
 <h4 id="6-6-4-Content-Length"><a href="#6-6-4-Content-Length" class="headerlink" title="6.6.4 Content-Length"></a>6.6.4 Content-Length</h4><p>首部字段 Content-Length 表明了实体主体部分的大小（单位是字节）。对实体主体进行内容编码传输时，不能再使用 Content-Length 首部字段。但是我在使用 gzip 进行传输的时候，响应中还是携带了保存了准确的文件大小的 Content-Length。</p>
 <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">Content</span>-Length： <span class="hljs-number">15000</span><br></code></pre></td></tr></table></figure>
