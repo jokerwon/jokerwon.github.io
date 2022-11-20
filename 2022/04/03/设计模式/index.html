@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        
+    
+    <link rel='stylesheet' href="/./css/dracula.css">
+
+        <title>设计模式</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=2.0">
+<link rel="stylesheet" href="/css/style.css">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="manifest" href="/site.webmanifest">
+
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        <header class="al_header al_pos_fixed">
+    <div class="al_header_container dis_flex_jcenter">
+        <div class="al_header_container_left">
+            <div class="al_header_site_title">
+                <a href="/">Joker Won's Stack</a>
+            </div>
+        </div>
+
+        <div class="dis_flex_jcenter">
+            <div class="al_header_setting">
+                <svg class="al_header_icon">
+                    <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-menu"></use>
+                </svg>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="al_sidebar">
+
+    <div class="al_sidebar_overlay al_full_cover"></div>
+
+    <div class="al_pos_fixed al_sidebar_cnt">
+        <div class="dis_flex_acenter al_sidebar_header">
+            <h3>Joker Won's Stack</h3>
+            <div class="al_sidebar_close al_header_setting">
+                <svg class="al_header_icon">
+                    <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-close"></use>
+                </svg>
+            </div>
+        </div>
+
+        <div class="al_sidebar_author_cnt">
+
+            <div class="al_sidebar_author_info">
+                <h4>Joker Won</h4>
+                <img class="al_sidebar_avatar" src="https://cdn.jsdelivr.net/gh/jokerwon/images/img/avatar.jpg">
+                <p>OS 出身的小伙子，对 Objective-C、Swift、以及 Javascript 有浓厚的兴趣。热衷使用原生实现所有功能，厌恶一切的跨平台开发技术。喜欢分享工作过程中遇到的问题以及日常工作中遇到的新技术。希望这个博客能给你带来一点启发。</p>
+            </div>
+
+            
+        </div>
+    </div>
+</div>
+
+        
+    <div class="dis_flex_center al_lightbox_cnt al_full_cover">
+        <img class="al_lightbox_img"/>
+    </div>
+    <div class="al_page_background dis_flex_center al_full_cover"></div>
+    <div class="al_page_container">
+        <div class="al_pos_ab al_fake_background"></div>
+        <div class="al_main_container al_shadow al_main_page_container">
+            <article class="al_article">
+                <header>
+                    <h1 class="al_page_title">
+                        设计模式
+                    </h1>
+                    <div class="al_page_info dis_flex">
+                        <div class="al_page_content_info">
+                            Sun April 3, 2022 10:07 AM
+                        </div>
+
+                        
+
+                        
+                        <span class="tags"></span>
+                    </div>
+                </header>
+
+                
+
+                
+                <section id="post-body">
+                    <p>七大设计原则</p>
+<span id="more"></span>
+
+<ul>
+<li><p>开闭原则（OSP）</p>
+</li>
+<li><p>单一职责原则</p>
+<p>对修改开放，对扩展关闭。</p>
+</li>
+<li><p>里氏替换原则（LSP）</p>
+<blockquote>
+<p>凡是父类可以出现的地方，子类一定可以出现，且输出一致。反之则不成立。</p>
+</blockquote>
+<ul>
+<li><p>子类可以实现父类的抽象方法，尽量不要去修改父类的非抽象方法。</p>
+</li>
+<li><p>子类可以扩展父类方法。</p>
+</li>
+<li><p>当子类覆盖或实现父类方法时，子类方法的输入参数要比父类方法的输入参数更加宽松，不能相同。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Sup</span> &#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="title function_">doSomething</span><span class="params">(HashMap&lt;String, String&gt; map)</span> &#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;父类方法&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Sub</span> &#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="title function_">doSomething</span><span class="params">(Map&lt;String, String&gt; map)</span> &#123;</span><br><span class="line">    System.out.println(<span class="string">&#x27;子类方法&#x27;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">main() &#123;</span><br><span class="line"> <span class="type">Sup</span> <span class="variable">sup</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Sup</span>();</span><br><span class="line">  sup.doSomething(<span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;String, String&gt;());</span><br><span class="line">  <span class="comment">// 把上面的Sup换成Sub，输出不会改变。符合里氏替换原则</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>接口隔离原则（ISP）</p>
+</li>
+<li><p>依赖倒置原则（DIP）</p>
+</li>
+<li><p>迪米特原则</p>
+</li>
+<li><p>合成&#x2F;聚合复用原则</p>
+</li>
+</ul>
+
+                </section>
+
+                
+                
+
+                
+
+            </article>
+
+            
+            <nav class="dis_flex al_post_nav">
+                <a class="al_post_nav_item dis_flex_acenter" href="/2022/04/11/Vue.js%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/">
+                    
+                        <svg class="al_arrow">
+                            <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-arrow-left"></use>
+                        </svg>
+                        <span class="al_text_ellipsis al_post_nav_desc">《Vue.js设计与实现》笔记</span>
+                    
+                </a>
+                <a class="al_post_nav_item dis_flex_acenter" href="/2022/04/03/StyledComponent/">
+                    
+                        <span class="al_text_ellipsis al_post_nav_desc">Styled Components</span>
+                        <svg class="al_arrow">
+                            <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-arrow-right"></use>
+                        </svg>
+                    
+                </a>
+            </nav>
+        </div>
+    </div>
+
+
+        <div class="al_index_footer dis_flex_center">
+    <div class="al_index_footer_item al_index_footer_title">
+        Joker Won
+    </div>
+
+    
+    
+
+    <div class="al_index_footer_item al_index_footer_extra">
+        Created By 
+        <a target="_blank" rel="noopener" href="https://github.com/iGuan7u/Acetolog">AcetoLog</a>
+         · Power By 
+        <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+    </div>
+
+    <div class="al_index_footer_item al_index_footer_extra_right">
+        All Right Reserved
+    </div>
+</div>
+
+        <script type="text/javascript" async="async" src="/javascripts/acelog.js"></script>
+        
+        
+        
+        
+        
+
+    </body>
+</html>

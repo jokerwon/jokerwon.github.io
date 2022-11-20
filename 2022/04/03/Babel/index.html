@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        
+    
+    <link rel='stylesheet' href="/./css/dracula.css">
+
+        <title>Babel</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=2.0">
+<link rel="stylesheet" href="/css/style.css">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="manifest" href="/site.webmanifest">
+
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        <header class="al_header al_pos_fixed">
+    <div class="al_header_container dis_flex_jcenter">
+        <div class="al_header_container_left">
+            <div class="al_header_site_title">
+                <a href="/">Joker Won's Stack</a>
+            </div>
+        </div>
+
+        <div class="dis_flex_jcenter">
+            <div class="al_header_setting">
+                <svg class="al_header_icon">
+                    <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-menu"></use>
+                </svg>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="al_sidebar">
+
+    <div class="al_sidebar_overlay al_full_cover"></div>
+
+    <div class="al_pos_fixed al_sidebar_cnt">
+        <div class="dis_flex_acenter al_sidebar_header">
+            <h3>Joker Won's Stack</h3>
+            <div class="al_sidebar_close al_header_setting">
+                <svg class="al_header_icon">
+                    <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-close"></use>
+                </svg>
+            </div>
+        </div>
+
+        <div class="al_sidebar_author_cnt">
+
+            <div class="al_sidebar_author_info">
+                <h4>Joker Won</h4>
+                <img class="al_sidebar_avatar" src="https://cdn.jsdelivr.net/gh/jokerwon/images/img/avatar.jpg">
+                <p>OS 出身的小伙子，对 Objective-C、Swift、以及 Javascript 有浓厚的兴趣。热衷使用原生实现所有功能，厌恶一切的跨平台开发技术。喜欢分享工作过程中遇到的问题以及日常工作中遇到的新技术。希望这个博客能给你带来一点启发。</p>
+            </div>
+
+            
+        </div>
+    </div>
+</div>
+
+        
+    <div class="dis_flex_center al_lightbox_cnt al_full_cover">
+        <img class="al_lightbox_img"/>
+    </div>
+    <div class="al_page_background dis_flex_center al_full_cover"></div>
+    <div class="al_page_container">
+        <div class="al_pos_ab al_fake_background"></div>
+        <div class="al_main_container al_shadow al_main_page_container">
+            <article class="al_article">
+                <header>
+                    <h1 class="al_page_title">
+                        Babel
+                    </h1>
+                    <div class="al_page_info dis_flex">
+                        <div class="al_page_content_info">
+                            Sun April 3, 2022 10:05 AM
+                        </div>
+
+                        
+
+                        
+                        <span class="tags"></span>
+                    </div>
+                </header>
+
+                
+                    <div class="al_page_content_outline">
+                        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%9C%E7%94%A8"><span class="toc-text">作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%81%E7%A8%8B"><span class="toc-text">流程</span></a></li></ol>
+                    </div>
+                
+
+                
+                <section id="post-body">
+                    <span id="more"></span>
+
+<h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><p>转译器（Transpiler）。</p>
+<ul>
+<li><p>转译 <code>esnext</code>、<code>tyescript</code>、<code>flow</code> 等到目标环境支持的 js。</p>
+</li>
+<li><p>特定用途的代码转换。</p>
+<p>函数插桩，自动国际化，<code>default import</code> 转 <code>named import</code> 等。</p>
+</li>
+<li><p>代码的静态分析。</p>
+<ul>
+<li>linter 工具</li>
+<li>api 文档自动生成工具。提取注释，生成文档。</li>
+<li>压缩混淆工具。删除死代码，变量名混淆，常量折叠。</li>
+<li>js 解释器。</li>
+</ul>
+</li>
+</ul>
+<h3 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h3><p>整体编译流程分为三步。</p>
+<ul>
+<li><p><code>parse</code> : 通过 <code>parser</code> 把源码转成抽象语法树（AST）。</p>
+<p>把源码分成一个个不能细分的单词（token），例如 <code>let</code> , <code>name</code> , <code>=</code> , <code>JokerWon</code> ，这个过程是词法分析。之后把 token 进行递归组装，生成 AST，这个过程是语法分析。</p>
+</li>
+<li><p><code>tranform</code> : 遍历 AST，调用各种 <code>transform</code> 插件对 AST 进行增删改。</p>
+<p>对 AST 进行处理，会进行 AST 的遍历，遍历的过程中处理到不同的 AST 节点会调用注册的响应的 visitor 函数，visitor 函数里可以对 AST 节点进行增删改，返回新的 AST。</p>
+</li>
+<li><p><code>generate</code> : 把转换后的 AST 打印成目标代码，并生成 sourceMap 。</p>
+<p>把 AST 打印成目标代码字符串，并且会生成 sourcemap。</p>
+</li>
+</ul>
+
+                </section>
+
+                
+                
+
+                
+
+            </article>
+
+            
+            <nav class="dis_flex al_post_nav">
+                <a class="al_post_nav_item dis_flex_acenter" href="/2022/04/03/StoryBook/">
+                    
+                        <svg class="al_arrow">
+                            <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-arrow-left"></use>
+                        </svg>
+                        <span class="al_text_ellipsis al_post_nav_desc">StoryBook</span>
+                    
+                </a>
+                <a class="al_post_nav_item dis_flex_acenter" href="/2021/04/20/Hygen/">
+                    
+                        <span class="al_text_ellipsis al_post_nav_desc">Hygen</span>
+                        <svg class="al_arrow">
+                            <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-arrow-right"></use>
+                        </svg>
+                    
+                </a>
+            </nav>
+        </div>
+    </div>
+
+
+        <div class="al_index_footer dis_flex_center">
+    <div class="al_index_footer_item al_index_footer_title">
+        Joker Won
+    </div>
+
+    
+    
+
+    <div class="al_index_footer_item al_index_footer_extra">
+        Created By 
+        <a target="_blank" rel="noopener" href="https://github.com/iGuan7u/Acetolog">AcetoLog</a>
+         · Power By 
+        <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+    </div>
+
+    <div class="al_index_footer_item al_index_footer_extra_right">
+        All Right Reserved
+    </div>
+</div>
+
+        <script type="text/javascript" async="async" src="/javascripts/acelog.js"></script>
+        
+        
+        
+        
+        
+
+    </body>
+</html>

@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        
+    
+    <link rel='stylesheet' href="/./css/dracula.css">
+
+        <title>Hygen</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=2.0">
+<link rel="stylesheet" href="/css/style.css">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="manifest" href="/site.webmanifest">
+
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        <header class="al_header al_pos_fixed">
+    <div class="al_header_container dis_flex_jcenter">
+        <div class="al_header_container_left">
+            <div class="al_header_site_title">
+                <a href="/">Joker Won's Stack</a>
+            </div>
+        </div>
+
+        <div class="dis_flex_jcenter">
+            <div class="al_header_setting">
+                <svg class="al_header_icon">
+                    <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-menu"></use>
+                </svg>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="al_sidebar">
+
+    <div class="al_sidebar_overlay al_full_cover"></div>
+
+    <div class="al_pos_fixed al_sidebar_cnt">
+        <div class="dis_flex_acenter al_sidebar_header">
+            <h3>Joker Won's Stack</h3>
+            <div class="al_sidebar_close al_header_setting">
+                <svg class="al_header_icon">
+                    <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-close"></use>
+                </svg>
+            </div>
+        </div>
+
+        <div class="al_sidebar_author_cnt">
+
+            <div class="al_sidebar_author_info">
+                <h4>Joker Won</h4>
+                <img class="al_sidebar_avatar" src="https://cdn.jsdelivr.net/gh/jokerwon/images/img/avatar.jpg">
+                <p>OS 出身的小伙子，对 Objective-C、Swift、以及 Javascript 有浓厚的兴趣。热衷使用原生实现所有功能，厌恶一切的跨平台开发技术。喜欢分享工作过程中遇到的问题以及日常工作中遇到的新技术。希望这个博客能给你带来一点启发。</p>
+            </div>
+
+            
+        </div>
+    </div>
+</div>
+
+        
+    <div class="dis_flex_center al_lightbox_cnt al_full_cover">
+        <img class="al_lightbox_img"/>
+    </div>
+    <div class="al_page_background dis_flex_center al_full_cover"></div>
+    <div class="al_page_container">
+        <div class="al_pos_ab al_fake_background"></div>
+        <div class="al_main_container al_shadow al_main_page_container">
+            <article class="al_article">
+                <header>
+                    <h1 class="al_page_title">
+                        Hygen
+                    </h1>
+                    <div class="al_page_info dis_flex">
+                        <div class="al_page_content_info">
+                            Tue April 20, 2021 06:33 PM
+                        </div>
+
+                        
+
+                        
+                        <span class="tags"></span>
+                    </div>
+                </header>
+
+                
+                    <div class="al_page_content_outline">
+                        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B5%B7%E6%AD%A5"><span class="toc-text">起步</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-text">安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-text">初始化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E7%AC%AC%E4%B8%80%E4%B8%AA%E7%94%9F%E6%88%90%E5%99%A8"><span class="toc-text">创建第一个生成器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E7%94%9F%E6%88%90%E5%99%A8%E5%88%9B%E5%BB%BA%E6%96%87%E4%BB%B6"><span class="toc-text">使用生成器创建文件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E6%9D%BF"><span class="toc-text">模板</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#FrontMatter"><span class="toc-text">FrontMatter</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Body"><span class="toc-text">Body</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Helpers-and-Inflections"><span class="toc-text">Helpers and Inflections</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Change-case-helpers"><span class="toc-text">Change case helpers</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#locals-%E5%AF%B9%E8%B1%A1"><span class="toc-text">locals 对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%84%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F"><span class="toc-text">预定义变量</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E5%99%A8"><span class="toc-text">生成器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA"><span class="toc-text">创建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8"><span class="toc-text">使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E6%A8%A1%E6%9D%BF"><span class="toc-text">修改模板</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E6%96%87%E4%BB%B6"><span class="toc-text">生成文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%82%E6%95%B0"><span class="toc-text">命令行参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%A4%E4%BA%92%E6%8F%90%E7%A4%BA"><span class="toc-text">交互提示</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%AB%98%E7%BA%A7%E4%BA%A4%E4%BA%92"><span class="toc-text">高级交互</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E8%AF%B4%E6%98%8E"><span class="toc-text">添加说明</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E9%83%A8%E5%88%86%E6%96%87%E4%BB%B6"><span class="toc-text">生成部分文件</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B"><span class="toc-text">案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#templates-component-new-index-ejs-t"><span class="toc-text">_templates&#x2F;component&#x2F;new&#x2F;index.ejs.t</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#templates-component-new-style-ejs-t"><span class="toc-text">_templates&#x2F;component&#x2F;new&#x2F;style.ejs.t</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#templates-component-new-prompt-js"><span class="toc-text">_templates&#x2F;component&#x2F;new&#x2F;prompt.js</span></a></li></ol></li></ol>
+                    </div>
+                
+
+                
+                <section id="post-body">
+                    <span id="more"></span>
+
+<p>[TOC]</p>
+<h2 id="起步"><a href="#起步" class="headerlink" title="起步"></a>起步</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm i -g hygen</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">或</span></span><br><span class="line">cnpm i -g hygen</span><br></pre></td></tr></table></figure>
+
+<h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">进入项目地址</span></span><br><span class="line">cd /projects/demo</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">初始化模板</span></span><br><span class="line">hygen init self</span><br></pre></td></tr></table></figure>
+
+<p>初始化成功后，会自动在项目根目录下生成 <code>_templates</code> 文件夹，并且默认生成了一个名为 <code>generator</code> 的生成器及其工作目录。后续会依托该生成器，派生出更多的生成器来满足需求。</p>
+<blockquote>
+<p><strong>注意</strong></p>
+<p>不要删除 <code>_templates/generator</code> 文件夹，否则会导致无法创建 <code>Generator</code> 。</p>
+</blockquote>
+<blockquote>
+<p><strong>提示</strong></p>
+<p>后续的所有命令行操作，如无特殊说明，都在项目根目录。</p>
+</blockquote>
+<h3 id="创建第一个生成器"><a href="#创建第一个生成器" class="headerlink" title="创建第一个生成器"></a>创建第一个生成器</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hygen generator new component</span><br></pre></td></tr></table></figure>
+
+<p>执行后会生成一个生成器 <code>component</code> 及其工作目录，目录中默认存在一个示例文件 <code>hello.ejs.t</code> 。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">to: app/hello.js</span><br><span class="line">---</span><br><span class="line">const hello = ```</span><br><span class="line">Hello!</span><br><span class="line">This is your first hygen template.</span><br><span class="line"></span><br><span class="line">Learn what it can do here:</span><br><span class="line"></span><br><span class="line">https://github.com/jondot/hygen</span><br><span class="line">```</span><br><span class="line"></span><br><span class="line">console.log(hello)</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用生成器创建文件"><a href="#使用生成器创建文件" class="headerlink" title="使用生成器创建文件"></a>使用生成器创建文件</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hygen component new</span><br></pre></td></tr></table></figure>
+
+<p>执行后会生成文件目录 <code>app</code> 及文件 <code>app/hello.js</code> 。至此，一次最基本的 Hygen 旅程已经完成。</p>
+<h2 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h2><p>Hygen 的文件模板分为两个部分，FrontMatter 和 Body（ejs）。</p>
+<blockquote>
+<p><strong>说明</strong></p>
+<p>值得一提的是，虽然默认生成的模板文件扩展名都是 <code>.t</code> ，但是你可以使用任何扩展名。这样做是为了避开编辑器的智能操作。</p>
+</blockquote>
+<h3 id="FrontMatter"><a href="#FrontMatter" class="headerlink" title="FrontMatter"></a>FrontMatter</h3><p>文件最上方的描述信息。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">to: src/component/demo/index.js</span><br><span class="line">// ...</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<p>可能用到的配置：</p>
+<ul>
+<li><p><code>to: string&lt;url&gt;</code></p>
+<p>目标路径。<strong>当值为 <code>null</code> 时，则会跳过生成。</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">to: &quot;&lt;%= message ? `where/to/render/$&#123;name&#125;.js` : null %&gt;&quot;</span><br><span class="line">---</span><br><span class="line">conditionally rendering template</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>force: boolean</code></p>
+<p>默认值 <code>false</code> 。是否强制覆盖已存在的文件。</p>
+</li>
+<li><p><code>unless_exists: boolean</code></p>
+<p>默认值 <code>false</code>。为 <code>true</code> 时只有当不存在重复文件时才会生成文件。</p>
+</li>
+<li><p><code>from: string&lt;url&gt;</code></p>
+<p>加载到 Body 的文件路径。当设置了该配置后，只会从指定文件中加载内容到 Body 中，原来的 Body 会被忽视。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">to: app/readme.md</span><br><span class="line">from: shared/docs/readme.md</span><br><span class="line">---</span><br><span class="line">这段文字会被丢失。替代的将是指定文件的内容。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>after: Regex</code></p>
+<p>用于向已存在的文件中插入模板内容。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">inject: true</span><br><span class="line">to: package.json</span><br><span class="line">after: dependencies</span><br><span class="line">skip_if: react-native-fs</span><br><span class="line">---</span><br><span class="line">&quot;react-native-fs&quot;:&quot;*&quot;,</span><br></pre></td></tr></table></figure>
+
+<p>上述模板会向 <code>package.json</code> 文件中的 <code>dependencies</code> 行后插入 <code>&quot;react-native-fs&quot;:&quot;*&quot;,</code> ，但是当在该位置已存在 <code>react-native-fs</code> 时则不会执行插入。</p>
+</li>
+<li><p><code>before: Regex</code> or <code>after: Regex</code></p>
+<p>which contain a regular expression of text to locate. The inject line will appear <code>before</code> or <code>after</code> the located line.</p>
+</li>
+<li><p><code>prepend</code> or <code>append</code></p>
+<p>when true, add a line to start or end of file respectively.</p>
+</li>
+<li><p><code>at_line</code></p>
+<p>which contains a line number will add a line at this exact line number.</p>
+</li>
+<li><p><code>skip_if: Regex</code></p>
+<p>which contains a regular expression &#x2F; text. If exists, injection is skipped.</p>
+</li>
+<li><p><code>sh: string</code></p>
+<p>执行 shell 指令。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">inject: true</span><br><span class="line">to: package.json</span><br><span class="line">after: dependencies</span><br><span class="line">skip_if: lodash</span><br><span class="line">sh: cd &lt;%= cwd %&gt; &amp;&amp; yarn install</span><br><span class="line">---</span><br><span class="line">&quot;lodash&quot;:&quot;*&quot;,</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="Body"><a href="#Body" class="headerlink" title="Body"></a>Body</h3><p>模板内容。使用模板引擎 <code>ejs</code> 。语法参见 <a target="_blank" rel="noopener" href="https://ejs.bootcss.com/#docs">文档</a> 。</p>
+<h3 id="Helpers-and-Inflections"><a href="#Helpers-and-Inflections" class="headerlink" title="Helpers and Inflections"></a>Helpers and Inflections</h3><p>工具对象 <code>h</code>。</p>
+<p><code>// example: &lt;%= h.inflection.pluralize(name) %&gt;</code></p>
+<ul>
+<li><code>pluralize( str, plural )</code></li>
+<li><code>singularize( str, singular )</code></li>
+<li><code>inflect( str, count, singular, plural )</code></li>
+<li><code>camelize( str, low_first_letter )</code></li>
+<li><code>underscore( str, all_upper_case )</code></li>
+<li><code>humanize( str, low_first_letter )</code></li>
+<li><code>capitalize( str )</code></li>
+<li>&#96;&#96;dasherize( str )&#96;</li>
+<li><code>titleize( str )</code></li>
+<li><code>demodulize( str )</code></li>
+<li><code>tableize( str )</code></li>
+<li><code>classify( str )</code></li>
+<li><code>foreign_key( str, drop_id_ubar )</code></li>
+<li><code>ordinalize( str )</code></li>
+<li><code>transform( str, arr )</code></li>
+</ul>
+<h3 id="Change-case-helpers"><a href="#Change-case-helpers" class="headerlink" title="Change case helpers"></a>Change case helpers</h3><p><code>// example: &lt;%= h.changeCase.camel(name) %&gt;</code></p>
+<ul>
+<li><code>camel( str )</code></li>
+<li><code>constant( str )</code></li>
+<li><code>dot( str )</code></li>
+<li><code>header( str )</code></li>
+<li><code>isLower( str )</code></li>
+<li><code>isUpper( str )</code></li>
+<li><code>lower( str )</code></li>
+<li><code>lcFirst( str )</code></li>
+<li><code>no( str )</code></li>
+<li><code>param( str )</code></li>
+<li><code>pascal( str )</code></li>
+<li><code>path( str )</code></li>
+<li><code>sentence( str )</code></li>
+<li><code>snake( str )</code></li>
+<li><code>swap( str )</code></li>
+<li><code>title( str )</code></li>
+<li><code>upper( str )</code></li>
+</ul>
+<h3 id="locals-对象"><a href="#locals-对象" class="headerlink" title="locals 对象"></a><code>locals</code> 对象</h3><p>所有命令行参数和交互值都自动保存在 <code>locals</code> 对象中。</p>
+<p>因此，有两种方式引用变量。</p>
+<ul>
+<li><p>直接引用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hello &lt;%= message %&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>通过 <code>locals</code> 引用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hello &lt;%= locals.message %&gt;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="预定义变量"><a href="#预定义变量" class="headerlink" title="预定义变量"></a>预定义变量</h3><p>对于这样一条指令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hygen component new:story</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Content</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>templates</code></td>
+<td>Templates path (absolute)</td>
+<td>&#x2F;User&#x2F;…&#x2F;project&#x2F;_templates</td>
+</tr>
+<tr>
+<td><code>actionfolder</code></td>
+<td>Action path</td>
+<td>&#x2F;…&#x2F;component&#x2F;new</td>
+</tr>
+<tr>
+<td><code>generator</code></td>
+<td>Generator name</td>
+<td><code>component</code></td>
+</tr>
+<tr>
+<td><code>action</code></td>
+<td>Action name</td>
+<td><code>new</code></td>
+</tr>
+<tr>
+<td><code>subaction</code></td>
+<td>Sub-action name</td>
+<td><code>story</code></td>
+</tr>
+<tr>
+<td><code>cwd</code></td>
+<td>Process working directory</td>
+<td>&#x2F;User&#x2F;…&#x2F;project</td>
+</tr>
+</tbody></table>
+<h2 id="生成器"><a href="#生成器" class="headerlink" title="生成器"></a>生成器</h2><h3 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h3><p>语法：<code>hygen generator [ACTION] [NAME]</code> 或 <code>hygen generator [ACTION] --name [NAME]</code></p>
+<p><code>ACTION</code> 表示你想使用何种命令创建一个生成器，可选值有：</p>
+<ul>
+<li><p><code>new</code></p>
+<p>创建一个基本的生成器。</p>
+</li>
+<li><p><code>with-prompt</code></p>
+<p>创建一个带有交互的生成器，交互逻辑在 <code>prompt.js</code> 中编写。</p>
+<blockquote>
+<p><strong>注意</strong></p>
+<ul>
+<li>交互脚本的名称并不是固定的。只需要导出指定结构的数组或者含有 <code>prompt</code> 属性的对象。</li>
+<li>可以通过自己在 <code>new</code> 文件夹下添加 <code>.js</code> 文件创建交互逻辑，使 <code>new</code> Action 也拥有交互能力。</li>
+</ul>
+</blockquote>
+</li>
+<li><p><code>help</code></p>
+<p>打印 <code>help</code> 文件夹下模板 FrontMatter 部分的 <code>message</code> 信息。可以将指令用法等提示信息记录在模板中。</p>
+</li>
+</ul>
+<blockquote>
+<p><strong>说明</strong></p>
+<p>官网生成的命令解释并不明朗，目前来看，由于 <code>_templates/generator</code> 文件夹下默认存在 <code>new</code> 、<code>with-prompt</code> 和 <code>help</code> 文件夹，所以分别存在对应的 Action。</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">创建一个名为 component 的生成器</span></span><br><span class="line">hygen generator new component</span><br></pre></td></tr></table></figure>
+
+<p>执行命令后，<code>_template</code> 路径下会新增 <code>component/new/hello.ejs.t</code> 。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">可以继续为 component 生成器添加 with-prompt Action</span></span><br><span class="line">hygen generator with-prompt component</span><br></pre></td></tr></table></figure>
+
+<p>执行命令后，<code>_template</code> 路径下会新增 <code>component/with-prompt/hello.ejs.t</code> 和 <code>component/with-prompt/prompt.js</code> 。</p>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><h4 id="修改模板"><a href="#修改模板" class="headerlink" title="修改模板"></a>修改模板</h4><p>修改 <code>_template/component/new/hello.ejs.t</code> 文件。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">to: src/components/&lt;%= name %&gt;.js</span><br><span class="line">---</span><br><span class="line">import React from &#x27;react&#x27;;</span><br><span class="line"></span><br><span class="line">const &lt;%= name %&gt; = (&#123;&#125;) =&gt; &#123;</span><br><span class="line">    console.log(&#x27;Hello Hygen&#x27;);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">export default &lt;%= name %&gt;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="生成文件"><a href="#生成文件" class="headerlink" title="生成文件"></a>生成文件</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hygen component new Demo</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">或</span></span><br><span class="line">hygen component new --name Demo</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>说明</strong></p>
+<p><code>new</code> 后的第一个参数默认被保存到模板文件变量 <code>locals.name</code> 中。其他显示指定的参数也会被保存到 <code>locals</code> 对象中。</p>
+</blockquote>
+<p>查看 <code>src/components/Demo.js</code> 文件。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span> <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">Demo</span> = (<span class="params">&#123;&#125;</span>) =&gt; &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Hello Hygen&#x27;</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title class_">Demo</span>;</span><br></pre></td></tr></table></figure>
+
+<h4 id="命令行参数"><a href="#命令行参数" class="headerlink" title="命令行参数"></a>命令行参数</h4><p>你可以通过 <code>--[KEY] [VALUE]</code> 的方式为模版文件提供变量支持。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hygen component new --name Demo --description &#x27;test file&#x27; --author JokerWon --isClass yes</span><br></pre></td></tr></table></figure>
+
+<p>你可以直接在模板中引用它们，也可以通过 <code>locals.[KEY]</code> 的方式。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">to: app/&lt;%= name %&gt;.js</span><br><span class="line">---</span><br><span class="line">/**</span><br><span class="line"> * @description &lt;%= description %&gt;</span><br><span class="line"> * @author &lt;%= author %&gt;</span><br><span class="line"> */</span><br><span class="line">import React from &#x27;react&#x27;;</span><br><span class="line"></span><br><span class="line">&lt;% if (locals.isClass === &#x27;yes&#x27;) &#123; _%&gt;</span><br><span class="line">const &lt;%= name %&gt; = (&#123;&#125;) =&gt; &#123;</span><br><span class="line">    console.log(&#x27;Hello Hygen&#x27;);</span><br><span class="line">&#125;;</span><br><span class="line">&lt;% &#125; else &#123; _%&gt;</span><br><span class="line">class &lt;%= name %&gt; extends React.Component &#123;</span><br><span class="line">    render() &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;% &#125; _%&gt;</span><br><span class="line"></span><br><span class="line">export default &lt;%= name %&gt;;</span><br></pre></td></tr></table></figure>
+
+<p>生成的文件是这样的：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@description</span> test file</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> <span class="variable">JokerWon</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">React</span> <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Demo</span> <span class="keyword">extends</span> <span class="title class_ inherited__">React.Component</span> &#123;</span><br><span class="line">    <span class="title function_">render</span>(<span class="params"></span>) &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title class_">Demo</span>;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>注意</strong></p>
+<p>当你没有传递某个变量却使用了它时，会发生错误。所以当你不确定该变量是否会被提供时，使用后者去引用该变量。众所周知，访问 JavaScript 对象的不存在的变量时，并不会产生错误。</p>
+</blockquote>
+<h4 id="交互提示"><a href="#交互提示" class="headerlink" title="交互提示"></a>交互提示</h4><p>在之前，我们为生成器 <code>component</code> 添加了 <code>with-prompt</code> Action，因此可以使用该 Action 来交互式地生成文件。</p>
+<p>查看 <code>component/with-prompt/prompt.js</code> 。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = [</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="string">&#x27;input&#x27;</span>,</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;message&#x27;</span>,</span><br><span class="line">    <span class="attr">message</span>: <span class="string">&quot;What&#x27;s your message?&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+
+<p>执行 <code>hygen component with-prompt</code> ，开始和终端对话吧。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">hygen <span class="built_in">test</span> with-prompt</span>                                                            </span><br><span class="line">? What&#x27;s your message? › Let&#x27;s go </span><br></pre></td></tr></table></figure>
+
+<h4 id="高级交互"><a href="#高级交互" class="headerlink" title="高级交互"></a>高级交互</h4><p>简单的交互只需要提供一个包含操作行为的数组，高级交互功能允许你使用函数更灵活地定义交互逻辑。</p>
+<p>修改 <code>component/with-prompt/prompt.js</code> 。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">    <span class="title function_">prompt</span>(<span class="params">&#123; prompter, args &#125;</span>) &#123;</span><br><span class="line">        prompter</span><br><span class="line">            .<span class="title function_">prompt</span>(&#123;</span><br><span class="line">                <span class="attr">type</span>: <span class="string">&#x27;input&#x27;</span>,</span><br><span class="line">                <span class="attr">name</span>: <span class="string">&#x27;email&#x27;</span>,</span><br><span class="line">                <span class="attr">message</span>: <span class="string">&#x27;What is your email?&#x27;</span>,</span><br><span class="line">            &#125;)</span><br><span class="line">            .<span class="title function_">then</span>(<span class="function">(<span class="params">&#123; email &#125;</span>) =&gt;</span></span><br><span class="line">                prompter.<span class="title function_">prompt</span>(&#123;</span><br><span class="line">                    <span class="attr">type</span>: <span class="string">&#x27;select&#x27;</span>,</span><br><span class="line">                    <span class="attr">name</span>: <span class="string">&#x27;type&#x27;</span>,</span><br><span class="line">                    <span class="attr">message</span>: <span class="string">&#x27;Select gender&#x27;</span>,</span><br><span class="line">                    <span class="attr">choices</span>: [<span class="string">&#x27;male&#x27;</span>, <span class="string">&#x27;female&#x27;</span>],</span><br><span class="line">                &#125;),</span><br><span class="line">            );</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>你也可以不用交互功能，直接使用 <code>params</code> 来根据命令行参数计算或者推断出你想要的变量。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">params</span>: <span class="function">(<span class="params">&#123; args &#125;</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123; <span class="attr">moreConvenientName</span>: args.<span class="property">foobamboozle</span> &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>说明</strong></p>
+<p>Params and Prompts are The Same | If you think about it, prompting for variables or reshaping CLI arguments lead to the same goal: new parameters. But to make a future-proof API, we’ve separated the two intents to the <code>prompt</code> and <code>params</code> functions.</p>
+</blockquote>
+<h4 id="添加说明"><a href="#添加说明" class="headerlink" title="添加说明"></a>添加说明</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">message: |</span><br><span class="line">  - hygen &#123;bold mailer&#125; new --name [NAME]</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<p>可选的样式：</p>
+<ul>
+<li>{bold mailer}</li>
+<li>{red mailer}</li>
+<li>{underline mailer}</li>
+<li>{green mailer}</li>
+</ul>
+<blockquote>
+<p><strong>说明</strong></p>
+<p>官网对此描述很简单，而且期待的样式也没有生效。</p>
+</blockquote>
+<h4 id="生成部分文件"><a href="#生成部分文件" class="headerlink" title="生成部分文件"></a>生成部分文件</h4><p>可选择只使用部分模板生成文件。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hygen GENERATOR ACTION:SUBACTION</span><br></pre></td></tr></table></figure>
+
+<p>其中，<code>SUBACTION</code> 为正则表达式。</p>
+<p>例如只生成 <code>hello.ejs.t</code> 文件，可以这样执行：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hygen component new:hello </span><br></pre></td></tr></table></figure>
+
+<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><h3 id="templates-component-new-index-ejs-t"><a href="#templates-component-new-index-ejs-t" class="headerlink" title="_templates/component/new/index.ejs.t"></a><code>_templates/component/new/index.ejs.t</code></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">to: src/components/&lt;%= h.changeCase.pascal(componentName) %&gt;/index.js</span><br><span class="line">---</span><br><span class="line">&lt;% namePascal = h.changeCase.pascal(componentName) -%&gt;</span><br><span class="line">&lt;% nameCamel = h.changeCase.camel(componentName) -%&gt;</span><br><span class="line">&lt;% models = locals.models || &#x27;&#x27;;</span><br><span class="line">    models = models.split(&#x27;,&#x27;);</span><br><span class="line"> -%&gt;</span><br><span class="line">import React from &#x27;react&#x27;;</span><br><span class="line">&lt;% if (locals.needRedux) &#123; -%&gt;</span><br><span class="line">import connect from &#x27;dva&#x27;;</span><br><span class="line">&lt;% &#125; -%&gt;</span><br><span class="line"></span><br><span class="line">&lt;% if (locals.needStyle) &#123; -%&gt;</span><br><span class="line">import styles from &#x27;./index.less&#x27;;</span><br><span class="line">&lt;% &#125; -%&gt;</span><br><span class="line"></span><br><span class="line">&lt;% if (type === &#x27;Class&#x27;) &#123; -%&gt;</span><br><span class="line">&lt;% if (needRedux) &#123; -%&gt;</span><br><span class="line">@connect((&#123;</span><br><span class="line">    &lt;% models.forEach(item =&gt; &#123; -%&gt;</span><br><span class="line">        &lt;% if (item.trim()) &#123; -%&gt;</span><br><span class="line">            &lt;%= item.trim() %&gt;,</span><br><span class="line">        &lt;% &#125; -%&gt;</span><br><span class="line">    &lt;% &#125;) -%&gt;</span><br><span class="line">&#125;) =&gt; (&#123;</span><br><span class="line">    &lt;% models.forEach(item =&gt; &#123; -%&gt;</span><br><span class="line">        &lt;% if (item.trim()) &#123; -%&gt;</span><br><span class="line">            &lt;%= item.trim() %&gt;,</span><br><span class="line">        &lt;% &#125; -%&gt;</span><br><span class="line">    &lt;% &#125;) -%&gt;</span><br><span class="line">&#125;))</span><br><span class="line">&lt;% &#125; -%&gt;</span><br><span class="line">class &lt;%= namePascal %&gt; extends React.PureComponent &#123;</span><br><span class="line"></span><br><span class="line">    render() &#123;</span><br><span class="line"></span><br><span class="line">        return (</span><br><span class="line">            &lt;div&lt;%= needStyle ? ` className=&#123;styles.$&#123;nameCamel&#125;&#125;` : &#x27;&#x27; %&gt;&gt;</span><br><span class="line">            &#123;/* TODO */&#125;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;% &#125; else if (type === &#x27;Function&#x27;) &#123; -%&gt;</span><br><span class="line">const &lt;%= namePascal %&gt; = (&#123;&#125;) =&gt; &#123;</span><br><span class="line"></span><br><span class="line">    return (</span><br><span class="line">        &lt;div&gt;</span><br><span class="line">        &#123;/* TODO */&#125;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    );</span><br><span class="line">&#125;;</span><br><span class="line">&lt;% &#125; -%&gt;</span><br><span class="line"></span><br><span class="line">export default &lt;%= namePascal %&gt;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="templates-component-new-style-ejs-t"><a href="#templates-component-new-style-ejs-t" class="headerlink" title="_templates/component/new/style.ejs.t"></a><code>_templates/component/new/style.ejs.t</code></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">to: &quot;&lt;%= locals.needStyle ? `src/components/$&#123;h.changeCase.pascal(name)&#125;/index.less` : null %&gt;&quot;</span><br><span class="line">---</span><br><span class="line">.&lt;%= h.changeCase.camel(componentName) %&gt; &#123;</span><br><span class="line">    // TODO</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="templates-component-new-prompt-js"><a href="#templates-component-new-prompt-js" class="headerlink" title="_templates/component/new/prompt.js"></a><code>_templates/component/new/prompt.js</code></h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">    <span class="attr">prompt</span>: <span class="function">(<span class="params">&#123; prompter, args &#125;</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> questions = [</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="attr">type</span>: <span class="string">&#x27;input&#x27;</span>,</span><br><span class="line">                <span class="attr">name</span>: <span class="string">&#x27;componentName&#x27;</span>,</span><br><span class="line">                <span class="attr">message</span>: <span class="string">&#x27;输入组件/文件夹名称&#x27;</span>,</span><br><span class="line">                <span class="attr">initial</span>: args.<span class="property">name</span>,</span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="attr">type</span>: <span class="string">&#x27;select&#x27;</span>,</span><br><span class="line">                <span class="attr">name</span>: <span class="string">&#x27;type&#x27;</span>,</span><br><span class="line">                <span class="attr">message</span>: <span class="string">&#x27;选择组件类型&#x27;</span>,</span><br><span class="line">                <span class="attr">choices</span>: [<span class="string">&#x27;Class&#x27;</span>, <span class="string">&#x27;Function&#x27;</span>],</span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="attr">type</span>: <span class="string">&#x27;confirm&#x27;</span>,</span><br><span class="line">                <span class="attr">name</span>: <span class="string">&#x27;needStyle&#x27;</span>,</span><br><span class="line">                <span class="attr">message</span>: <span class="string">&#x27;是否需要创建样式文件&#x27;</span>,</span><br><span class="line">                <span class="attr">initial</span>: <span class="literal">true</span>,</span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="attr">type</span>: <span class="string">&#x27;confirm&#x27;</span>,</span><br><span class="line">                <span class="attr">name</span>: <span class="string">&#x27;needService&#x27;</span>,</span><br><span class="line">                <span class="attr">message</span>: <span class="string">&#x27;是否需要创建Service&#x27;</span>,</span><br><span class="line">            &#125;,</span><br><span class="line">        ];</span><br><span class="line">        <span class="keyword">return</span> prompter</span><br><span class="line">            .<span class="title function_">prompt</span>(questions)</span><br><span class="line">            .<span class="title function_">then</span>(<span class="function"><span class="params">lastAnswer</span> =&gt;</span> &#123;</span><br><span class="line">                <span class="keyword">const</span> &#123; type &#125; = lastAnswer;</span><br><span class="line">                <span class="keyword">if</span> (type === <span class="string">&#x27;Function&#x27;</span>) &#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="title class_">Promise</span>.<span class="title function_">resolve</span>(&#123; ...args, ...lastAnswer, <span class="attr">needRedux</span>: <span class="literal">false</span> &#125;);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">return</span> prompter</span><br><span class="line">                    .<span class="title function_">prompt</span>(&#123;</span><br><span class="line">                        <span class="attr">type</span>: <span class="string">&#x27;confirm&#x27;</span>,</span><br><span class="line">                        <span class="attr">name</span>: <span class="string">&#x27;needRedux&#x27;</span>,</span><br><span class="line">                        <span class="attr">message</span>: <span class="string">&#x27;是否需要connect&#x27;</span>,</span><br><span class="line">                    &#125;)</span><br><span class="line">                    .<span class="title function_">then</span>(<span class="function">(<span class="params">&#123; needRedux &#125;</span>) =&gt;</span> (&#123; ...args, ...lastAnswer, needRedux &#125;));</span><br><span class="line">            &#125;)</span><br><span class="line">            .<span class="title function_">then</span>(<span class="function"><span class="params">lastAnswer</span> =&gt;</span> &#123;</span><br><span class="line">                <span class="keyword">const</span> &#123; needRedux &#125; = lastAnswer;</span><br><span class="line">                <span class="keyword">if</span> (needRedux) &#123;</span><br><span class="line">                    <span class="keyword">return</span> prompter</span><br><span class="line">                        .<span class="title function_">prompt</span>(&#123;</span><br><span class="line">                            <span class="attr">type</span>: <span class="string">&#x27;input&#x27;</span>,</span><br><span class="line">                            <span class="attr">name</span>: <span class="string">&#x27;models&#x27;</span>,</span><br><span class="line">                            <span class="attr">message</span>: <span class="string">&#x27;输入使用到的model&#x27;</span>,</span><br><span class="line">                            <span class="attr">initial</span>: <span class="string">`<span class="subst">$&#123;lastAnswer.componentName&#125;</span>,`</span>,</span><br><span class="line">                        &#125;)</span><br><span class="line">                        .<span class="title function_">then</span>(<span class="function">(<span class="params">&#123; models &#125;</span>) =&gt;</span> (&#123; ...lastAnswer, models &#125;));</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="title class_">Promise</span>.<span class="title function_">resolve</span>(&#123; ...lastAnswer &#125;);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+                </section>
+
+                
+                
+
+                
+
+            </article>
+
+            
+            <nav class="dis_flex al_post_nav">
+                <a class="al_post_nav_item dis_flex_acenter" href="/2022/04/03/Babel/">
+                    
+                        <svg class="al_arrow">
+                            <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-arrow-left"></use>
+                        </svg>
+                        <span class="al_text_ellipsis al_post_nav_desc">Babel</span>
+                    
+                </a>
+                <a class="al_post_nav_item dis_flex_acenter" href="/2021/01/14/Docker/">
+                    
+                        <span class="al_text_ellipsis al_post_nav_desc">Docker</span>
+                        <svg class="al_arrow">
+                            <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-arrow-right"></use>
+                        </svg>
+                    
+                </a>
+            </nav>
+        </div>
+    </div>
+
+
+        <div class="al_index_footer dis_flex_center">
+    <div class="al_index_footer_item al_index_footer_title">
+        Joker Won
+    </div>
+
+    
+    
+
+    <div class="al_index_footer_item al_index_footer_extra">
+        Created By 
+        <a target="_blank" rel="noopener" href="https://github.com/iGuan7u/Acetolog">AcetoLog</a>
+         · Power By 
+        <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+    </div>
+
+    <div class="al_index_footer_item al_index_footer_extra_right">
+        All Right Reserved
+    </div>
+</div>
+
+        <script type="text/javascript" async="async" src="/javascripts/acelog.js"></script>
+        
+        
+        
+        
+        
+
+    </body>
+</html>

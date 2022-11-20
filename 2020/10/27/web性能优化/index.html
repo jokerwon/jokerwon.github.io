@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        
+    
+    <link rel='stylesheet' href="/./css/dracula.css">
+
+        <title>Web 性能优化</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=2.0">
+<link rel="stylesheet" href="/css/style.css">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="manifest" href="/site.webmanifest">
+
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        <header class="al_header al_pos_fixed">
+    <div class="al_header_container dis_flex_jcenter">
+        <div class="al_header_container_left">
+            <div class="al_header_site_title">
+                <a href="/">Joker Won's Stack</a>
+            </div>
+        </div>
+
+        <div class="dis_flex_jcenter">
+            <div class="al_header_setting">
+                <svg class="al_header_icon">
+                    <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-menu"></use>
+                </svg>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="al_sidebar">
+
+    <div class="al_sidebar_overlay al_full_cover"></div>
+
+    <div class="al_pos_fixed al_sidebar_cnt">
+        <div class="dis_flex_acenter al_sidebar_header">
+            <h3>Joker Won's Stack</h3>
+            <div class="al_sidebar_close al_header_setting">
+                <svg class="al_header_icon">
+                    <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-close"></use>
+                </svg>
+            </div>
+        </div>
+
+        <div class="al_sidebar_author_cnt">
+
+            <div class="al_sidebar_author_info">
+                <h4>Joker Won</h4>
+                <img class="al_sidebar_avatar" src="https://cdn.jsdelivr.net/gh/jokerwon/images/img/avatar.jpg">
+                <p>OS 出身的小伙子，对 Objective-C、Swift、以及 Javascript 有浓厚的兴趣。热衷使用原生实现所有功能，厌恶一切的跨平台开发技术。喜欢分享工作过程中遇到的问题以及日常工作中遇到的新技术。希望这个博客能给你带来一点启发。</p>
+            </div>
+
+            
+        </div>
+    </div>
+</div>
+
+        
+    <div class="dis_flex_center al_lightbox_cnt al_full_cover">
+        <img class="al_lightbox_img"/>
+    </div>
+    <div class="al_page_background dis_flex_center al_full_cover"></div>
+    <div class="al_page_container">
+        <div class="al_pos_ab al_fake_background"></div>
+        <div class="al_main_container al_shadow al_main_page_container">
+            <article class="al_article">
+                <header>
+                    <h1 class="al_page_title">
+                        Web 性能优化
+                    </h1>
+                    <div class="al_page_info dis_flex">
+                        <div class="al_page_content_info">
+                            Tue October 27, 2020 10:36 PM
+                        </div>
+
+                        
+
+                        
+                        <span class="tags"></span>
+                    </div>
+                </header>
+
+                
+                    <div class="al_page_content_outline">
+                        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96"><span class="toc-text">一、网络优化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-Webpack-%E6%80%A7%E8%83%BD%E8%B0%83%E4%BC%98"><span class="toc-text">1.1 Webpack 性能调优</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-1-%E6%8F%90%E5%8D%87%E6%9E%84%E5%BB%BA%E9%80%9F%E5%BA%A6"><span class="toc-text">1.1.1 提升构建速度</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E4%B8%8D%E8%A6%81%E8%AE%A9-loader-%E5%81%9A%E5%A4%AA%E5%A4%9A%E4%BA%8B%E6%83%85"><span class="toc-text">1. 不要让 loader 做太多事情</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-%E4%B8%8D%E8%A6%81%E6%94%BE%E8%BF%87%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93"><span class="toc-text">2. 不要放过第三方库</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-%E5%B0%86-loader-%E7%94%B1%E5%8D%95%E7%BA%BF%E7%A8%8B%E8%BD%AC%E4%B8%BA%E5%A4%9A%E7%BA%BF%E7%A8%8B"><span class="toc-text">3. 将 loader 由单线程转为多线程</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-2-%E5%8E%8B%E7%BC%A9%E6%9E%84%E5%BB%BA%E4%BD%93%E7%A7%AF"><span class="toc-text">1.1.2 压缩构建体积</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E4%BD%BF%E7%94%A8%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B7%A5%E5%85%B7%E5%88%86%E6%9E%90%E5%AF%BC%E8%87%B4%E5%AF%BC%E8%87%B4%E4%BD%93%E7%A7%AF%E8%BF%87%E5%A4%A7%E7%9A%84%E5%8E%9F%E5%9B%A0"><span class="toc-text">1. 使用可视化工具分析导致导致体积过大的原因</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-%E6%8B%86%E5%88%86%E8%B5%84%E6%BA%90%EF%BC%88%E5%8F%82%E8%A7%81%E4%B8%8A%E4%B8%80%E8%8A%82DllPlugin%EF%BC%89"><span class="toc-text">2. 拆分资源（参见上一节DllPlugin）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-%E5%88%A0%E9%99%A4%E5%86%97%E4%BD%99%E4%BB%A3%E7%A0%81"><span class="toc-text">3. 删除冗余代码</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-%E6%8C%89%E9%9C%80%E5%8A%A0%E8%BD%BD"><span class="toc-text">4. 按需加载</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-%E9%80%9A%E8%BF%87-CDN-%E6%9D%A5%E4%BD%BF%E7%94%A8%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93"><span class="toc-text">5. 通过 CDN 来使用第三方库</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-Gzip-%E5%8E%8B%E7%BC%A9%E6%8A%80%E6%9C%AF"><span class="toc-text">1.2 Gzip 压缩技术</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-%E5%9B%BE%E7%89%87%E4%BC%98%E5%8C%96"><span class="toc-text">1.3 图片优化</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-JPEG-x2F-JPG"><span class="toc-text">1. JPEG &#x2F; JPG</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-PNG-8-%E5%92%8C-PNG-24"><span class="toc-text">2. PNG-8 和 PNG-24</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-SVG"><span class="toc-text">3. SVG</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-Base64-%E5%92%8C-%E9%9B%AA%E7%A2%A7%E5%9B%BE"><span class="toc-text">4. Base64 和 雪碧图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-WebP"><span class="toc-text">5. WebP</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%AD%98%E5%82%A8%E4%BC%98%E5%8C%96"><span class="toc-text">二、存储优化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98%E6%9C%BA%E5%88%B6%E4%BB%8B%E7%BB%8D%E4%B8%8E%E7%BC%93%E5%AD%98%E7%AD%96%E7%95%A5%E5%89%96%E6%9E%90"><span class="toc-text">2.1 浏览器缓存机制介绍与缓存策略剖析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-1-HTTP-%E7%BC%93%E5%AD%98%E6%9C%BA%E5%88%B6"><span class="toc-text">2.1.1 HTTP 缓存机制</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E5%BC%BA%E7%BC%93%E5%AD%98"><span class="toc-text">1. 强缓存</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-%E5%8D%8F%E5%95%86%E7%BC%93%E5%AD%98"><span class="toc-text">2. 协商缓存</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-2-HTTP-%E7%BC%93%E5%AD%98%E7%AD%96%E7%95%A5%E5%BB%BA%E8%AE%AE"><span class="toc-text">2.1.2 HTTP 缓存策略建议</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-3-Memory-Cache"><span class="toc-text">2.1.3 Memory Cache</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-4-Service-Worker-Cache"><span class="toc-text">2.1.4 Service Worker Cache</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-5-Push-Cache"><span class="toc-text">2.1.5 Push Cache</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E6%9C%AC%E5%9C%B0%E5%AD%98%E5%82%A8"><span class="toc-text">2.2 本地存储</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-1-Cookie"><span class="toc-text">2.2.1 Cookie</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-2-Web-Storage-Local-Storage-%E4%B8%8E-Session-Storage"><span class="toc-text">2.2.2 Web Storage: Local Storage 与 Session Storage</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-3-IndexedDB"><span class="toc-text">2.2.3 IndexedDB</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-CDN-%E7%9A%84%E7%BC%93%E5%AD%98%E5%92%8C%E5%9B%9E%E6%BA%90%E7%AD%96%E7%95%A5"><span class="toc-text">2.3 CDN 的缓存和回源策略</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-1-CDN%E7%9A%84%E6%A0%B8%E5%BF%83%E5%8A%9F%E8%83%BD%E7%89%B9%E5%86%99"><span class="toc-text">2.3.1 CDN的核心功能特写</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-2-CDN-%E4%B8%8E%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96"><span class="toc-text">2.3.2 CDN 与前端性能优化</span></a></li></ol></li></ol></li></ol>
+                    </div>
+                
+
+                
+                <section id="post-body">
+                    <h2 id="一、网络优化"><a href="#一、网络优化" class="headerlink" title="一、网络优化"></a>一、网络优化</h2><p>HTTP 优化有两个大的方向：</p>
+<ul>
+<li>减少请求次数</li>
+<li>减少单次请求所花费的时间</li>
+</ul>
+<span id="more"></span>
+
+<h3 id="1-1-Webpack-性能调优"><a href="#1-1-Webpack-性能调优" class="headerlink" title="1.1 Webpack 性能调优"></a>1.1 Webpack 性能调优</h3><p>webpack 的优化可以体现在两方面：</p>
+<ul>
+<li>webpack 的构建速度</li>
+<li>webpack 的构建体积</li>
+</ul>
+<h4 id="1-1-1-提升构建速度"><a href="#1-1-1-提升构建速度" class="headerlink" title="1.1.1 提升构建速度"></a>1.1.1 提升构建速度</h4><h5 id="1-不要让-loader-做太多事情"><a href="#1-不要让-loader-做太多事情" class="headerlink" title="1. 不要让 loader 做太多事情"></a>1. 不要让 loader 做太多事情</h5><p>以 babel-loader 为例。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">module</span>: &#123;</span><br><span class="line">  <span class="attr">rules</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">test</span>: <span class="regexp">/\.js$/</span>,</span><br><span class="line">      <span class="attr">exclude</span>: <span class="regexp">/(node_modules|bower_components)/</span>,</span><br><span class="line">      <span class="attr">use</span>: &#123;</span><br><span class="line">        <span class="attr">loader</span>: <span class="string">&#x27;babel-loader?cacheDirectory=true&#x27;</span>,</span><br><span class="line">        <span class="attr">options</span>: &#123;</span><br><span class="line">          <span class="attr">presets</span>: [<span class="string">&#x27;@babel/preset-env&#x27;</span>]</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>exclude</code> 属性告知 <code>babel-loader</code> 不要对庞大的 node_modules 或 bower_components 文件夹进行处理。loader 的属性值 <code>babel-loader?cacheDirectory=true</code>可以开启缓存将转译结果缓存至文件系统。</p>
+<h5 id="2-不要放过第三方库"><a href="#2-不要放过第三方库" class="headerlink" title="2. 不要放过第三方库"></a>2. 不要放过第三方库</h5><p>处理第三方的插件有 Externals、CommonsChunkPlugin、DllPlugin 等。推荐使用 DllPlugin。DllPlugin 是基于 Windows 动态链接库（dll）的思想被创作出来的。这个插件会把第三方库单独打包到一个文件中，这个文件就是一个单纯的依赖库。<strong>这个依赖库不会跟着你的业务代码一起被重新打包，只有当依赖自身发生版本变化时才会重新打包</strong>。</p>
+<h5 id="3-将-loader-由单线程转为多线程"><a href="#3-将-loader-由单线程转为多线程" class="headerlink" title="3. 将 loader 由单线程转为多线程"></a>3. 将 loader 由单线程转为多线程</h5><p>推荐使用插件 <strong>Happypack</strong></p>
+<h4 id="1-1-2-压缩构建体积"><a href="#1-1-2-压缩构建体积" class="headerlink" title="1.1.2 压缩构建体积"></a>1.1.2 压缩构建体积</h4><h5 id="1-使用可视化工具分析导致导致体积过大的原因"><a href="#1-使用可视化工具分析导致导致体积过大的原因" class="headerlink" title="1. 使用可视化工具分析导致导致体积过大的原因"></a>1. 使用可视化工具分析导致导致体积过大的原因</h5><p>推荐使用插件 <a target="_blank" rel="noopener" href="https://www.npmjs.com/package/webpack-bundle-analyzer">webpack-bundle-analyzer</a> 。</p>
+<h5 id="2-拆分资源（参见上一节DllPlugin）"><a href="#2-拆分资源（参见上一节DllPlugin）" class="headerlink" title="2. 拆分资源（参见上一节DllPlugin）"></a>2. 拆分资源（参见上一节DllPlugin）</h5><h5 id="3-删除冗余代码"><a href="#3-删除冗余代码" class="headerlink" title="3. 删除冗余代码"></a>3. 删除冗余代码</h5><p>一个比较典型的应用，就是 <code>Tree-Shaking</code>。</p>
+<p>推荐使用 UglifyJsPlugin 。</p>
+<h5 id="4-按需加载"><a href="#4-按需加载" class="headerlink" title="4. 按需加载"></a>4. 按需加载</h5><p>Vue 中可以在路由中配合 Webpack 的特殊注释进行路由懒加载。</p>
+<p>第三方库例如 ElementUI 配合官方文档的配置进行按需加载组件。</p>
+<h5 id="5-通过-CDN-来使用第三方库"><a href="#5-通过-CDN-来使用第三方库" class="headerlink" title="5. 通过 CDN 来使用第三方库"></a>5. 通过 CDN 来使用第三方库</h5><h3 id="1-2-Gzip-压缩技术"><a href="#1-2-Gzip-压缩技术" class="headerlink" title="1.2 Gzip 压缩技术"></a>1.2 Gzip 压缩技术</h3><h3 id="1-3-图片优化"><a href="#1-3-图片优化" class="headerlink" title="1.3 图片优化"></a>1.3 图片优化</h3><h4 id="1-JPEG-x2F-JPG"><a href="#1-JPEG-x2F-JPG" class="headerlink" title="1. JPEG &#x2F; JPG"></a>1. JPEG &#x2F; JPG</h4><p><strong>有损压缩、体积小、加载快、不支持透明</strong></p>
+<h4 id="2-PNG-8-和-PNG-24"><a href="#2-PNG-8-和-PNG-24" class="headerlink" title="2. PNG-8 和 PNG-24"></a>2. PNG-8 和 PNG-24</h4><p><strong>无损压缩、质量高、体积大、支持透明</strong></p>
+<h4 id="3-SVG"><a href="#3-SVG" class="headerlink" title="3. SVG"></a>3. SVG</h4><p><strong>文本文件、体积小、不失真、兼容性好</strong></p>
+<h4 id="4-Base64-和-雪碧图"><a href="#4-Base64-和-雪碧图" class="headerlink" title="4. Base64 和 雪碧图"></a>4. Base64 和 雪碧图</h4><p><strong>文本文件、依赖编码、小图标解决方案</strong></p>
+<p>webpack 的 <a target="_blank" rel="noopener" href="https://github.com/webpack-contrib/url-loader">url-loader</a></p>
+<h4 id="5-WebP"><a href="#5-WebP" class="headerlink" title="5. WebP"></a>5. WebP</h4><p>WebP 像 JPEG 一样对细节丰富的图片信手拈来，像 PNG 一样支持透明，像 GIF 一样可以显示动态图片——它集多种图片文件格式的优点于一身。但是兼容性差。</p>
+<h2 id="二、存储优化"><a href="#二、存储优化" class="headerlink" title="二、存储优化"></a>二、存储优化</h2><h3 id="2-1-浏览器缓存机制介绍与缓存策略剖析"><a href="#2-1-浏览器缓存机制介绍与缓存策略剖析" class="headerlink" title="2.1 浏览器缓存机制介绍与缓存策略剖析"></a>2.1 浏览器缓存机制介绍与缓存策略剖析</h3><p>通过网络获取内容既速度缓慢又开销巨大。较大的响应需要在客户端与服务器之间进行多次往返通信，这会延迟浏览器获得和处理内容的时间，还会增加访问者的流量费用。因此，缓存并重复利用之前获取的资源的能力成为性能优化的一个关键方面。</p>
+<p>浏览器缓存机制有四个方面，它们按照获取资源时请求的优先级依次排列如下：</p>
+<ol>
+<li>Memory Cache</li>
+<li>Service Worker Cache</li>
+<li>HTTP Cache</li>
+<li>Push Cache</li>
+</ol>
+<h4 id="2-1-1-HTTP-缓存机制"><a href="#2-1-1-HTTP-缓存机制" class="headerlink" title="2.1.1 HTTP 缓存机制"></a>2.1.1 HTTP 缓存机制</h4><p>HTTP 缓存是我们日常开发中最为熟悉的一种缓存机制。它又分为<strong>强缓存</strong>和<strong>协商缓存</strong>。优先级较高的是强缓存，在命中强缓存失败的情况下，才会走协商缓存。</p>
+<h5 id="1-强缓存"><a href="#1-强缓存" class="headerlink" title="1. 强缓存"></a>1. 强缓存</h5><p>强缓存是利用 http 头中的 Expires 和 Cache-Control 两个字段来控制的。强缓存中，当请求再次发出时，浏览器会根据其中的 expires 和 cache-control 判断目标资源是否“命中”强缓存，若命中则直接从缓存中获取资源，<strong>不会再与服务端发生通信。</strong></p>
+<p>命中强缓存的情况下，返回的 HTTP 状态码为 200 （如下图）。</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/9/20/165f6a683fc021e1?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="img"></p>
+<p>在 HTTP1.1 之前，通过 <code>expires</code> 字段来实现强缓存。当服务器返回响应时，在 Response Headers 中将过期时间写入 expires 字段。例如这样：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">expires: Wed, 11 May 2020 22:11:00 GMT</span><br></pre></td></tr></table></figure>
+
+<p><code>expires</code> 是一个时间戳，当本地时间早于这个时间时，客户端才会去从缓存中获取资源，否则就发送请求到服务器，获取最新资源。<code>expires</code> 存在一个问题，如果服务端和客户端的时间设置可能不同，或者我直接手动去把客户端的时间改掉，那么 expires 将无法达到我们的预期。</p>
+<p>考虑到 expires 的局限性，HTTP1.1 新增了 <code>Cache-Control</code> 字段来完成 expires 的任务。<br>expires 能做的事情，Cache-Control 都能做；expires 完成不了的事情，Cache-Control 也能做。因此，Cache-Control 可以视作是 expires 的<strong>完全替代方案</strong>。在当下的前端实践里，我们继续使用 expires 的唯一目的就是<strong>向下兼容</strong>。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cache-control: max-age=1800000</span><br></pre></td></tr></table></figure>
+
+<p><code>cache-control</code> 通过指定一个时间长度，来限制缓存的新鲜期。在这个新鲜期内，缓存都是有效的。</p>
+<p><strong>Cache-Control 相对于 expires 更加准确，它的优先级也更高。当 Cache-Control 与 expires 同时出现时，我们以 Cache-Control 为准。</strong></p>
+<p><code>cache-control</code> 还可以指定其他属性。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cache-control: max-age=3600, s-maxage=31536000</span><br></pre></td></tr></table></figure>
+
+<p>在依赖各种<strong>代理</strong>的大型架构中，我们不得不考虑<strong>代理服务器</strong>的缓存问题。s-maxage 就是用于表示 cache 服务器上（比如 cache CDN）的缓存的有效时间的，并只对 public 缓存有效。</p>
+<p><strong>public 与 private</strong></p>
+<p>public 与 private 是针对资源是否能够被代理服务缓存而存在的一组对立概念。</p>
+<p>如果我们为资源设置了 public，那么它既可以被浏览器缓存，也可以被代理服务器缓存；如果我们设置了 private，则该资源只能被浏览器缓存。private 为<strong>默认值</strong>。但多数情况下，public 并不需要我们手动设置，比如有很多线上网站的 <code>cache-control</code>是这样的：</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/9/20/165f6029fc74bbc6?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="img"></p>
+<p>设置了 <code>s-maxage</code>，没设置 public，那么 CDN 还可以缓存这个资源吗？答案是肯定的。因为明确的缓存信息（例如“max-age”）已表示响应是可以缓存的。</p>
+<p><strong>no-store与no-cache</strong></p>
+<p>no-cache 绕开了浏览器：我们为资源设置了 no-cache 后，每一次发起请求都不会再去询问浏览器的缓存情况，而是直接向服务端去确认该资源是否过期（即走我们下文即将讲解的协商缓存的路线）。</p>
+<p>no-store 比较绝情，顾名思义就是不使用任何缓存策略。在 no-cache 的基础上，它连服务端的缓存确认也绕开了，只允许你直接向服务端发送请求、并下载完整的响应。</p>
+<h5 id="2-协商缓存"><a href="#2-协商缓存" class="headerlink" title="2. 协商缓存"></a>2. 协商缓存</h5><p>协商缓存指浏览器与服务器合作之下的缓存策略，依赖于服务端与浏览器之间的通信。</p>
+<p>协商缓存机制下，浏览器需要向服务器去询问缓存的相关信息，进而判断是重新发起请求、下载完整的响应，还是从本地获取缓存的资源。</p>
+<p>如果服务端提示缓存资源未改动（Not Modified），资源会被<strong>重定向</strong>到浏览器缓存，<strong>这种情况下网络请求对应的状态码是 304 Not Modified</strong>。</p>
+<p><strong>Last-Modified</strong></p>
+<p><code>Last-Modified</code> 是一个时间戳，当启用协商缓存时，响应的首部会携带此字段。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Last-Modified: Fri, 27 Oct 2020 22:11:00 GMT</span><br></pre></td></tr></table></figure>
+
+<p>后面每次请求该资源时，请求首部就会将该字段的值携带在 <code>If-Modified-Since</code> 字段中。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">If-Modified-Since: Fri, 27 Oct 2020 22:11:00 GMT</span><br></pre></td></tr></table></figure>
+
+<p>服务器接收到这个时间戳后，会比对该时间戳和资源在服务器上的最后修改时间是否一致，从而判断资源是否发生了变化。如果发生了变化，就会返回一个完整的响应内容，并在响应首部中更新 <code>Last-Modified</code> ；否则，返回 <code>304 Not Modified</code> 响应，响应报文也不会携带响应实体而且首部也不会再携带 <code>Last-Modified</code> 字段。</p>
+<p>使用 <code>Last-Modified</code> 存在一些弊端，这其中最常见的就是这样两个场景：</p>
+<ul>
+<li>我们编辑了文件，但文件的内容没有改变。服务端并不清楚我们是否真正改变了文件，它仍然通过最后编辑时间进行判断。因此这个资源在再次被请求时，会被当做新资源，进而引发一次完整的响应——不该重新请求的时候，也会重新请求。</li>
+<li>当我们修改文件的速度过快时（比如花了 100ms 完成了改动），由于 <code>If-Modified-Since</code> 只能检查到以秒为最小计量单位的时间差，所以它是感知不到这个改动的——该重新请求的时候，反而没有重新请求了。</li>
+</ul>
+<p>此二种场景都阐述了同一个问题——服务器没有正确感知文件的变化。<code>Etag</code> 应运而生。</p>
+<p><strong>Etag</strong></p>
+<p>Etag 是由服务器为每个资源生成的唯一的<strong>标识字符串</strong>，这个标识字符串是基于文件内容编码的，只要文件内容不同，它们对应的 Etag 就是不同的，反之亦然。因此 Etag 能够精准地感知文件的变化。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ETag: W/&quot;2a3b-1602480f459&quot;</span><br></pre></td></tr></table></figure>
+
+<p>在下一次请求该资源时，请求头中会使用 <code>If-None-Match</code>字段将响应头中 <code>Etag</code>的值携带。</p>
+<p> <strong>Etag 在感知文件变化上比 Last-Modified 更加准确，优先级也更高。当 Etag 和 Last-Modified 同时存在时，以 Etag 为准。</strong></p>
+<h4 id="2-1-2-HTTP-缓存策略建议"><a href="#2-1-2-HTTP-缓存策略建议" class="headerlink" title="2.1.2 HTTP 缓存策略建议"></a>2.1.2 HTTP 缓存策略建议</h4><p><img src="https://user-gold-cdn.xitu.io/2018/9/20/165f701820fafcf8?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="img"></p>
+<p>当我们的资源内容不可复用时，直接为 Cache-Control 设置 no-store，拒绝一切形式的缓存；否则考虑是否每次都需要向服务器进行缓存有效确认，如果需要，那么设 Cache-Control 的值为 no-cache；否则考虑该资源是否可以被代理服务器缓存，根据其结果决定是设置为 private 还是 public；然后考虑该资源的过期时间，设置对应的 max-age 和 s-maxage 值；最后，配置协商缓存需要用到的 Etag、Last-Modified 等参数。</p>
+<h4 id="2-1-3-Memory-Cache"><a href="#2-1-3-Memory-Cache" class="headerlink" title="2.1.3 Memory Cache"></a>2.1.3 Memory Cache</h4><p>MemoryCache，是指存在内存中的缓存。从优先级上来说，它是浏览器最先尝试去命中的一种缓存。从效率上来说，它是响应速度最快的一种缓存。</p>
+<p>内存缓存是快的，也是“短命”的。它和渲染进程“生死相依”，当进程结束后，也就是 tab 关闭以后，内存里的数据也将不复存在。</p>
+<h4 id="2-1-4-Service-Worker-Cache"><a href="#2-1-4-Service-Worker-Cache" class="headerlink" title="2.1.4 Service Worker Cache"></a>2.1.4 Service Worker Cache</h4><p>Service Worker 是一种独立于主线程之外的 Javascript 线程。它脱离于浏览器窗体，因此无法直接访问 DOM。这样独立的个性使得 Service Worker 的“个人行为”无法干扰页面的性能，这个“幕后工作者”可以帮我们实现离线缓存、消息推送和网络代理等功能。我们借助 Service worker 实现的离线缓存就称为 Service Worker Cache。</p>
+<p>Service Worker 的生命周期包括 install、active、working 三个阶段。一旦 Service Worker 被 install，它将始终存在，只会在 active 与 working 之间切换，除非我们主动终止它。这是它可以用来实现离线存储的重要先决条件。</p>
+<h4 id="2-1-5-Push-Cache"><a href="#2-1-5-Push-Cache" class="headerlink" title="2.1.5 Push Cache"></a>2.1.5 Push Cache</h4><ul>
+<li>Push Cache 是缓存的最后一道防线。浏览器只有在 Memory Cache、Service Worker Cache 和 HTTP Cache  均未命中的情况下才会去询问 Push Cache。</li>
+<li>Push Cache 是一种存在于会话阶段的缓存，当 session 终止时，缓存也随之释放。</li>
+<li>不同的页面只要共享了同一个 HTTP2 连接，那么它们就可以共享同一个 Push Cache。</li>
+</ul>
+<h3 id="2-2-本地存储"><a href="#2-2-本地存储" class="headerlink" title="2.2 本地存储"></a>2.2 本地存储</h3><h4 id="2-2-1-Cookie"><a href="#2-2-1-Cookie" class="headerlink" title="2.2.1 Cookie"></a>2.2.1 Cookie</h4><p>Cookie 说白了就是一个存储在浏览器里的一个小小的文本文件，它附着在 HTTP 请求上，在浏览器和服务器之间“飞来飞去”。它可以携带用户信息，当服务器检查 Cookie 的时候，便可以获取到客户端的状态。</p>
+<p><strong>Cookie 以键值对的形式存在</strong>。</p>
+<p><strong>Cookie 的性能劣势</strong></p>
+<ul>
+<li><p>体积小。最大只能有 4KB。</p>
+</li>
+<li><p>过量的 Cookie 会带来巨大的性能浪费</p>
+<p><u>Cookie 是紧跟域名的</u>。我们通过响应头里的 Set-Cookie 指定要存储的 Cookie 值。默认情况下，domain 被设置为设置 Cookie 页面的主机名，我们也可以手动设置 domain 的值：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Set-Cookie: name=jokerwon; domain=jokerwon.io</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>同一个域名下的所有请求，都会携带 Cookie。</p>
+</li>
+</ul>
+<h4 id="2-2-2-Web-Storage-Local-Storage-与-Session-Storage"><a href="#2-2-2-Web-Storage-Local-Storage-与-Session-Storage" class="headerlink" title="2.2.2 Web Storage: Local Storage 与 Session Storage"></a>2.2.2 Web Storage: Local Storage 与 Session Storage</h4><p>Web Storage 是 HTML5 专门为浏览器存储而提供的数据存储机制。它又分为 Local Storage 与 Session Storage。它有以下特点：</p>
+<ul>
+<li>存储容量大： Web Storage 根据浏览器的不同，存储容量可以达到 5-10M 之间。</li>
+<li>仅位于浏览器端，不与服务端发生通信。</li>
+</ul>
+<p>Local Storage 与 Session Storage 的区别：</p>
+<ul>
+<li>生命周期：Local Storage 是持久化的本地存储，存储在其中的数据是永远不会过期的，使其消失的唯一办法是手动删除；而 Session Storage 是临时性的本地存储，它是会话级别的存储，当会话结束（页面被关闭）时，存储内容也随之被释放。</li>
+<li>作用域：Local Storage、Session Storage 和 Cookie 都遵循同源策略。但 Session Storage 特别的一点在于，即便是相同域名下的两个页面，只要它们<strong>不在同一个浏览器窗口中</strong>打开，那么它们的 Session Storage 内容便无法共享。</li>
+</ul>
+<h4 id="2-2-3-IndexedDB"><a href="#2-2-3-IndexedDB" class="headerlink" title="2.2.3 IndexedDB"></a>2.2.3 IndexedDB</h4><p>IndexedDB 是一个<strong>运行在浏览器上的非关系型数据库</strong>。理论上来说，IndexedDB 是没有存储上限的（一般来说不会小于 250M）。它不仅可以存储字符串，还可以存储二进制数据。</p>
+<h3 id="2-3-CDN-的缓存和回源策略"><a href="#2-3-CDN-的缓存和回源策略" class="headerlink" title="2.3 CDN 的缓存和回源策略"></a>2.3 CDN 的缓存和回源策略</h3><h4 id="2-3-1-CDN的核心功能特写"><a href="#2-3-1-CDN的核心功能特写" class="headerlink" title="2.3.1 CDN的核心功能特写"></a>2.3.1 CDN的核心功能特写</h4><p>CDN 的核心点有两个，一个是<strong>缓存</strong>，一个是<strong>回源</strong>。</p>
+<p>这两个概念都非常好理解。对标到上面描述的过程，“缓存”就是说我们把资源 copy 一份到 CDN 服务器上这个过程，“回源”就是说 CDN 发现自己没有这个资源（一般是缓存的数据过期了），转头向根服务器（或者它的上层服务器）去要这个资源的过程。</p>
+<h4 id="2-3-2-CDN-与前端性能优化"><a href="#2-3-2-CDN-与前端性能优化" class="headerlink" title="2.3.2 CDN 与前端性能优化"></a>2.3.2 CDN 与前端性能优化</h4><p><strong>CDN 往往被用来存放静态资源</strong>。上文中我们举例所提到的“根服务器”本质上是业务服务器，它的核心任务在于<strong>生成动态页面或返回非纯静态页面</strong>，这两种过程都是需要计算的。业务服务器仿佛一个车间，车间里运转的机器轰鸣着为我们产出所需的资源；相比之下，CDN 服务器则像一个仓库，它只充当资源的“栖息地”和“搬运工”。</p>
+
+                </section>
+
+                
+                
+
+                
+
+            </article>
+
+            
+            <nav class="dis_flex al_post_nav">
+                <a class="al_post_nav_item dis_flex_acenter" href="/2020/11/23/JavaScript/">
+                    
+                        <svg class="al_arrow">
+                            <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-arrow-left"></use>
+                        </svg>
+                        <span class="al_text_ellipsis al_post_nav_desc">JavaScript</span>
+                    
+                </a>
+                <a class="al_post_nav_item dis_flex_acenter" href="/2020/10/27/Linux/">
+                    
+                        <span class="al_text_ellipsis al_post_nav_desc">Linux</span>
+                        <svg class="al_arrow">
+                            <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-arrow-right"></use>
+                        </svg>
+                    
+                </a>
+            </nav>
+        </div>
+    </div>
+
+
+        <div class="al_index_footer dis_flex_center">
+    <div class="al_index_footer_item al_index_footer_title">
+        Joker Won
+    </div>
+
+    
+    
+
+    <div class="al_index_footer_item al_index_footer_extra">
+        Created By 
+        <a target="_blank" rel="noopener" href="https://github.com/iGuan7u/Acetolog">AcetoLog</a>
+         · Power By 
+        <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+    </div>
+
+    <div class="al_index_footer_item al_index_footer_extra_right">
+        All Right Reserved
+    </div>
+</div>
+
+        <script type="text/javascript" async="async" src="/javascripts/acelog.js"></script>
+        
+        
+        
+        
+        
+
+    </body>
+</html>

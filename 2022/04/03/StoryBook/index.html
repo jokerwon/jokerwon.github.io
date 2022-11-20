@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        
+    
+    <link rel='stylesheet' href="/./css/dracula.css">
+
+        <title>StoryBook</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=2.0">
+<link rel="stylesheet" href="/css/style.css">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="manifest" href="/site.webmanifest">
+
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        <header class="al_header al_pos_fixed">
+    <div class="al_header_container dis_flex_jcenter">
+        <div class="al_header_container_left">
+            <div class="al_header_site_title">
+                <a href="/">Joker Won's Stack</a>
+            </div>
+        </div>
+
+        <div class="dis_flex_jcenter">
+            <div class="al_header_setting">
+                <svg class="al_header_icon">
+                    <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-menu"></use>
+                </svg>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="al_sidebar">
+
+    <div class="al_sidebar_overlay al_full_cover"></div>
+
+    <div class="al_pos_fixed al_sidebar_cnt">
+        <div class="dis_flex_acenter al_sidebar_header">
+            <h3>Joker Won's Stack</h3>
+            <div class="al_sidebar_close al_header_setting">
+                <svg class="al_header_icon">
+                    <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-close"></use>
+                </svg>
+            </div>
+        </div>
+
+        <div class="al_sidebar_author_cnt">
+
+            <div class="al_sidebar_author_info">
+                <h4>Joker Won</h4>
+                <img class="al_sidebar_avatar" src="https://cdn.jsdelivr.net/gh/jokerwon/images/img/avatar.jpg">
+                <p>OS 出身的小伙子，对 Objective-C、Swift、以及 Javascript 有浓厚的兴趣。热衷使用原生实现所有功能，厌恶一切的跨平台开发技术。喜欢分享工作过程中遇到的问题以及日常工作中遇到的新技术。希望这个博客能给你带来一点启发。</p>
+            </div>
+
+            
+        </div>
+    </div>
+</div>
+
+        
+    <div class="dis_flex_center al_lightbox_cnt al_full_cover">
+        <img class="al_lightbox_img"/>
+    </div>
+    <div class="al_page_background dis_flex_center al_full_cover"></div>
+    <div class="al_page_container">
+        <div class="al_pos_ab al_fake_background"></div>
+        <div class="al_main_container al_shadow al_main_page_container">
+            <article class="al_article">
+                <header>
+                    <h1 class="al_page_title">
+                        StoryBook
+                    </h1>
+                    <div class="al_page_info dis_flex">
+                        <div class="al_page_content_info">
+                            Sun April 3, 2022 10:05 AM
+                        </div>
+
+                        
+
+                        
+                        <span class="tags"></span>
+                    </div>
+                </header>
+
+                
+                    <div class="al_page_content_outline">
+                        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-text">安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C"><span class="toc-text">运行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%80%E5%A7%8B"><span class="toc-text">开始</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Component-Story-Format-CSF"><span class="toc-text">Component Story Format (CSF)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%85%E4%BA%8B%E5%86%99%E5%9C%A8%E5%93%AA%E9%87%8C"><span class="toc-text">故事写在哪里</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%8E%BB%E7%BC%96%E5%86%99%E6%95%85%E4%BA%8B"><span class="toc-text">如何去编写故事</span></a></li></ol></li></ol>
+                    </div>
+                
+
+                
+                <section id="post-body">
+                    <h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>在项目根目录下执行。</p>
+<span id="more"></span>
+
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx sb init</span><br></pre></td></tr></table></figure>
+
+<p>需要在已存在的项目中使用。</p>
+<blockquote>
+<p>Storybook needs to be installed into a project that is already setup with a framework. It will not work on an empty project.</p>
+</blockquote>
+<h3 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run storybook</span><br></pre></td></tr></table></figure>
+
+<h3 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h3><h4 id="Component-Story-Format-CSF"><a href="#Component-Story-Format-CSF" class="headerlink" title="Component Story Format (CSF)"></a>Component Story Format (CSF)</h4><ul>
+<li><p>所有故事和组件都需要使用 ES 模块化，每个组件故事需由 <code>default export</code> 和 至少一个 <code>named exports</code>。</p>
+</li>
+<li><p>默认导出包括 <code>component</code> 、<code>title</code> 、<code>decorator</code> 和 <code>parameters</code> 等。</p>
+<p>其中 <code>title</code> 为必选项（需<strong>全局唯一</strong>），其他为可选项，但是 <code>component</code> 是推荐选项，因为 <code>addon</code> 界面能根据组件属性自动生成表单控件。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// MyComponent.story.js</span><br><span class="line">import MyComponent from &#x27;./MyComponent&#x27;;</span><br><span class="line"></span><br><span class="line">export default &#123;</span><br><span class="line">  title: &#x27;Path/To/MyComponent&#x27;,</span><br><span class="line">  component: MyComponent,</span><br><span class="line">  decorators: [ ... ],</span><br><span class="line">  parameters: &#123; ... &#125;,</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>每个具名导出默认表示一个故事。</p>
+</li>
+<li><p>为故事函数输入参数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// Button.stories.js</span><br><span class="line">export const Text = (&#123; label, onClick &#125;) =&gt; &lt;Button label=&#123;label&#125; onClick=&#123;onClick&#125; /&gt;;</span><br><span class="line">Text.args = &#123;</span><br><span class="line">  label: &#x27;Hello&#x27;,</span><br><span class="line">  onClick: action(&#x27;clicked&#x27;),</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="故事写在哪里"><a href="#故事写在哪里" class="headerlink" title="故事写在哪里"></a>故事写在哪里</h4><p>挨着你的组件</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Button.js | ts</span><br><span class="line">Button.stories.js | ts</span><br></pre></td></tr></table></figure>
+
+<h4 id="如何去编写故事"><a href="#如何去编写故事" class="headerlink" title="如何去编写故事"></a>如何去编写故事</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// Button.stories.js</span><br><span class="line">import Button from &#x27;./Button&#x27;;</span><br><span class="line"></span><br><span class="line">export const Primary = () =&gt; &lt;Button background=&quot;#ff0&quot; label=&quot;Button&quot; /&gt;;</span><br><span class="line">export const Secondary = () =&gt; &lt;Button background=&quot;#ff0&quot; label=&quot;😄👍😍💯&quot; /&gt;;</span><br><span class="line">export const Tertiary = () =&gt; &lt;Button background=&quot;#ff0&quot; label=&quot;📚📕📈🤓&quot; /&gt;;</span><br></pre></td></tr></table></figure>
+
+<p>有什么问题？</p>
+<p>对于较少的故事集，无伤大雅。当故事多起来后，就会变得冗余。</p>
+<p><strong>使用 args</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">// Button.stories.js</span><br><span class="line"></span><br><span class="line">// We create a “template” of how args map to rendering</span><br><span class="line">const Template = (args) =&gt; &lt;Button &#123;...args&#125; /&gt;;</span><br><span class="line"></span><br><span class="line">// Each story then reuses that template</span><br><span class="line">export const Primary = Template.bind(&#123;&#125;);</span><br><span class="line">Primary.args = &#123; background: &#x27;#ff0&#x27;, label: &#x27;Button&#x27; &#125;;</span><br><span class="line"></span><br><span class="line">export const Secondary = Template.bind(&#123;&#125;);</span><br><span class="line">Secondary.args = &#123; ...Primary.args, label: &#x27;😄👍😍💯&#x27; &#125;;</span><br><span class="line"></span><br><span class="line">export const Tertiary = Template.bind(&#123;&#125;);</span><br><span class="line">Tertiary.args = &#123; ...Primary.args, label: &#x27;📚📕📈🤓&#x27; &#125;;</span><br></pre></td></tr></table></figure>
+
+                </section>
+
+                
+                
+
+                
+
+            </article>
+
+            
+            <nav class="dis_flex al_post_nav">
+                <a class="al_post_nav_item dis_flex_acenter" href="/2022/04/03/StyledComponent/">
+                    
+                        <svg class="al_arrow">
+                            <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-arrow-left"></use>
+                        </svg>
+                        <span class="al_text_ellipsis al_post_nav_desc">Styled Components</span>
+                    
+                </a>
+                <a class="al_post_nav_item dis_flex_acenter" href="/2022/04/03/Babel/">
+                    
+                        <span class="al_text_ellipsis al_post_nav_desc">Babel</span>
+                        <svg class="al_arrow">
+                            <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-arrow-right"></use>
+                        </svg>
+                    
+                </a>
+            </nav>
+        </div>
+    </div>
+
+
+        <div class="al_index_footer dis_flex_center">
+    <div class="al_index_footer_item al_index_footer_title">
+        Joker Won
+    </div>
+
+    
+    
+
+    <div class="al_index_footer_item al_index_footer_extra">
+        Created By 
+        <a target="_blank" rel="noopener" href="https://github.com/iGuan7u/Acetolog">AcetoLog</a>
+         · Power By 
+        <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+    </div>
+
+    <div class="al_index_footer_item al_index_footer_extra_right">
+        All Right Reserved
+    </div>
+</div>
+
+        <script type="text/javascript" async="async" src="/javascripts/acelog.js"></script>
+        
+        
+        
+        
+        
+
+    </body>
+</html>

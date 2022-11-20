@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        
+    
+    <link rel='stylesheet' href="/./css/dracula.css">
+
+        <title>Interview</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=2.0">
+<link rel="stylesheet" href="/css/style.css">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="manifest" href="/site.webmanifest">
+
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        <header class="al_header al_pos_fixed">
+    <div class="al_header_container dis_flex_jcenter">
+        <div class="al_header_container_left">
+            <div class="al_header_site_title">
+                <a href="/">Joker Won's Stack</a>
+            </div>
+        </div>
+
+        <div class="dis_flex_jcenter">
+            <div class="al_header_setting">
+                <svg class="al_header_icon">
+                    <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-menu"></use>
+                </svg>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="al_sidebar">
+
+    <div class="al_sidebar_overlay al_full_cover"></div>
+
+    <div class="al_pos_fixed al_sidebar_cnt">
+        <div class="dis_flex_acenter al_sidebar_header">
+            <h3>Joker Won's Stack</h3>
+            <div class="al_sidebar_close al_header_setting">
+                <svg class="al_header_icon">
+                    <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-close"></use>
+                </svg>
+            </div>
+        </div>
+
+        <div class="al_sidebar_author_cnt">
+
+            <div class="al_sidebar_author_info">
+                <h4>Joker Won</h4>
+                <img class="al_sidebar_avatar" src="https://cdn.jsdelivr.net/gh/jokerwon/images/img/avatar.jpg">
+                <p>OS 出身的小伙子，对 Objective-C、Swift、以及 Javascript 有浓厚的兴趣。热衷使用原生实现所有功能，厌恶一切的跨平台开发技术。喜欢分享工作过程中遇到的问题以及日常工作中遇到的新技术。希望这个博客能给你带来一点启发。</p>
+            </div>
+
+            
+        </div>
+    </div>
+</div>
+
+        
+    <div class="dis_flex_center al_lightbox_cnt al_full_cover">
+        <img class="al_lightbox_img"/>
+    </div>
+    <div class="al_page_background dis_flex_center al_full_cover"></div>
+    <div class="al_page_container">
+        <div class="al_pos_ab al_fake_background"></div>
+        <div class="al_main_container al_shadow al_main_page_container">
+            <article class="al_article">
+                <header>
+                    <h1 class="al_page_title">
+                        Interview
+                    </h1>
+                    <div class="al_page_info dis_flex">
+                        <div class="al_page_content_info">
+                            Tue June 28, 2022 10:10 AM
+                        </div>
+
+                        
+
+                        
+                        <span class="tags"></span>
+                    </div>
+                </header>
+
+                
+                    <div class="al_page_content_outline">
+                        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTML-%E5%92%8C-CSS"><span class="toc-text">HTML 和 CSS</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-HTML"><span class="toc-text">1. HTML</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%AD%E4%B9%89%E5%8C%96"><span class="toc-text">语义化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%9A%E5%AA%92%E4%BD%93"><span class="toc-text">多媒体</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SEO"><span class="toc-text">SEO</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-CSS"><span class="toc-text">2. CSS</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B0%B4%E5%B9%B3%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD"><span class="toc-text">水平垂直居中</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E5%AE%9A%E4%BD%8D"><span class="toc-text">1. 定位</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-flex"><span class="toc-text">2. flex</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%83%E5%B1%80"><span class="toc-text">布局</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8F%8C%E9%A3%9E%E7%BF%BC%E5%B8%83%E5%B1%80"><span class="toc-text">双飞翼布局</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%9C%A3%E6%9D%AF%E5%B8%83%E5%B1%80"><span class="toc-text">圣杯布局</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B"><span class="toc-text">盒子模型</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%A0%87%E5%87%86%E7%9B%92%E6%A8%A1%E5%9E%8B%EF%BC%88content-box%EF%BC%89"><span class="toc-text">标准盒模型（content-box）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%80%AA%E5%BC%82%E7%9B%92%E6%A8%A1%E5%9E%8B%EF%BC%88%E6%97%A7%E7%89%88%E6%9C%ACIE%EF%BC%89-border-box"><span class="toc-text">怪异盒模型（旧版本IE）(border-box)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Flex-%E7%9B%92%E6%A8%A1%E5%9E%8B"><span class="toc-text">Flex 盒模型</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CSS-%E7%9A%84%E5%8D%95%E4%BD%8D"><span class="toc-text">CSS 的单位</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#px"><span class="toc-text">px</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%99%BE%E5%88%86%E6%AF%94"><span class="toc-text">百分比</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#em"><span class="toc-text">em</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#rem"><span class="toc-text">rem</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#vw-%E5%92%8C-vh"><span class="toc-text">vw 和 vh</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#BFC"><span class="toc-text">BFC</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Flex"><span class="toc-text">Flex</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AE%B9%E5%99%A8%E5%B1%9E%E6%80%A7"><span class="toc-text">容器属性</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E5%B1%9E%E6%80%A7"><span class="toc-text">项目属性</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Grid"><span class="toc-text">Grid</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AE%B9%E5%99%A8%E5%B1%9E%E6%80%A7-1"><span class="toc-text">容器属性</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E5%B1%9E%E6%80%A7-1"><span class="toc-text">项目属性</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%93%8D%E5%BA%94%E5%BC%8F%E5%B8%83%E5%B1%80"><span class="toc-text">响应式布局</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-media"><span class="toc-text">1. @media</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-rem"><span class="toc-text">2. rem</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-flex"><span class="toc-text">3. flex</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-vh-x2F-vw"><span class="toc-text">4. vh&#x2F;vw</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaScript"><span class="toc-text">JavaScript</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Vue"><span class="toc-text">Vue</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#React"><span class="toc-text">React</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Babel"><span class="toc-text">Babel</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Webpack"><span class="toc-text">Webpack</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP"><span class="toc-text">HTTP</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#TCP-%E7%9A%84%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%92%8C%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B"><span class="toc-text">TCP 的三次握手和四次挥手</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B"><span class="toc-text">三次握手</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B"><span class="toc-text">四次挥手</span></a></li></ol></li></ol></li></ol>
+                    </div>
+                
+
+                
+                <section id="post-body">
+                    <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>收集前端方面高频面试题。</p>
+<span id="more"></span>
+
+<h2 id="HTML-和-CSS"><a href="#HTML-和-CSS" class="headerlink" title="HTML 和 CSS"></a>HTML 和 CSS</h2><h3 id="1-HTML"><a href="#1-HTML" class="headerlink" title="1. HTML"></a>1. HTML</h3><h4 id="语义化"><a href="#语义化" class="headerlink" title="语义化"></a>语义化</h4><h4 id="多媒体"><a href="#多媒体" class="headerlink" title="多媒体"></a>多媒体</h4><h4 id="SEO"><a href="#SEO" class="headerlink" title="SEO"></a>SEO</h4><h3 id="2-CSS"><a href="#2-CSS" class="headerlink" title="2. CSS"></a>2. CSS</h3><h4 id="水平垂直居中"><a href="#水平垂直居中" class="headerlink" title="水平垂直居中"></a>水平垂直居中</h4><h5 id="1-定位"><a href="#1-定位" class="headerlink" title="1. 定位"></a>1. 定位</h5>   <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.father</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: relative;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.son</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="attribute">top</span>: <span class="number">50%</span>;</span><br><span class="line">  <span class="attribute">left</span>: <span class="number">50%</span>;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">200px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#2797ff</span>;</span><br><span class="line">  <span class="comment">/* 已知宽高 */</span></span><br><span class="line">  <span class="attribute">margin-top</span>: -<span class="number">50px</span>;</span><br><span class="line">  <span class="attribute">margin-left</span>: -<span class="number">100px</span>;</span><br><span class="line">  <span class="comment">/* 未知宽高 */</span></span><br><span class="line">  <span class="attribute">transform</span>: <span class="built_in">translate</span>(-<span class="number">50%</span>, -<span class="number">50%</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="2-flex"><a href="#2-flex" class="headerlink" title="2. flex"></a>2. flex</h5>   <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.father</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: flex;</span><br><span class="line">  <span class="attribute">justify-content</span>: center;</span><br><span class="line">  aligh-items: center</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h4><h5 id="双飞翼布局"><a href="#双飞翼布局" class="headerlink" title="双飞翼布局"></a>双飞翼布局</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span> <span class="attr">class</span>=<span class="string">&quot;clearfix&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;container&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;center&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span>    </span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;left&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;right&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">float</span>: left;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.center</span> &#123;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">200px</span>;</span><br><span class="line">  <span class="attribute">margin-left</span>: <span class="number">110px</span>;</span><br><span class="line">  <span class="attribute">margin-right</span>: <span class="number">220px</span>;</span><br><span class="line">  <span class="attribute">background</span>: green;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.center</span><span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">  <span class="attribute">display</span>: block;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">0</span>;</span><br><span class="line">  zoom: <span class="number">1</span>;</span><br><span class="line">  <span class="attribute">clear</span>: both;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.left</span> &#123;</span><br><span class="line">  <span class="attribute">float</span>: left;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">200px</span>;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">margin-left</span>: -<span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">background</span>: red;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.right</span> &#123;</span><br><span class="line">  <span class="attribute">float</span>: right;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">200px</span>;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">200px</span>;</span><br><span class="line">  <span class="attribute">margin-left</span>: -<span class="number">200px</span>;</span><br><span class="line">  <span class="attribute">background</span>: blue;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="圣杯布局"><a href="#圣杯布局" class="headerlink" title="圣杯布局"></a>圣杯布局</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;container clearfix&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;center&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;left&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;right&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">margin-left</span>: <span class="number">120px</span>;</span><br><span class="line">  <span class="attribute">margin-right</span>: <span class="number">220px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.main</span> &#123;</span><br><span class="line">  <span class="attribute">float</span>: left;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">300px</span>;</span><br><span class="line">  <span class="attribute">background</span>: green;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.left</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: relative;</span><br><span class="line">  <span class="attribute">left</span>: -<span class="number">120px</span>;</span><br><span class="line">  <span class="attribute">float</span>: left;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">300px</span>;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">margin-left</span>: -<span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">background</span>: red;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.right</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: relative;</span><br><span class="line">  <span class="attribute">right</span>: -<span class="number">220px</span>;</span><br><span class="line">  <span class="attribute">float</span>: right;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">300px</span>;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">200px</span>;</span><br><span class="line">  <span class="attribute">margin-left</span>: -<span class="number">200px</span>;</span><br><span class="line">  <span class="attribute">background</span>: blue;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="盒子模型"><a href="#盒子模型" class="headerlink" title="盒子模型"></a>盒子模型</h4><h5 id="标准盒模型（content-box）"><a href="#标准盒模型（content-box）" class="headerlink" title="标准盒模型（content-box）"></a>标准盒模型（content-box）</h5><p>盒子大小 &#x3D; content(width) + padding + border + margin</p>
+<h5 id="怪异盒模型（旧版本IE）-border-box"><a href="#怪异盒模型（旧版本IE）-border-box" class="headerlink" title="怪异盒模型（旧版本IE）(border-box)"></a>怪异盒模型（旧版本IE）(border-box)</h5><p>盒子大小 &#x3D; (content + padding + border)(width) + margin</p>
+<h5 id="Flex-盒模型"><a href="#Flex-盒模型" class="headerlink" title="Flex 盒模型"></a>Flex 盒模型</h5><h4 id="CSS-的单位"><a href="#CSS-的单位" class="headerlink" title="CSS 的单位"></a>CSS 的单位</h4><h5 id="px"><a href="#px" class="headerlink" title="px"></a>px</h5><p>基本单位，绝对单位。其他都是相对单位。</p>
+<h5 id="百分比"><a href="#百分比" class="headerlink" title="百分比"></a>百分比</h5><p>相对于父元素的宽度比例。</p>
+<h5 id="em"><a href="#em" class="headerlink" title="em"></a>em</h5><p>相对于当前元素的 <code>font-size</code> 。</p>
+<h5 id="rem"><a href="#rem" class="headerlink" title="rem"></a>rem</h5><p>相对于根元素的 <code>font-size</code> 。</p>
+<h5 id="vw-和-vh"><a href="#vw-和-vh" class="headerlink" title="vw 和 vh"></a>vw 和 vh</h5><p>屏幕宽高的 1% 。</p>
+<blockquote>
+<p>vmin 两者的较小值，vmax 两者的较大值。</p>
+</blockquote>
+<h4 id="BFC"><a href="#BFC" class="headerlink" title="BFC"></a>BFC</h4><ul>
+<li><p>触发条件</p>
+<ul>
+<li>body 根元素</li>
+<li>浮动元素：float 除 none 以外的值</li>
+<li>绝对定位元素：position (absolute、fixed)</li>
+<li>display 为 inline-block、table-cells、flex</li>
+<li>overflow 除了 visible 以外的值 (hidden、auto、scroll)</li>
+</ul>
+</li>
+<li><p>特性及应用</p>
+<ol>
+<li>同一个 BFC 下外边距会发生折叠。</li>
+<li>BFC 可以包含浮动元素。（应用场景：清除浮动）</li>
+<li>BFC 可以阻止元素被浮动元素覆盖。</li>
+</ol>
+</li>
+</ul>
+<h4 id="Flex"><a href="#Flex" class="headerlink" title="Flex"></a>Flex</h4><h5 id="容器属性"><a href="#容器属性" class="headerlink" title="容器属性"></a>容器属性</h5><ul>
+<li><p>flex-direction</p>
+<p>主轴方向，row ｜ column ｜ row-reverse ｜ column-reverse</p>
+</li>
+<li><p>flex-wrap</p>
+<p>换行方式，nowrap ｜ wrap ｜ wrap-reverse</p>
+</li>
+<li><p>flex-flow</p>
+<p><flex-direction> || <flex-wrap>，默认 row  nowrap。</p>
+</li>
+<li><p>justify-content</p>
+<p>定义主轴的对齐方式。</p>
+<ul>
+<li><code>flex-start</code>（默认值）：左对齐</li>
+<li><code>flex-end</code>：右对齐</li>
+<li><code>center</code>： 居中</li>
+<li><code>space-between</code>：两端对齐，项目之间的间隔都相等。</li>
+<li><code>space-around</code>：每个项目两侧的间隔相等。所以，项目之间的间隔比项目与边框的间隔大一倍。</li>
+</ul>
+</li>
+<li><p>align-items</p>
+<p>定义交叉轴的对齐方式。</p>
+<ul>
+<li><code>flex-start</code>：交叉轴的起点对齐。</li>
+<li><code>flex-end</code>：交叉轴的终点对齐。</li>
+<li><code>center</code>：交叉轴的中点对齐。</li>
+<li><code>baseline</code>: 项目的第一行文字的基线对齐。</li>
+<li><code>stretch</code>（默认值）：如果项目未设置高度或设为auto，将占满整个容器的高度。</li>
+</ul>
+</li>
+<li><p>align-content</p>
+<p>定义多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用。</p>
+<ul>
+<li><p><code>stretch</code>（默认值）：轴线占满整个交叉轴。</p>
+</li>
+<li><p><code>flex-start</code>：与交叉轴的起点对齐。</p>
+</li>
+<li><p><code>flex-end</code>：与交叉轴的终点对齐。</p>
+</li>
+<li><p><code>center</code>：与交叉轴的中点对齐。</p>
+</li>
+<li><p><code>space-between</code>：与交叉轴两端对齐，轴线之间的间隔平均分布。</p>
+</li>
+<li><p><code>space-around</code>：每根轴线两侧的间隔都相等。所以，轴线之间的间隔比轴线与边框的间隔大一倍。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="项目属性"><a href="#项目属性" class="headerlink" title="项目属性"></a>项目属性</h5><ul>
+<li><p>order</p>
+<p>定义项目的排列顺序。数值越小，排列越靠前，默认为0。</p>
+</li>
+<li><p>flex-grow</p>
+<p>定义项目的放大比例，默认为<code>0</code>，即如果存在剩余空间，也不放大。如果所有项目的<code>flex-grow</code>属性都为1，则它们将等分剩余空间（如果有的话）。如果一个项目的<code>flex-grow</code>属性为2，其他项目都为1，则前者占据的剩余空间将比其他项多一倍。</p>
+</li>
+<li><p>flex-shrink</p>
+<p>定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小。如果所有项目的<code>flex-shrink</code>属性都为1，当空间不足时，都将等比例缩小。如果一个项目的<code>flex-shrink</code>属性为0，其他项目都为1，则空间不足时，前者不缩小。</p>
+</li>
+<li><p>flex-basis</p>
+<p>定义了在分配多余空间之前，项目占据的主轴空间（main size）。浏览器根据这个属性，计算主轴是否有多余空间。它的默认值为<code>auto</code>，即项目的本来大小。它可以设为跟<code>width</code>或<code>height</code>属性一样的值（比如350px），则项目将占据固定空间。</p>
+</li>
+<li><p>flex</p>
+<p><code>flex</code>属性是<code>flex-grow</code>, <code>flex-shrink</code> 和 <code>flex-basis</code>的简写，默认值为<code>0 1 auto</code>。后两个属性可选。</p>
+<p>该属性有两个快捷值：<code>auto</code> (<code>1 1 auto</code>) 和 none (<code>0 0 auto</code>)。</p>
+</li>
+<li><p>align-self</p>
+<p><code>align-self</code>属性允许单个项目有与其他项目不一样的对齐方式，可覆盖<code>align-items</code>属性。默认值为<code>auto</code>，表示继承父元素的<code>align-items</code>属性，如果没有父元素，则等同于<code>stretch</code>。</p>
+</li>
+</ul>
+<h4 id="Grid"><a href="#Grid" class="headerlink" title="Grid"></a>Grid</h4><h5 id="容器属性-1"><a href="#容器属性-1" class="headerlink" title="容器属性"></a>容器属性</h5><ul>
+<li><p>grid-template-columns &amp; grid-template-rows</p>
+<p><code>grid-template-columns</code>属性定义每一列的列宽，<code>grid-template-rows</code>属性定义每一行的行高。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: grid;</span><br><span class="line">  <span class="attribute">grid-template-columns</span>: <span class="number">100px</span> <span class="number">100px</span> <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">grid-template-rows</span>: <span class="number">33.33%</span> <span class="number">33.33%</span> <span class="number">33.33%</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>repeat()</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: grid;</span><br><span class="line">  <span class="attribute">grid-template-columns</span>: <span class="built_in">repeat</span>(<span class="number">3</span>, <span class="number">100px</span>);</span><br><span class="line">  <span class="attribute">grid-template-rows</span>: <span class="built_in">repeat</span>(<span class="number">3</span>, <span class="number">33.33%</span>);</span><br><span class="line">  <span class="comment">/* 重复某种模式 */</span></span><br><span class="line">  <span class="attribute">grid-template-columns</span>: <span class="built_in">repeat</span>(<span class="number">2</span>, <span class="number">100px</span> <span class="number">20px</span> <span class="number">80px</span>);</span><br><span class="line">  <span class="comment">/* 相当于 */</span></span><br><span class="line">  <span class="attribute">grid-template-columns</span>: <span class="number">100px</span> <span class="number">20px</span> <span class="number">80px</span> <span class="number">100px</span> <span class="number">20px</span> <span class="number">80px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>auto-fill 关键字</p>
+<p>有时，单元格的大小是固定的，但是容器的大小不确定。如果希望每一行（或每一列）容纳尽可能多的单元格，这时可以使用<code>auto-fill</code>关键字表示自动填充。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 表示每列宽度100px，然后自动填充，直到容器不能放置更多的列 */</span></span><br><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: grid;</span><br><span class="line">  <span class="attribute">grid-template-columns</span>: <span class="built_in">repeat</span>(auto-fill, <span class="number">100px</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>fr 关键字</p>
+<p>为了方便表示比例关系，网格布局提供了<code>fr</code>关键字（fraction 的缩写，意为”片段”）, 表示剩余空间。如果两列的宽度分别为<code>1fr</code>和<code>2fr</code>，就表示后者是前者的两倍。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: grid;</span><br><span class="line">  <span class="attribute">grid-template-columns</span>: <span class="number">150px</span> <span class="number">1</span>fr <span class="number">2</span>fr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>minmax()</p>
+<p><code>minmax()</code>函数产生一个长度范围，表示长度就在这个范围之中。它接受两个参数，分别为最小值和最大值。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 列宽不小于100px，不大于1fr */</span></span><br><span class="line"><span class="attribute">grid-template-columns</span>: <span class="number">1</span>fr <span class="number">1</span>fr <span class="built_in">minmax</span>(<span class="number">100px</span>, <span class="number">1</span>fr);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>auto 关键字</p>
+<p>表示由浏览器自己决定长度。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 第二列的宽度，基本上等于该列单元格的最大宽度，除非单元格内容设置了min-width，且这个值大于最大宽度 */</span></span><br><span class="line"><span class="attribute">grid-template-columns</span>: <span class="number">100px</span> auto <span class="number">100px</span>;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>grid-row-gap &amp; grid-column-gap &amp; grid-gap</p>
+<p><code>grid-row-gap</code>属性设置行与行的间隔（行间距），<code>grid-column-gap</code>属性设置列与列的间隔（列间距）。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">grid-row</span>-<span class="attribute">gap</span>: <span class="number">20px</span>;</span><br><span class="line">  <span class="attribute">grid-column</span>-<span class="attribute">gap</span>: <span class="number">20px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>grid-gap</code>属性是<code>grid-column-gap</code>和<code>grid-row-gap</code>的合并简写形式，语法如下。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">grid-gap</span>: &lt;grid-row-gap&gt; &lt;grid-column-gap&gt;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>grid-template-areas</p>
+<p>网格布局允许指定”区域”（area），一个区域由单个或多个单元格组成。<code>grid-template-areas</code>属性用于定义区域。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 先划分出9个单元格，然后将其定名为a到i的九个区域，分别对应这九个单元格 */</span></span><br><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: grid;</span><br><span class="line">  <span class="attribute">grid-template-columns</span>: <span class="number">100px</span> <span class="number">100px</span> <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">grid-template-rows</span>: <span class="number">100px</span> <span class="number">100px</span> <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">grid-template-areas</span>: <span class="string">&#x27;a b c&#x27;</span></span><br><span class="line">                       <span class="string">&#x27;d e f&#x27;</span></span><br><span class="line">                       <span class="string">&#x27;g h i&#x27;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>重名的单元格会合并</strong>：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 顶部是页眉区域header，底部是页脚区域footer，中间部分则为main和sidebar */</span></span><br><span class="line"><span class="attribute">grid-template-areas</span>: <span class="string">&quot;header header header&quot;</span></span><br><span class="line">                     <span class="string">&quot;main main sidebar&quot;</span></span><br><span class="line">                     <span class="string">&quot;footer footer footer&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>不需要利用的区域可以用 <code>.</code> 来表示：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 中间一列为点，表示没有用到该单元格，或者该单元格不属于任何区域 */</span></span><br><span class="line"><span class="attribute">grid-template-areas</span>: <span class="string">&#x27;a . c&#x27;</span></span><br><span class="line">                     <span class="string">&#x27;d . f&#x27;</span></span><br><span class="line">                     <span class="string">&#x27;g . i&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>⚠️ 注意</p>
+<p>区域的命名会影响到网格线。每个区域的起始网格线，会自动命名为<code>区域名-start</code>，终止网格线自动命名为<code>区域名-end</code>。</p>
+<p>比如，区域名为<code>header</code>，则起始位置的水平网格线和垂直网格线叫做<code>header-start</code>，终止位置的水平网格线和垂直网格线叫做<code>header-end</code>。</p>
+</li>
+<li><p>justify-items &amp; align-items &amp; place-items （<strong>设置单元格对齐方式</strong>）</p>
+<p><code>justify-items</code> 属性设置单元格内容的水平位置（左中右），<code>align-items</code> 属性设置单元格内容的垂直位置（上中下）。</p>
+<ul>
+<li><code>start</code>：对齐单元格的起始边缘。</li>
+<li><code>end</code>：对齐单元格的结束边缘。</li>
+<li><code>center</code>：单元格内部居中。</li>
+<li><code>stretch</code>：拉伸，占满单元格的整个宽度（默认值）。</li>
+</ul>
+<p><code>place-items</code> 属性是 <code>align-items</code> 属性和 <code>justify-items</code> 属性的合并简写形式。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">place-items: &lt;align-items&gt; &lt;justify-items&gt;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>justify-content &amp; align-content &amp; place-content</p>
+<p><code>justify-content</code> 属性是整个内容区域在容器里面的水平位置（左中右），<code>align-content</code> 属性是整个内容区域的垂直位置（上中下）。</p>
+<ul>
+<li><code>start</code> : 对齐容器的起始边框。</li>
+<li><code>end</code> : 对齐容器的结束边框。</li>
+<li><code>center</code> : 容器内部居中。</li>
+<li><code>stretch</code> : 项目大小没有指定时，拉伸占据整个网格容器。</li>
+<li><code>space-around</code> : 每个项目两侧的间隔相等。所以，项目之间的间隔比项目与容器边框的间隔大一倍。</li>
+<li><code>space-between</code> : 项目与项目的间隔相等，项目与容器边框之间没有间隔。</li>
+<li><code>space-evenly</code> : 项目与项目的间隔相等，项目与容器边框之间也是同样长度的间隔。</li>
+</ul>
+<p><code>place-content</code> 属性是 <code>align-content</code> 属性和 <code>justify-content</code> 属性的合并简写形式。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">place-<span class="attribute">content</span>: &lt;align-content&gt; &lt;justify-content&gt;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h5 id="项目属性-1"><a href="#项目属性-1" class="headerlink" title="项目属性"></a>项目属性</h5><ul>
+<li><p>grid-column-start：左边框所在的垂直网格线<br>grid-column-end：右边框所在的垂直网格线<br>grid-row-start：上边框所在的水平网格线<br>grid-row-end：下边框所在的水平网格线</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 左边框是第二根垂直网格线，右边框是第四根垂直网格线，上下边框使用默认配置 */</span></span><br><span class="line"><span class="selector-class">.item-1</span> &#123;</span><br><span class="line">  <span class="attribute">grid-column-start</span>: <span class="number">2</span>;</span><br><span class="line">  <span class="attribute">grid-column-end</span>: <span class="number">4</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>grid-column</code>属性是<code>grid-column-start</code>和<code>grid-column-end</code>的合并简写形式，<code>grid-row</code>属性是<code>grid-row-start</code>属性和<code>grid-row-end</code>的合并简写形式。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item</span> &#123;</span><br><span class="line">  <span class="attribute">grid-column</span>: &lt;start-line&gt; / &lt;end-line&gt;;</span><br><span class="line">  <span class="attribute">grid-row</span>: &lt;start-line&gt; / &lt;end-line&gt;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.item-1</span> &#123;</span><br><span class="line">  <span class="attribute">grid-column</span>: <span class="number">1</span> / <span class="number">3</span>;</span><br><span class="line">  <span class="attribute">grid-row</span>: <span class="number">1</span> / <span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 等同于 */</span></span><br><span class="line"><span class="selector-class">.item-1</span> &#123;</span><br><span class="line">  <span class="attribute">grid-column-start</span>: <span class="number">1</span>;</span><br><span class="line">  <span class="attribute">grid-column-end</span>: <span class="number">3</span>;</span><br><span class="line">  <span class="attribute">grid-row-start</span>: <span class="number">1</span>;</span><br><span class="line">  <span class="attribute">grid-row-end</span>: <span class="number">2</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>斜杠以及后面的部分可以省略，默认跨越一个网格。</p>
+</li>
+<li><p>grid-area</p>
+<p>指定项目放在哪一个区域。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item-1</span> &#123;</span><br><span class="line">  <span class="attribute">grid-area</span>: e;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>grid-area</code>属性还可用作<code>grid-row-start</code>、<code>grid-column-start</code>、<code>grid-row-end</code>、<code>grid-column-end</code>的合并简写形式，直接指定项目的位置。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item</span> &#123;</span><br><span class="line">  <span class="attribute">grid-area</span>: &lt;row-start&gt; / &lt;column-start&gt; / &lt;row-end&gt; / &lt;column-end&gt;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.item-1</span> &#123;</span><br><span class="line">  <span class="attribute">grid-area</span>: <span class="number">1</span> / <span class="number">1</span> / <span class="number">3</span> / <span class="number">3</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>justify-self &amp; align-self &amp; place-self</p>
+<p><code>justify-self</code>属性设置单元格内容的水平位置（左中右），跟<code>justify-items</code>属性的用法完全一致，但只作用于单个项目。</p>
+<p><code>align-self</code>属性设置单元格内容的垂直位置（上中下），跟<code>align-items</code>属性的用法完全一致，也是只作用于单个项目。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item</span> &#123;</span><br><span class="line">  justify-self: start | end | center | stretch;</span><br><span class="line">  <span class="attribute">align-self</span>: start | end | center | stretch;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>place-self</code>属性是<code>align-self</code>属性和<code>justify-self</code>属性的合并简写形式。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">place-self: &lt;align-self&gt; &lt;justify-self&gt;;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="响应式布局"><a href="#响应式布局" class="headerlink" title="响应式布局"></a>响应式布局</h4><h5 id="1-media"><a href="#1-media" class="headerlink" title="1. @media"></a>1. @media</h5><h5 id="2-rem"><a href="#2-rem" class="headerlink" title="2. rem"></a>2. rem</h5><h5 id="3-flex"><a href="#3-flex" class="headerlink" title="3. flex"></a>3. flex</h5><h5 id="4-vh-x2F-vw"><a href="#4-vh-x2F-vw" class="headerlink" title="4. vh&#x2F;vw"></a>4. vh&#x2F;vw</h5><h2 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h2><h2 id="Vue"><a href="#Vue" class="headerlink" title="Vue"></a>Vue</h2><h2 id="React"><a href="#React" class="headerlink" title="React"></a>React</h2><h2 id="Babel"><a href="#Babel" class="headerlink" title="Babel"></a>Babel</h2><h2 id="Webpack"><a href="#Webpack" class="headerlink" title="Webpack"></a>Webpack</h2><h2 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h2><blockquote>
+<p>网络连接是基于 TCP 协议，传输内容基于 HTTP。</p>
+</blockquote>
+<h3 id="TCP-的三次握手和四次挥手"><a href="#TCP-的三次握手和四次挥手" class="headerlink" title="TCP 的三次握手和四次挥手"></a>TCP 的三次握手和四次挥手</h3><h4 id="三次握手"><a href="#三次握手" class="headerlink" title="三次握手"></a>三次握手</h4><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Client   ====SYN====&gt;   Server</span><br><span class="line">Client &lt;====SYN+ACK==== Server</span><br><span class="line">Client   ====ACK====&gt;   Server</span><br></pre></td></tr></table></figure>
+
+<h4 id="四次挥手"><a href="#四次挥手" class="headerlink" title="四次挥手"></a>四次挥手</h4><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Client   ====FIN====&gt;   Server</span><br><span class="line">Client   &lt;====ACK====   Server</span><br><span class="line">Client   &lt;====FIN====   Server</span><br><span class="line">Client   ====ACK====&gt;   Server</span><br></pre></td></tr></table></figure>
+
+                </section>
+
+                
+                
+
+                
+
+            </article>
+
+            
+            <nav class="dis_flex al_post_nav">
+                <a class="al_post_nav_item dis_flex_acenter" href="/2022/07/21/UML/">
+                    
+                        <svg class="al_arrow">
+                            <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-arrow-left"></use>
+                        </svg>
+                        <span class="al_text_ellipsis al_post_nav_desc">UML</span>
+                    
+                </a>
+                <a class="al_post_nav_item dis_flex_acenter" href="/2022/06/12/MonoRepo/">
+                    
+                        <span class="al_text_ellipsis al_post_nav_desc">MonoRepo</span>
+                        <svg class="al_arrow">
+                            <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-arrow-right"></use>
+                        </svg>
+                    
+                </a>
+            </nav>
+        </div>
+    </div>
+
+
+        <div class="al_index_footer dis_flex_center">
+    <div class="al_index_footer_item al_index_footer_title">
+        Joker Won
+    </div>
+
+    
+    
+
+    <div class="al_index_footer_item al_index_footer_extra">
+        Created By 
+        <a target="_blank" rel="noopener" href="https://github.com/iGuan7u/Acetolog">AcetoLog</a>
+         · Power By 
+        <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+    </div>
+
+    <div class="al_index_footer_item al_index_footer_extra_right">
+        All Right Reserved
+    </div>
+</div>
+
+        <script type="text/javascript" async="async" src="/javascripts/acelog.js"></script>
+        
+        
+        
+        
+        
+
+    </body>
+</html>

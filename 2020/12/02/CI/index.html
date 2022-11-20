@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        
+    
+    <link rel='stylesheet' href="/./css/dracula.css">
+
+        <title>CI/CD</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=2.0">
+<link rel="stylesheet" href="/css/style.css">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="manifest" href="/site.webmanifest">
+
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        <header class="al_header al_pos_fixed">
+    <div class="al_header_container dis_flex_jcenter">
+        <div class="al_header_container_left">
+            <div class="al_header_site_title">
+                <a href="/">Joker Won's Stack</a>
+            </div>
+        </div>
+
+        <div class="dis_flex_jcenter">
+            <div class="al_header_setting">
+                <svg class="al_header_icon">
+                    <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-menu"></use>
+                </svg>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="al_sidebar">
+
+    <div class="al_sidebar_overlay al_full_cover"></div>
+
+    <div class="al_pos_fixed al_sidebar_cnt">
+        <div class="dis_flex_acenter al_sidebar_header">
+            <h3>Joker Won's Stack</h3>
+            <div class="al_sidebar_close al_header_setting">
+                <svg class="al_header_icon">
+                    <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-close"></use>
+                </svg>
+            </div>
+        </div>
+
+        <div class="al_sidebar_author_cnt">
+
+            <div class="al_sidebar_author_info">
+                <h4>Joker Won</h4>
+                <img class="al_sidebar_avatar" src="https://cdn.jsdelivr.net/gh/jokerwon/images/img/avatar.jpg">
+                <p>OS 出身的小伙子，对 Objective-C、Swift、以及 Javascript 有浓厚的兴趣。热衷使用原生实现所有功能，厌恶一切的跨平台开发技术。喜欢分享工作过程中遇到的问题以及日常工作中遇到的新技术。希望这个博客能给你带来一点启发。</p>
+            </div>
+
+            
+        </div>
+    </div>
+</div>
+
+        
+    <div class="dis_flex_center al_lightbox_cnt al_full_cover">
+        <img class="al_lightbox_img"/>
+    </div>
+    <div class="al_page_background dis_flex_center al_full_cover"></div>
+    <div class="al_page_container">
+        <div class="al_pos_ab al_fake_background"></div>
+        <div class="al_main_container al_shadow al_main_page_container">
+            <article class="al_article">
+                <header>
+                    <h1 class="al_page_title">
+                        CI/CD
+                    </h1>
+                    <div class="al_page_info dis_flex">
+                        <div class="al_page_content_info">
+                            Wed December 2, 2020 09:04 AM
+                        </div>
+
+                        
+
+                        
+                        <span class="tags"></span>
+                    </div>
+                </header>
+
+                
+                    <div class="al_page_content_outline">
+                        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Jenkins"><span class="toc-text">Jenkins</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-text">简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2"><span class="toc-text">安装部署</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E-Docker-%E5%AE%89%E8%A3%85"><span class="toc-text">基于 Docker 安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E-War-%E5%8C%85%E5%AE%89%E8%A3%85"><span class="toc-text">基于 War 包安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E-Mac-%E5%AE%89%E8%A3%85"><span class="toc-text">基于 Mac 安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E-Linux-%E5%AE%89%E8%A3%85"><span class="toc-text">基于 Linux 安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E5%90%91%E5%AF%BC"><span class="toc-text">设置向导</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E6%97%B6%E9%97%AE%E9%A2%98"><span class="toc-text">安装时问题</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8-Jenkins-%E6%97%B6%E9%81%87%E5%88%B0-ERROR-No-Java-executable-found-in-current-PATH-x2F-bin-x2F-usr-x2F-bin-x2F-sbin-x2F-usr-x2F-sbin%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-text">启动 Jenkins 时遇到 ERROR: No Java executable found in current PATH: &#x2F;bin:&#x2F;usr&#x2F;bin:&#x2F;sbin:&#x2F;usr&#x2F;sbin的问题</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD%E6%8F%92%E4%BB%B6%E5%A4%AA%E6%85%A2"><span class="toc-text">下载插件太慢</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Jenkins-%E7%B3%BB%E7%BB%9F%E6%9D%83%E9%99%90%E9%97%AE%E9%A2%98"><span class="toc-text">Jenkins 系统权限问题</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Pipeline"><span class="toc-text">Pipeline</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5"><span class="toc-text">概念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%84%8F%E4%B9%89"><span class="toc-text">意义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95"><span class="toc-text">语法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%BF%85%E8%A6%81%E7%9A%84-Groovy-%E8%AF%AD%E6%B3%95"><span class="toc-text">必要的 Groovy 语法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#pipeline-%E7%9A%84%E6%9C%80%E7%AE%80%E7%BB%93%E6%9E%84"><span class="toc-text">pipeline 的最简结构</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#post"><span class="toc-text">post</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#options"><span class="toc-text">options</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%9C%A8%E5%A3%B0%E6%98%8E%E5%BC%8F-pipeline-%E4%B8%AD%E4%BD%BF%E7%94%A8%E8%84%9A%E6%9C%AC"><span class="toc-text">在声明式 pipeline 中使用脚本</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#when"><span class="toc-text">when</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#branch"><span class="toc-text">branch</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#buildingTag"><span class="toc-text">buildingTag</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#changelog"><span class="toc-text">changelog</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#changeset"><span class="toc-text">changeset</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#changeRequest"><span class="toc-text">changeRequest</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#environment"><span class="toc-text">environment</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#equals"><span class="toc-text">equals</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#expression"><span class="toc-text">expression</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#tag"><span class="toc-text">tag</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#not"><span class="toc-text">not</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#allOf"><span class="toc-text">allOf</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#anyOf"><span class="toc-text">anyOf</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#tools"><span class="toc-text">tools</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#enviroment"><span class="toc-text">enviroment</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#parameters"><span class="toc-text">parameters</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#triggers"><span class="toc-text">triggers</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-text">环境变量</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Jenkins-%E5%86%85%E7%BD%AE%E5%8F%98%E9%87%8F"><span class="toc-text">Jenkins 内置变量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89-pipeline-%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-text">自定义 pipeline 环境变量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F"><span class="toc-text">自定义全局变量</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A6%E5%8F%91%E5%99%A8"><span class="toc-text">触发器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A6%E5%8F%91%E6%9D%A1%E4%BB%B6"><span class="toc-text">触发条件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%97%B6%E9%97%B4%E8%A7%A6%E5%8F%91"><span class="toc-text">时间触发</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AE%9A%E6%97%B6%E6%89%A7%E8%A1%8C-cron"><span class="toc-text">定时执行 cron</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%BD%AE%E8%AF%A2%E4%BB%A3%E7%A0%81%E4%BB%93%E5%BA%93%EF%BC%9ApollSCM"><span class="toc-text">轮询代码仓库：pollSCM</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8B%E4%BB%B6%E8%A7%A6%E5%8F%91"><span class="toc-text">事件触发</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%94%B1%E4%B8%8A%E6%B8%B8%E4%BB%BB%E5%8A%A1%E8%A7%A6%E5%8F%91%EF%BC%9Aupstream"><span class="toc-text">由上游任务触发：upstream</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#WebHook-%E8%A7%A6%E5%8F%91"><span class="toc-text">*WebHook 触发</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9D%83%E9%99%90"><span class="toc-text">权限</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E-Docker"><span class="toc-text">基于 Docker</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Drone"><span class="toc-text">Drone</span></a></li></ol>
+                    </div>
+                
+
+                
+                <section id="post-body">
+                    <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>CI&#x2F;CD 是一种通过在应用开发阶段引入自动化来频繁向客户交付应用的方法。CI&#x2F;CD 的核心概念是持续集成、持续交付和持续部署。CI&#x2F;CD 可让持续自动化和持续监控贯穿于应用的整个生命周期（从集成和测试阶段，到交付和部署）。这些关联的事务通常被统称为“CI&#x2F;CD 管道”，由开发和运维团队以敏捷方式协同支持。</p>
+<span id="more"></span>
+
+<h2 id="Jenkins"><a href="#Jenkins" class="headerlink" title="Jenkins"></a>Jenkins</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><ul>
+<li>Jenkins 是一款使用 Java 语言开发的开源的自动化服务器。我们通过界面或 Jenkinsfile 告诉它执行什么任务，何时执行。理论上，我们可以让它执行任何任务，但是通常只应用于持续集成和持续交付。</li>
+<li>Jenkins 通常作为一个独立的应用程序在其自己的流程中运行， 内置 Java servlet 容器&#x2F;应用程序服务器（<a target="_blank" rel="noopener" href="http://www.eclipse.org/jetty/">Jetty</a>）。</li>
+</ul>
+<h3 id="安装部署"><a href="#安装部署" class="headerlink" title="安装部署"></a>安装部署</h3><p><strong>前置条件</strong></p>
+<ul>
+<li>系统已存在 Java 8 环境</li>
+</ul>
+<h4 id="基于-Docker-安装"><a href="#基于-Docker-安装" class="headerlink" title="基于 Docker 安装"></a>基于 Docker 安装</h4><p>&#x2F;&#x2F; TODO</p>
+<h4 id="基于-War-包安装"><a href="#基于-War-包安装" class="headerlink" title="基于 War 包安装"></a>基于 War 包安装</h4><ol>
+<li><p><a target="_blank" rel="noopener" href="http://mirrors.jenkins.io/war-stable/latest/jenkins.war">下载最新版的 War 文件</a> ，并将其放置在合适的目录下。</p>
+<blockquote>
+<p>也可在 <a target="_blank" rel="noopener" href="http://mirrors.jenkins.io/war-stable/">此处</a> 查找想要的稳定版本。</p>
+</blockquote>
+</li>
+<li><p>运行命令 <code>java -jar &lt;war_filename&gt; [--httpPort=&lt;port&gt;]</code> 。<em>推荐使用守护进程运行 war 文件</em>。</p>
+</li>
+<li><p>开始 <strong><a href="#%E8%AE%BE%E7%BD%AE%E5%90%91%E5%AF%BC">设置向导</a></strong> 。</p>
+</li>
+</ol>
+<h4 id="基于-Mac-安装"><a href="#基于-Mac-安装" class="headerlink" title="基于 Mac 安装"></a>基于 Mac 安装</h4><ol>
+<li><p>使用 homebrew 安装。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装最新版本</span></span><br><span class="line">brew install jenkins</span><br><span class="line"><span class="comment"># 或安装 LTS 发行版</span></span><br><span class="line">brew install jenkins-lts</span><br><span class="line"></span><br><span class="line"><span class="comment"># 启动服务</span></span><br><span class="line">brew services start jenkins</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>开始 <strong><a href="#%E8%AE%BE%E7%BD%AE%E5%90%91%E5%AF%BC">设置向导</a></strong> 。</p>
+</li>
+</ol>
+<h4 id="基于-Linux-安装"><a href="#基于-Linux-安装" class="headerlink" title="基于 Linux 安装"></a>基于 Linux 安装</h4><ol>
+<li><p>以 ubuntu 为例，使用 apt-get 命令安装。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">wget -q -O - https://pkg.jenkins.io/debian/jenkins.io.key | sudo apt-key add -</span><br><span class="line"><span class="comment"># 更新数据源</span></span><br><span class="line">sudo sh -c <span class="string">&#x27;echo deb http://pkg.jenkins.io/debian-stable binary/ &gt; /etc/apt/sources.list.d/jenkins.list&#x27;</span></span><br><span class="line">sudo apt-get update</span><br><span class="line"><span class="comment"># 执行安装</span></span><br><span class="line">sudo apt-get install jenkins</span><br><span class="line"></span><br><span class="line"><span class="comment"># 启动服务</span></span><br><span class="line">service jenkins start</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>开始 <strong><a href="#%E8%AE%BE%E7%BD%AE%E5%90%91%E5%AF%BC">设置向导</a></strong> 。</p>
+</li>
+</ol>
+<p><strong>提示</strong></p>
+<blockquote>
+<p>Jenkins 工作目录 <code>/var/lib/jenkins</code></p>
+<p>日志存放目录 <code>/var/log/jenkins</code></p>
+<p>默认配置文件 <code>/etc/default/jenkins</code></p>
+<p><em>以上仅供参考</em></p>
+</blockquote>
+<h4 id="设置向导"><a href="#设置向导" class="headerlink" title="设置向导"></a>设置向导</h4><p><em>部分引导基于 ubuntu 18.04.1 LTS 64位</em></p>
+<ol>
+<li><p>安装运行后访问 <a target="_blank" rel="noopener" href="http://localhost:8080/">http://localhost:8080</a> ，等待 <strong>解锁 Jenkins</strong> 的页面出现。(未改变运行默认端口的前提下)</p>
+<p><img src="https://gitee.com/jokerwon/images/raw/master/img/20201216093734.jpg" alt="Getting Start"></p>
+</li>
+<li><p>从 Jenkins 控制台日志输出中，寻找并复制自动生成的默认密码。</p>
+<p><img src="https://gitee.com/jokerwon/images/raw/master/img/20201216095410.png" alt="Default Password"></p>
+<blockquote>
+<ul>
+<li>此次安装的默认日志路径为 <code>/var/log/jenkins/jenkins.log</code> ，如果日志遗失，可以从 <code>/var/lib/jenkins/secrets/initialAdminPassword</code> 获取初始密码</li>
+<li>必须在新Jenkins安装中的安装向导中输入此密码才能访问Jenkins的主UI。 如果您在设置向导中跳过了后续的用户创建步骤， 则此密码还可用作默认admininstrator帐户的密码（使用用户名“admin”）</li>
+</ul>
+</blockquote>
+</li>
+<li><p>在  <strong>解锁 Jenkins</strong> 的页面输入刚刚复制的密码来解锁 Jenkins，而后，开始你的自定义 Jenkins 设置，后期亦可在 <code>系统管理</code> 中进行系统配置和插件管理。</p>
+</li>
+</ol>
+<h4 id="安装时问题"><a href="#安装时问题" class="headerlink" title="安装时问题"></a>安装时问题</h4><ol>
+<li><h5 id="启动-Jenkins-时遇到-ERROR-No-Java-executable-found-in-current-PATH-x2F-bin-x2F-usr-x2F-bin-x2F-sbin-x2F-usr-x2F-sbin的问题"><a href="#启动-Jenkins-时遇到-ERROR-No-Java-executable-found-in-current-PATH-x2F-bin-x2F-usr-x2F-bin-x2F-sbin-x2F-usr-x2F-sbin的问题" class="headerlink" title="启动 Jenkins 时遇到 ERROR: No Java executable found in current PATH: &#x2F;bin:&#x2F;usr&#x2F;bin:&#x2F;sbin:&#x2F;usr&#x2F;sbin的问题"></a>启动 Jenkins 时遇到 ERROR: No Java executable found in current PATH: &#x2F;bin:&#x2F;usr&#x2F;bin:&#x2F;sbin:&#x2F;usr&#x2F;sbin的问题</h5><p>检查环境变量，执行 <code>echo $PATH</code> ，查看是否含存在 jdk；</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="variable">$PATH</span></span><br><span class="line">/usr/lib/jvm/jdk1.8.0_271/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin</span><br></pre></td></tr></table></figure>
+
+<p> 如果不存在则需要去检查 Java 环境；存在的话为其建立软链接：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ln</span> -s /usr/lib/jvm/jdk1.8.0_271/bin/java /usr/bin/java</span><br></pre></td></tr></table></figure>
+
+<p>重新启动服务。</p>
+</li>
+<li><h5 id="下载插件太慢"><a href="#下载插件太慢" class="headerlink" title="下载插件太慢"></a>下载插件太慢</h5><p>1）进入 <strong>系统管理 &#x3D;&gt; 插件管理 &#x3D;&gt; 高级</strong> ，修改选项 <strong>升级站点(Update Site)</strong> 为国内镜像，此处推荐 <code>https://mirrors.tuna.tsinghua.edu.cn/jenkins/updates/update-center.json</code> 。</p>
+<p>但是我们打开该文件，发现文件中的更新地址仍然是官网的更新地址，所以此处修改配置只能在获取插件更新地址文件时加速。</p>
+<p><img src="https://gitee.com/jokerwon/images/raw/master/img/20201216101356.png" alt="UpdateCenterJSON"></p>
+<p>2）由于 Jenkins 常常不会去更新该文件，我们可以<strong>将 <code>update-center.json</code> 文件中的更新地址替换为国内镜像源</strong> ，即使用 <code>sed</code> 命令手动替换文件内容，将 <code>updates.jenkins-ci.org(旧)</code> 或 <code>updates.jenkins.io(新)</code> 替换为 <code>mirrors.tuna.tsinghua.edu.cn</code>，<code>www.google.com</code> 替换为 <code>www.baidu.com</code> 。需要注意的是，默认的官方更新地址可能由于版本不同而改变，所以你应该检查文件中的地址来确认应该修改的地址内容。此处推荐典型的两种替换方法。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 进入Jenkins工作目录</span></span><br><span class="line"><span class="built_in">cd</span> /var/lib/jenkins/updates</span><br><span class="line"></span><br><span class="line"><span class="comment"># 备份</span></span><br><span class="line"><span class="built_in">cp</span> default.json default.json.bak</span><br><span class="line"></span><br><span class="line"><span class="comment"># 替换URL</span></span><br><span class="line"><span class="comment"># 老版本</span></span><br><span class="line">sed -i <span class="string">&#x27;s#http://updates.jenkins-ci.org/download#https://mirrors.tuna.tsinghua.edu.cn/jenkins#g&#x27;</span> default.json &amp;&amp; sed -i <span class="string">&#x27;s#http://www.google.com#https://www.baidu.com#g&#x27;</span> default.json</span><br><span class="line"><span class="comment"># 新版本</span></span><br><span class="line">sed -i <span class="string">&#x27;s#https://updates.jenkins.io/download#https://mirrors.tuna.tsinghua.edu.cn/jenkins#g&#x27;</span> default.json &amp;&amp; sed -i <span class="string">&#x27;s#http://www.google.com#https://www.baidu.com#g&#x27;</span> default.json</span><br></pre></td></tr></table></figure>
+
+<p>3）重启 Jenkins。</p>
+</li>
+<li><h5 id="Jenkins-系统权限问题"><a href="#Jenkins-系统权限问题" class="headerlink" title="Jenkins 系统权限问题"></a>Jenkins 系统权限问题</h5><p>1） 为 Jenkins 用户添加相应文件的权限。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">chown</span> -R jenkins &lt;path&gt;</span><br></pre></td></tr></table></figure>
+
+<p>2）暴力点，使 Jenkins 以 root 用户执行。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 打开配置文件</span></span><br><span class="line">vi /etc/default/jenkins</span><br><span class="line"><span class="comment"># 找不到的话尝试这个</span></span><br><span class="line">vi /etc/sysconfig/jenkins</span><br><span class="line"></span><br><span class="line"><span class="comment"># 找到JENKINS_USER和JENKINS_GROUP，修改为root</span></span><br><span class="line">JENKINS_USER=root</span><br><span class="line">JENKINS_GROUP=root</span><br></pre></td></tr></table></figure>
+
+<p>3）重启 Jenkins 服务。</p>
+</li>
+</ol>
+<h3 id="Pipeline"><a href="#Pipeline" class="headerlink" title="Pipeline"></a>Pipeline</h3><h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><p>Jenkins 流水线 (或简单的带有大写 “P” 的 “Pipeline” ) 是一套插件，它支持实现和集成 <em>continuous delivery pipelines</em> 到 Jenkins。</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">pipeline &#123;</span><br><span class="line">  agent any</span><br><span class="line">  stages &#123;</span><br><span class="line">    stage(<span class="string">&#x27;build&#x27;</span>) &#123;</span><br><span class="line">      steps &#123;</span><br><span class="line">        echo <span class="string">&#x27;Hello World&#x27;</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="意义"><a href="#意义" class="headerlink" title="意义"></a>意义</h4><ul>
+<li><strong>更好的自动化</strong> : 自动地为所有分支创建流水线构建过程并拉取请求。</li>
+<li><strong>更好地版本化</strong> : 将 pipeline 提交到软件版本库中进行版本控制。（通过 Jenkinsfile）</li>
+<li><strong>更好地协作</strong> : pipeline的每次修改对所有人都是可见的。除此之外，还可以对pipeline进行代码审查。</li>
+<li><strong>更好的重用性</strong> : 手动操作没法重用，但是代码可以重用。</li>
+</ul>
+<h4 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h4><p>Jenkins pipeline其实就是基于Groovy语言实现的一种DSL（领域特定语言），用于描述整条流水线是如何进行的。流水线的内容包括执行编译、打包、测试、输出测试报告等步骤。</p>
+<h5 id="必要的-Groovy-语法"><a href="#必要的-Groovy-语法" class="headerlink" title="必要的 Groovy 语法"></a>必要的 Groovy 语法</h5><p>学习 Jenkins pipeline 可以不需要任何Groovy知识，但是了解 Groovy，写 pipeline 会如虎添翼。</p>
+<ul>
+<li><p>定义变量。</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> x = <span class="string">&#x27;abc&#x27;</span></span><br><span class="line"><span class="keyword">def</span> y = <span class="number">2</span></span><br><span class="line"><span class="keyword">def</span> slot = <span class="string">&quot;hello $&#123;x&#125;&quot;</span> <span class="comment">// Hello abc</span></span><br><span class="line"><span class="comment">// 单引号和三单引号不支持插值</span></span><br><span class="line"><span class="keyword">def</span> linebreak = <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string"> line 0</span></span><br><span class="line"><span class="string"> line 1</span></span><br><span class="line"><span class="string"> Hello $&#123;y&#125;</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span> <span class="comment">// Hello $&#123;y&#125;</span></span><br><span class="line"><span class="comment">// 没想到吧，还支持三双引号，支持插值</span></span><br><span class="line"><span class="keyword">def</span> multiLine = <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">	x = $&#123;x&#125;</span></span><br><span class="line"><span class="string">	&quot;hi $&#123;y&#125;&quot;</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span> <span class="comment">// x = abc \n &quot;hi 2&quot;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>调用方法可以省略括号</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.out.println <span class="string">&quot;Hello World&quot;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>支持命名参数和参数默认值</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> createName(String firstName = <span class="string">&quot;Micro&quot;</span>, String lastName = <span class="string">&quot;soft&quot;</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">&quot;$&#123;firstName&#125; $&#123;lastName&#125;&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">createName lastName = <span class="string">&quot;gle&quot;</span>, firstName = <span class="string">&quot;Goo&quot;</span></span><br><span class="line">createName() <span class="comment">// 此时不可省略括号</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>支持闭包</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义闭包</span></span><br><span class="line"><span class="keyword">def</span> codeBlock = &#123; echo <span class="string">&#x27;Hello&#x27;</span> &#125;</span><br><span class="line"><span class="comment">// 可以被当成函数直接调用</span></span><br><span class="line">codeBlock()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 还可以将闭包当作参数传递给函数</span></span><br><span class="line"><span class="keyword">def</span> pipeline(closure) &#123;</span><br><span class="line">  closure()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">pipeline(&#123; print <span class="string">&quot;Hello Closure&quot;</span> &#125;)</span><br><span class="line"><span class="comment">// 省略括号</span></span><br><span class="line">pipeline &#123;</span><br><span class="line">  print <span class="string">&quot;Hello Closure&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>闭包的另类用法</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> stage(String name, closure) &#123;</span><br><span class="line">  println name</span><br><span class="line">  closure()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 正常情况下</span></span><br><span class="line">stage(<span class="string">&quot;stageName&quot;</span>, &#123; println <span class="string">&quot;closure&quot;</span> &#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// Groovy 提供了一种写法</span></span><br><span class="line">stage(<span class="string">&quot;stageName&quot;</span>) &#123;</span><br><span class="line">  println <span class="string">&quot;closure&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h5 id="pipeline-的最简结构"><a href="#pipeline-的最简结构" class="headerlink" title="pipeline 的最简结构"></a>pipeline 的最简结构</h5><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">pipeline &#123;</span><br><span class="line">  agent any</span><br><span class="line">  stages &#123;</span><br><span class="line">    stage(<span class="string">&#x27;build&#x27;</span>) &#123;</span><br><span class="line">      steps &#123;</span><br><span class="line">        echo <span class="string">&#x27;Hello World&#x27;</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    stage(<span class="string">&#x27;build1&#x27;</span>) &#123;</span><br><span class="line">      steps &#123;</span><br><span class="line">        echo <span class="string">&#x27;Hello World&#x27;</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  post &#123;</span><br><span class="line">    always &#123;</span><br><span class="line">      </span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>以下每个部分是必需的，否则会报错。</p>
+<ul>
+<li><code>pipeline</code> : 代表整条流水线，包含整条流水线的逻辑。</li>
+<li><code>stage</code> : 流水线的阶段。每个阶段都必须有名称。本例中，build 就是此阶段的名称。</li>
+<li><code>stages</code> : 流水线中多个stage的容器。**<code>stages</code> 部分至少包含一个 <code>stage</code>**。</li>
+<li><code>steps</code> : 代表阶段中的一个或多个具体步骤（step）的容器。<code>steps</code> 部分至少包含一个步骤，本例中，<code>echo</code> 就是一个步骤。**在一个 <code>stage</code> 中有且只有一个 <code>steps</code>**。</li>
+<li><code>agent</code> : 指定流水线的执行位置（Jenkins agent）。流水线中的每个阶段都必须在某个地方（物理机、虚拟机或Docker容器）执行， <code>agent</code> 部分即指定具体在哪里执行。</li>
+</ul>
+<h5 id="post"><a href="#post" class="headerlink" title="post"></a>post</h5><p>post 部分包含的是在整个 pipeline 或阶段完成后一些附加的步骤。post 部分是可选的。</p>
+<p>根据pipeline或阶段的完成状态，post部分分成多种条件块：</p>
+<ul>
+<li><code>always</code> : 不论当前完成状态是什么，都执行。相当于 <code>finally</code> 代码块。</li>
+<li><code>changed</code> : 只要此次任务的完成状态和上一次不同则执行。</li>
+<li><code>fixed</code> : 上一次完成状态为失败或者不稳定（unstable），此次完成状态为成功时则执行。</li>
+<li><code>regression</code> : 上一次完成状态为成功，当前完成状态为失败、不稳定或中止（aborted）时执行。</li>
+<li><code>aborted</code> : 当前执行结果是中止状态时（一般为人为中止）执行。</li>
+<li><code>failure</code> : 当前完成状态为失败时执行。</li>
+<li><code>success</code> : 当前完成状态为成功时执行。</li>
+<li><code>unstable</code> : 当前完成状态为不稳定时执行。</li>
+<li><code>cleanup</code> : 清理条件块。不论当前完成状态是什么，在其他所有条件块执行完成后都执行。</li>
+</ul>
+<h5 id="options"><a href="#options" class="headerlink" title="options"></a>options</h5><p>用于配置整个 Jenkins pipeline 本身的选项。根据具体的选项不同，可以将其放在 <code>pipeline</code> 块或 <code>stage</code> 块中。</p>
+<p>以下是常用的选项：</p>
+<ul>
+<li><p><code>buildDiscarder</code> : 保存最近历史构建记录的数量。当pipeline执行完成后，会在硬盘上保存制品和构建执行日志，如果长时间不清理会占用大量空间，设置此选项后会自动清理。此选项<strong>只能在 <code>pipeline</code> 下的 <code>options</code> 中使用</strong>。</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">options &#123;</span><br><span class="line">  buildDiscarder(logRotator(<span class="attr">numToKeepStr:</span> <span class="string">&#x27;10&#x27;</span>))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>checkoutToSubdirectory</code> : Jenkins从版本控制库拉取源码时，默认检出到工作空间的根目录中，此选项可以指定检出到工作空间的子目录中。</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">options &#123;</span><br><span class="line">  checkoutToSubdirectory(<span class="string">&#x27;subdir&#x27;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>disableConcurrentBuilds</code> : 同一个 pipeline，Jenkins 默认是可以同时执行多次的。此选项是为了禁止pipeline同时执行。</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">options &#123;</span><br><span class="line">  disableConcurrentBuilds()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>newContainerPerStage</code> : 当agent为docker或dockerfile时，指定在同一个Jenkins节点上，每个stage都分别运行在一个新的容器中，而不是所有stage都运行在同一个容器中。</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">options &#123;</span><br><span class="line">  newContainerPerStage()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>retry</code> : 当发生失败时进行重试，可以指定整个 pipeline 的重试次数。需要注意的是，<strong>这个次数是指总次数，包括第1次失败</strong>。当使用 <code>retry</code> 选项时，<code>options</code> 可以被放在 <code>stage</code> 块中。</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">options &#123;</span><br><span class="line">  retry(<span class="number">4</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>timeout</code> : 如果 pipeline 执行时间过长，超出了我们设置的 timeout 时间，Jenkins 将中止 pipeline。</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">options &#123;</span><br><span class="line">  timeout(<span class="attr">time:</span> <span class="number">1</span>, <span class="attr">unit:</span> <span class="string">&#x27;HOURS&#x27;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>此外，job 依赖的一些插件的选项也可以在 <code>options</code> 中配置。</p>
+</li>
+</ul>
+<h5 id="在声明式-pipeline-中使用脚本"><a href="#在声明式-pipeline-中使用脚本" class="headerlink" title="在声明式 pipeline 中使用脚本"></a>在声明式 pipeline 中使用脚本</h5><p>Jenkins pipeline 专门提供了一个 <code>script</code> 步骤，你能在 <code>script</code> 步骤中像写代码一样写 pipeline 逻辑。</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">pipeline &#123;</span><br><span class="line">  agent any</span><br><span class="line">  </span><br><span class="line">  stages &#123;</span><br><span class="line">    stage(<span class="string">&#x27;building&#x27;</span>) &#123;</span><br><span class="line">      steps &#123;</span><br><span class="line">        script &#123;</span><br><span class="line">          <span class="keyword">def</span> persons = [<span class="string">&#x27;Bob&#x27;</span>, <span class="string">&#x27;Jest&#x27;</span>, <span class="string">&#x27;Tim&#x27;</span>]</span><br><span class="line">          <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; persons.size(); ++i) &#123;</span><br><span class="line">            echo persons[i]</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在 <code>script</code> 块中的其实就是 Groovy 代码。大多数时候，我们是不需要使用 <code>script</code> 步骤的。如果在 <code>script</code> 步骤中写了大量的逻辑，则说明你应该把这些逻辑拆分到不同的阶段，或者放到<strong>共享库</strong>中。</p>
+<h5 id="when"><a href="#when" class="headerlink" title="when"></a>when</h5><p><code>when</code>指令允许<code>Pipeline</code>根据给定条件确定是否应执行该阶段。该<code>when</code>指令必须至少包含一个条件。如果<code>when</code>指令包含多个条件，则所有子条件必须返回<code>true</code>才能执行该阶段。这与子条件嵌套在<code>allOf</code>条件中的情况相同（参见下面的示例）。如果使用<code>anyOf</code>条件，请注意一旦找到第一个<code>true</code>条件，条件就会跳过剩余的测试条件。</p>
+<p>更复杂的条件结构可使用嵌套条件建：<code>not</code>，<code>allOf</code>或<code>anyOf</code>。嵌套条件可以嵌套到任意深度。</p>
+<ul>
+<li>是否必须： 非必须</li>
+<li>参数： 没有</li>
+<li>所在位置: 在<code>stage</code>指令内</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">pipeline &#123;</span><br><span class="line">    agent none</span><br><span class="line">    stages &#123;</span><br><span class="line">        stage(&#x27;Example Build&#x27;) &#123;</span><br><span class="line">        		when &#123;</span><br><span class="line">        				branch &#x27;production&#x27;</span><br><span class="line">                environment name: &#x27;DEPLOY_TO&#x27;, value: &#x27;production&#x27;</span><br><span class="line">                anyOf &#123;</span><br><span class="line">                    environment name: &#x27;DEPLOY_TO&#x27;, value: &#x27;dev&#x27;</span><br><span class="line">                    environment name: &#x27;DEPLOY_TO&#x27;, value: &#x27;staging&#x27;</span><br><span class="line">                &#125;</span><br><span class="line">        		&#125;</span><br><span class="line">            steps &#123;</span><br><span class="line">                echo &#x27;Hello World&#x27;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        stage(&#x27;Example Deploy&#x27;) &#123;</span><br><span class="line">            agent &#123;</span><br><span class="line">                label &quot;some-label&quot;</span><br><span class="line">            &#125;</span><br><span class="line">            when &#123;</span><br><span class="line">                beforeAgent true</span><br><span class="line">                branch &#x27;production&#x27;</span><br><span class="line">            &#125;</span><br><span class="line">            steps &#123;</span><br><span class="line">                echo &#x27;Deploying&#x27;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h6 id="branch"><a href="#branch" class="headerlink" title="branch"></a>branch</h6><p>当正在构建的分支与给定的分支模式匹配时执行阶段。如 <code>when &#123; branch &#39;master&#39; &#125;</code> . 这仅在多分支<code>Pipeline</code>中有效。</p>
+<h6 id="buildingTag"><a href="#buildingTag" class="headerlink" title="buildingTag"></a>buildingTag</h6><p>构建构建标记时执行阶段。例: <code>when &#123; buildingTag() &#125;</code></p>
+<h6 id="changelog"><a href="#changelog" class="headerlink" title="changelog"></a>changelog</h6><p>如果构建的SCM更新日志包含给定的正则表达式模式，则执行该阶段 例如: <code>when &#123; changelog &#39;.*^\[DEPENDENCY\] .+$&#39; &#125;</code></p>
+<h6 id="changeset"><a href="#changeset" class="headerlink" title="changeset"></a>changeset</h6><p>如果构建的SCM变更集包含与给定字符串或glob匹配的一个或多个文件，则执行该阶段。 例如: <code>when &#123; changeset &quot;**/*.js&quot; &#125;</code></p>
+<p>默认情况下，路径匹配不区分大小写，可以使用caseSensitive参数关闭, 例如: <code>when &#123; changeset glob: &quot;ReadMe.*&quot;, caseSensitive: true &#125;</code></p>
+<h6 id="changeRequest"><a href="#changeRequest" class="headerlink" title="changeRequest"></a>changeRequest</h6><p>如果当前构建用于“更改请求”（GitHub和Bitbucket上的<code>Pull Request</code>，GitLab上的<code>Merge</code>请求或Gerrit中的<code>change</code>等），则执行该阶段。 如果没有传递任何参数，则每个更改请求都会运行该阶段， 例如: <code>when &#123; changeRequest() &#125;</code>.</p>
+<p>通过向变更请求添加带参数的过滤器属性，可以使阶段仅在匹配的变更请求上运行。 可能的属性是<code>id，target，branch，fork，url，title，author，authorDisplayName和authorEmail</code>。 其中每个对应一个<code>CHANGE_*</code>环境变量， 例如: <code>when &#123; changeRequest target: &#39;master&#39; &#125;</code>.</p>
+<p>可以在属性之后添加可选参数比较器，以指定如何评估匹配的任何模式：<code>EQUALS</code>用于简单字符串比较（默认值），<code>GLOB</code>用于ANT样式路径glob（与例如变更集相同）或<code>REGEXP</code>用于常规 表达匹配。例如: <code>when &#123; changeRequest authorEmail: &quot;[\w_-.]+@example.com&quot;, comparator: &#39;REGEXP&#39; &#125;</code></p>
+<h6 id="environment"><a href="#environment" class="headerlink" title="environment"></a>environment</h6><p>当指定的环境变量设置为给定值时执行阶段， 例如: <code>when &#123; environment name: &#39;DEPLOY_TO&#39;, value: &#39;production&#39; &#125;</code></p>
+<h6 id="equals"><a href="#equals" class="headerlink" title="equals"></a>equals</h6><p>当期望值等于实际值时执行阶段， 例如: <code>when &#123; equals expected: 2, actual: currentBuild.number &#125;</code></p>
+<h6 id="expression"><a href="#expression" class="headerlink" title="expression"></a>expression</h6><p>当指定的Groovy表达式求值为<code>true</code>时执行阶段，例如: <code>when &#123; expression &#123; return params.DEBUG_BUILD &#125; &#125;</code> .</p>
+<p>请注意，从表达式返回字符串时，必须将它们转换为布尔值或返回<code>null</code>表示为<code>false</code>。 简单地返回<code>0</code>或<code>false</code>仍将评估为<code>true</code>。</p>
+<h6 id="tag"><a href="#tag" class="headerlink" title="tag"></a>tag</h6><p>如果<code>TAG_NAME</code>变量与给定模式匹配，则执行该阶段。例如: <code>when &#123; tag &quot;release-*&quot; &#125;</code>.</p>
+<p>如果提供了空模式，则如果<code>TAG_NAME</code>变量存在，则将执行该阶段（与buildingTag（）相同）。</p>
+<p>可以在属性之后添加可选参数比较器，以指定如何评估匹配的任何模式：<code>EQUALS</code>用于简单字符串比较（默认值），<code>GLOB</code>用于ANT样式路径glob（与例如变更集相同）或<code>REGEXP</code>用于常规 表达匹配。 例如: <code>when &#123; tag pattern: &quot;release-\d+&quot;, comparator: &quot;REGEXP&quot;&#125;</code></p>
+<h6 id="not"><a href="#not" class="headerlink" title="not"></a>not</h6><p>嵌套条件为false时执行阶段。 必须包含一个条件。 例如: <code>when &#123; not &#123; branch &#39;master&#39; &#125; &#125;</code></p>
+<h6 id="allOf"><a href="#allOf" class="headerlink" title="allOf"></a>allOf</h6><p>当所有嵌套条件都为真时执行阶段。 必须至少包含一个条件。例如: <code>when &#123; allOf &#123; branch &#39;master&#39;; environment name: &#39;DEPLOY_TO&#39;, value: &#39;production&#39; &#125; &#125;</code></p>
+<h6 id="anyOf"><a href="#anyOf" class="headerlink" title="anyOf"></a>anyOf</h6><p>至少有一个嵌套条件为真时执行阶段。 必须至少包含一个条件。例如: <code>when &#123; anyOf &#123; branch &#39;master&#39;; branch &#39;staging&#39; &#125; &#125;</code></p>
+<h5 id="tools"><a href="#tools" class="headerlink" title="tools"></a>tools</h5><p>&#x2F;&#x2F; TODO</p>
+<h5 id="enviroment"><a href="#enviroment" class="headerlink" title="enviroment"></a>enviroment</h5><p>&#x2F;&#x2F; TODO</p>
+<h5 id="parameters"><a href="#parameters" class="headerlink" title="parameters"></a>parameters</h5><p>&#x2F;&#x2F; TODO</p>
+<h5 id="triggers"><a href="#triggers" class="headerlink" title="triggers"></a>triggers</h5><p>&#x2F;&#x2F; TODO</p>
+<h3 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h3><p>环境变量可以被看作是pipeline与Jenkins交互的媒介。可分为 Jenkins 内置变量和自定义变量。</p>
+<h4 id="Jenkins-内置变量"><a href="#Jenkins-内置变量" class="headerlink" title="Jenkins 内置变量"></a>Jenkins 内置变量</h4><p>Jenkins 通过 <code>env</code> 的全局变量，将 Jenkins 内置环境变量暴露出来。</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">pipeline &#123;</span><br><span class="line">  agent any</span><br><span class="line">  stages &#123;</span><br><span class="line">    stage(<span class="string">&#x27;example&#x27;</span>) &#123;</span><br><span class="line">      steps &#123;</span><br><span class="line">        echo <span class="string">&quot;Running $&#123;env.BUILD_NUMBER&#125; on $&#123;env.JENKINS_URL&#125;&quot;</span> <span class="comment">// 方法一</span></span><br><span class="line">        echo <span class="string">&quot;Running $env.BUILD_NUMBER on $env.JENKINS_URL&quot;</span> <span class="comment">// 方法二</span></span><br><span class="line">        echo <span class="string">&quot;Running $&#123;BUILD_NUMBER&#125; on $&#123;JENKINS_URL&#125;&quot;</span> <span class="comment">// 方法三，不推荐，变量冲突时难以排查问题</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>常用内置变量</p>
+<ul>
+<li><code>BUILD_NUMBER</code> : 构建号，累加的数字。</li>
+<li><code>BRACH_NAME</code> : 多分支 pipeline 项目支持。当需要根据不同的分支做不同的事情时就会用到，比如通过代码将 release 分支发布到生产环境中、master分支发布到测试环境中。</li>
+<li><code>BUILD_URL</code> : 当前构建的页面 URL。如果构建失败，则需要将失败的构建链接放在邮件通知中，这个链接就可以是 BUILD_URL。</li>
+<li><code>GIT_BRANCH</code> : 通过 git 拉取的源码构建的项目才会有此变量。</li>
+</ul>
+<h4 id="自定义-pipeline-环境变量"><a href="#自定义-pipeline-环境变量" class="headerlink" title="自定义 pipeline 环境变量"></a>自定义 pipeline 环境变量</h4><p>声明式 pipeline 提供了 <code>environment</code> 指令，方便自定义变量。</p>
+<p><code>environment</code> 指令可以在 <code>pipeline</code> 中定义，代表变量作用域为整个 pipeline；也可以在 <code>stage</code> 中定义，代表变量只在该阶段有效。</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">pipeline &#123;</span><br><span class="line">  agent any</span><br><span class="line">  environment &#123;</span><br><span class="line">    OUTER = <span class="string">&quot;entire job&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line">  stages &#123;</span><br><span class="line">    stage(<span class="string">&#x27;example&#x27;</span>) &#123;</span><br><span class="line">      environment &#123;</span><br><span class="line">        INNER = <span class="string">&quot;current stage&quot;</span></span><br><span class="line">      &#125;</span><br><span class="line">      steps &#123;</span><br><span class="line">        echo <span class="string">&quot;$&#123;OUTER&#125; and $&#123;INNER&#125;&quot;</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>但是这些<strong>自定义变量只能在当前 pipeline 中使用</strong>，比如 pipeline a 访问不到 pipeline b 的变量。在 pipeline 之间共享变量可以通过参数化 pipeline 来实现。</p>
+<p>如果在 <code>environment</code> 中定义的变量与 <code>env</code> 中的变量重名，那么被重名的变量的值会被覆盖掉。</p>
+<h4 id="自定义全局变量"><a href="#自定义全局变量" class="headerlink" title="自定义全局变量"></a>自定义全局变量</h4><p>Jenkins 2.269 版本中，可以在 <strong>系统管理 &#x3D;&gt; 系统配置 &#x3D;&gt; 全局属性</strong> 中添加。使用时无需前缀，直接引用。</p>
+<h3 id="触发器"><a href="#触发器" class="headerlink" title="触发器"></a>触发器</h3><h4 id="触发条件"><a href="#触发条件" class="headerlink" title="触发条件"></a>触发条件</h4><p>基于前面的知识，每当我们推送代码后，需要到 Jenkins 系统中手动触发构建。显然，这不够自动化。自动化是指 pipeline 按照一定的规则自动执行。而这些规则被称为 pipeline 触发条件。</p>
+<p>分析目前常用的触发器，大概可以分为两类：<strong>时间触发</strong> 和 <strong>事件触发</strong> 。</p>
+<p><em><strong>下文基于 pipeline 语法来展开介绍触发器，但依然可以在 配置&#x3D;&gt;构建触发器 选项中创建触发器</strong></em></p>
+<h4 id="时间触发"><a href="#时间触发" class="headerlink" title="时间触发"></a>时间触发</h4><p>时间触发是指定义一个时刻，每到这个时刻就会触发 pipeline 执行。在 Jenkins pipeline 中使用 <code>trigger</code> 指令来定义时间触发。<code>tigger</code> 指令只能被定义在 <code>pipeline</code> 块内，Jenkins 内置支持 cron、pollSCM，upstream 三种方式。其他方式可以通过插件来实现。</p>
+<h5 id="定时执行-cron"><a href="#定时执行-cron" class="headerlink" title="定时执行 cron"></a>定时执行 cron</h5><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">pipleline &#123;</span><br><span class="line">  agent any</span><br><span class="line">  triggers &#123;</span><br><span class="line">    cron(<span class="string">&#x27;0 0 * * *&#x27;</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  stages &#123;</span><br><span class="line">    stage(<span class="string">&#x27;Nightly build&#x27;</span>) &#123;</span><br><span class="line">      steps &#123;</span><br><span class="line">        echo <span class="string">&#x27;这是一个耗时的构建，每天凌晨构建&#x27;</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Jenkins trigger cron 语法采用的是UNIX cron语法（有些细微的区别）。一条 cron 包含 5 个字段，使用空格或 Tab 分隔，格式为：MINUTE HOUR DOM MONTH DOW(星期几)。也可以使用正则。</p>
+<h5 id="轮询代码仓库：pollSCM"><a href="#轮询代码仓库：pollSCM" class="headerlink" title="轮询代码仓库：pollSCM"></a>轮询代码仓库：pollSCM</h5><p>这种方式比较耗用资源，在一些特殊情况下，比如外网的代码仓库无法调用内网的 Jenkins，或者反过来，才会采用这种方式。</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">pipeline &#123;</span><br><span class="line">  agent any</span><br><span class="line">  triggers &#123;</span><br><span class="line">    <span class="comment">// 每分钟判断一次代码是否有变化</span></span><br><span class="line">    pollSCM(<span class="string">&#x27;H/1 * * * *&#x27;</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="事件触发"><a href="#事件触发" class="headerlink" title="事件触发"></a>事件触发</h4><p>事件触发就是发生了某个事件就触发 pipeline 执行。这个事件可以是你能想到的任何事件。比如手动在界面上触发、其他 job 主动触发、HTTP API Webhook 触发等。</p>
+<h5 id="由上游任务触发：upstream"><a href="#由上游任务触发：upstream" class="headerlink" title="由上游任务触发：upstream"></a>由上游任务触发：upstream</h5><p>当 B 任务的执行依赖 A 任务的执行结果时，A 就被称为 B 的上游任务。在 Jenkins2.22 及以上版本中，<code>trigger</code> 指令开始支持 upstream类型的触发条件。upstream 的作用就是能让 B pipeline自行决定依赖哪些上游任务。</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// job1, job2 为任务名</span></span><br><span class="line">triggers &#123;</span><br><span class="line">  upstream(<span class="attr">upstreamProjects:</span> <span class="string">&#x27;job1,job2&#x27;</span>, <span class="attr">threshold:</span> hudson.model.Result.SUCCESS)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>当upstreamProjects参数接收多个任务时，使用，分隔。threshold参数是指上游任务的执行结果是什么值时触发。</p>
+<h5 id="WebHook-触发"><a href="#WebHook-触发" class="headerlink" title="*WebHook 触发"></a>*WebHook 触发</h5><p>当代码仓库的某些事件（如Push、Merge等）被触发时，仓库主动去触发 Jenkins 执行构建。</p>
+<p><img src="https://gitee.com/jokerwon/images/raw/master/img/20201216151639.png" alt="webhook"></p>
+<p>下面以 GitLab 为例。</p>
+<p><em>假设已存在 Gitlab项目</em></p>
+<ol>
+<li><p>为 Jenkins 安装 GitLab 插件。</p>
+</li>
+<li><p>创建全局凭证。</p>
+<p>1）进入 <strong>系统管理 &#x3D;&gt; Manage Credentials &#x3D;&gt; 添加凭据</strong> 。</p>
+<p>2）添加 ssh 凭证。</p>
+<p><img src="https://gitee.com/jokerwon/images/raw/master/img/20201216152732.png" alt="create Credentials"></p>
+</li>
+<li><p>创建单分支 pipeline 项目。</p>
+</li>
+<li><p>配置触发器。</p>
+<p><img src="https://gitee.com/jokerwon/images/raw/master/img/20201216154442.png" alt="trigger"></p>
+</li>
+<li><p>进入 Gitlab 的项目，进入 <strong>Setting &#x3D;&gt; Integrations</strong>，添加 Hook。</p>
+<p><img src="https://gitee.com/jokerwon/images/raw/master/img/20201216154553.png" alt="gitlabSetting"></p>
+</li>
+<li><p>添加 Hook 后，可以点击 Test 按钮测试相关事件。</p>
+</li>
+</ol>
+<h3 id="权限"><a href="#权限" class="headerlink" title="权限"></a>权限</h3><p>&#x2F;&#x2F; TODO</p>
+<h2 id="基于-Docker"><a href="#基于-Docker" class="headerlink" title="基于 Docker"></a>基于 Docker</h2><h2 id="Drone"><a href="#Drone" class="headerlink" title="Drone"></a>Drone</h2>
+                </section>
+
+                
+                
+
+                
+
+            </article>
+
+            
+            <nav class="dis_flex al_post_nav">
+                <a class="al_post_nav_item dis_flex_acenter" href="/2021/01/14/Docker/">
+                    
+                        <svg class="al_arrow">
+                            <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-arrow-left"></use>
+                        </svg>
+                        <span class="al_text_ellipsis al_post_nav_desc">Docker</span>
+                    
+                </a>
+                <a class="al_post_nav_item dis_flex_acenter" href="/2020/11/23/JavaScript/">
+                    
+                        <span class="al_text_ellipsis al_post_nav_desc">JavaScript</span>
+                        <svg class="al_arrow">
+                            <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-arrow-right"></use>
+                        </svg>
+                    
+                </a>
+            </nav>
+        </div>
+    </div>
+
+
+        <div class="al_index_footer dis_flex_center">
+    <div class="al_index_footer_item al_index_footer_title">
+        Joker Won
+    </div>
+
+    
+    
+
+    <div class="al_index_footer_item al_index_footer_extra">
+        Created By 
+        <a target="_blank" rel="noopener" href="https://github.com/iGuan7u/Acetolog">AcetoLog</a>
+         · Power By 
+        <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+    </div>
+
+    <div class="al_index_footer_item al_index_footer_extra_right">
+        All Right Reserved
+    </div>
+</div>
+
+        <script type="text/javascript" async="async" src="/javascripts/acelog.js"></script>
+        
+        
+        
+        
+        
+
+    </body>
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        
+    
+    <link rel='stylesheet' href="/./css/dracula.css">
+
+        <title>Styled Components</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=2.0">
+<link rel="stylesheet" href="/css/style.css">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="manifest" href="/site.webmanifest">
+
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        <header class="al_header al_pos_fixed">
+    <div class="al_header_container dis_flex_jcenter">
+        <div class="al_header_container_left">
+            <div class="al_header_site_title">
+                <a href="/">Joker Won's Stack</a>
+            </div>
+        </div>
+
+        <div class="dis_flex_jcenter">
+            <div class="al_header_setting">
+                <svg class="al_header_icon">
+                    <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-menu"></use>
+                </svg>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="al_sidebar">
+
+    <div class="al_sidebar_overlay al_full_cover"></div>
+
+    <div class="al_pos_fixed al_sidebar_cnt">
+        <div class="dis_flex_acenter al_sidebar_header">
+            <h3>Joker Won's Stack</h3>
+            <div class="al_sidebar_close al_header_setting">
+                <svg class="al_header_icon">
+                    <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-close"></use>
+                </svg>
+            </div>
+        </div>
+
+        <div class="al_sidebar_author_cnt">
+
+            <div class="al_sidebar_author_info">
+                <h4>Joker Won</h4>
+                <img class="al_sidebar_avatar" src="https://cdn.jsdelivr.net/gh/jokerwon/images/img/avatar.jpg">
+                <p>OS 出身的小伙子，对 Objective-C、Swift、以及 Javascript 有浓厚的兴趣。热衷使用原生实现所有功能，厌恶一切的跨平台开发技术。喜欢分享工作过程中遇到的问题以及日常工作中遇到的新技术。希望这个博客能给你带来一点启发。</p>
+            </div>
+
+            
+        </div>
+    </div>
+</div>
+
+        
+    <div class="dis_flex_center al_lightbox_cnt al_full_cover">
+        <img class="al_lightbox_img"/>
+    </div>
+    <div class="al_page_background dis_flex_center al_full_cover"></div>
+    <div class="al_page_container">
+        <div class="al_pos_ab al_fake_background"></div>
+        <div class="al_main_container al_shadow al_main_page_container">
+            <article class="al_article">
+                <header>
+                    <h1 class="al_page_title">
+                        Styled Components
+                    </h1>
+                    <div class="al_page_info dis_flex">
+                        <div class="al_page_content_info">
+                            Sun April 3, 2022 10:05 AM
+                        </div>
+
+                        
+
+                        
+                        <span class="tags"></span>
+                    </div>
+                </header>
+
+                
+                    <div class="al_page_content_outline">
+                        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-text">安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%80%E5%A7%8B"><span class="toc-text">开始</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%96%E5%86%99%E7%AC%AC%E4%B8%80%E4%B8%AA%E7%BB%84%E4%BB%B6"><span class="toc-text">编写第一个组件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E5%B1%9E%E6%80%A7%E6%B8%B2%E6%9F%93"><span class="toc-text">基于属性渲染</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%A7%E6%89%BF%E6%A0%B7%E5%BC%8F"><span class="toc-text">继承样式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9B%BF%E6%8D%A2%E6%A0%87%E7%AD%BE"><span class="toc-text">替换标签</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%A0%E9%80%92%E5%B1%9E%E6%80%A7"><span class="toc-text">传递属性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E9%A2%84%E5%A4%84%E7%90%86%E5%99%A8-stylis"><span class="toc-text">基于预处理器 stylis</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%99%84%E5%8A%A0%E5%B1%9E%E6%80%A7"><span class="toc-text">附加属性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8A%A8%E7%94%BB"><span class="toc-text">动画</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%95%E7%94%A8%E5%85%B6%E4%BB%96%E7%BB%84%E4%BB%B6"><span class="toc-text">引用其他组件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E5%BC%8F%E6%A0%B7%E5%BC%8F"><span class="toc-text">对象式样式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BB%E9%A2%98"><span class="toc-text">主题</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-text">问题</span></a>
+                    </div>
+                
+
+                
+                <section id="post-body">
+                    <h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install --save styled-components</span><br><span class="line">// 或</span><br><span class="line">yarn add styled-components</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<h3 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h3><h4 id="编写第一个组件"><a href="#编写第一个组件" class="headerlink" title="编写第一个组件"></a>编写第一个组件</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">const Title = styled.h1`</span><br><span class="line">  font-size: 1.5em;</span><br><span class="line">  text-align: center;</span><br><span class="line">  color: palevioletred;</span><br><span class="line">`;</span><br><span class="line"></span><br><span class="line">const Wrapper = styled.section`</span><br><span class="line">  padding: 4em;</span><br><span class="line">  background: papayawhip;</span><br><span class="line">`;</span><br><span class="line"></span><br><span class="line">render(</span><br><span class="line">  &lt;Wrapper&gt;</span><br><span class="line">    &lt;Title&gt;</span><br><span class="line">      Hello World!</span><br><span class="line">    &lt;/Title&gt;</span><br><span class="line">  &lt;/Wrapper&gt;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<h4 id="基于属性渲染"><a href="#基于属性渲染" class="headerlink" title="基于属性渲染"></a>基于属性渲染</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">const Button = styled.button`</span><br><span class="line">  /* Adapt the colors based on primary prop */</span><br><span class="line">  background: $&#123;(&#123;primary&#125;) =&gt; primary ? &quot;palevioletred&quot; : &quot;white&quot;&#125;;</span><br><span class="line">  color: $&#123;(&#123;primary&#125;) =&gt; primary ? &quot;white&quot; : &quot;palevioletred&quot;&#125;;</span><br><span class="line"></span><br><span class="line">  font-size: 1em;</span><br><span class="line">  margin: 1em;</span><br><span class="line">  padding: 0.25em 1em;</span><br><span class="line">  border: 2px solid palevioletred;</span><br><span class="line">  border-radius: 3px;</span><br><span class="line">`;</span><br><span class="line"></span><br><span class="line">render(</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;Button&gt;Normal&lt;/Button&gt;</span><br><span class="line">    &lt;Button primary&gt;Primary&lt;/Button&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<h4 id="继承样式"><a href="#继承样式" class="headerlink" title="继承样式"></a>继承样式</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">// 相当于 styled(&#x27;button&#x27;)</span><br><span class="line">const Button = styled.button`</span><br><span class="line">  color: palevioletred;</span><br><span class="line">  font-size: 1em;</span><br><span class="line">  margin: 1em;</span><br><span class="line">  padding: 0.25em 1em;</span><br><span class="line">  border: 2px solid palevioletred;</span><br><span class="line">  border-radius: 3px;</span><br><span class="line">`;</span><br><span class="line"></span><br><span class="line">// 使用圆括号包裹自定义组件，继承和重写样式</span><br><span class="line">const TomatoButton = styled(Button)`</span><br><span class="line">  color: tomato;</span><br><span class="line">  border-color: tomato;</span><br><span class="line">`;</span><br><span class="line"></span><br><span class="line">render(</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;Button&gt;Normal Button&lt;/Button&gt;</span><br><span class="line">    &lt;TomatoButton&gt;Tomato Button&lt;/TomatoButton&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<h4 id="替换标签"><a href="#替换标签" class="headerlink" title="替换标签"></a>替换标签</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">const Button = styled.button`</span><br><span class="line">  display: inline-block;</span><br><span class="line">  color: palevioletred;</span><br><span class="line">  font-size: 1em;</span><br><span class="line">  margin: 1em;</span><br><span class="line">  padding: 0.25em 1em;</span><br><span class="line">  border: 2px solid palevioletred;</span><br><span class="line">  border-radius: 3px;</span><br><span class="line">  display: block;</span><br><span class="line">`;</span><br><span class="line"></span><br><span class="line">render(</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;Button&gt;Normal Button&lt;/Button&gt;</span><br><span class="line">    &lt;!-- 替换成a标签 --&gt;</span><br><span class="line">    &lt;Button as=&quot;a&quot; href=&quot;/&quot;&gt;Link with Button styles&lt;/Button&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p>替换自定义组件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">const Button = styled.button`</span><br><span class="line">  display: inline-block;</span><br><span class="line">  color: palevioletred;</span><br><span class="line">  font-size: 1em;</span><br><span class="line">  margin: 1em;</span><br><span class="line">  padding: 0.25em 1em;</span><br><span class="line">  border: 2px solid palevioletred;</span><br><span class="line">  border-radius: 3px;</span><br><span class="line">  display: block;</span><br><span class="line">`;</span><br><span class="line"></span><br><span class="line">const ReversedButton = props =&gt; &lt;Button &#123;...props&#125; children=&#123;props.children.split(&#x27;&#x27;).reverse()&#125; /&gt;</span><br><span class="line"></span><br><span class="line">render(</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;Button&gt;Normal Button&lt;/Button&gt;</span><br><span class="line">    &lt;Button as=&#123;ReversedButton&#125;&gt;Custom Button with Normal Button styles&lt;/Button&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<h4 id="传递属性"><a href="#传递属性" class="headerlink" title="传递属性"></a>传递属性</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">const Input = styled.input`</span><br><span class="line">  padding: 0.5em;</span><br><span class="line">  margin: 0.5em;</span><br><span class="line">  color: $&#123;props =&gt; props.inputColor || &quot;palevioletred&quot;&#125;;</span><br><span class="line">  background: papayawhip;</span><br><span class="line">  border: none;</span><br><span class="line">  border-radius: 3px;</span><br><span class="line">`;</span><br><span class="line"></span><br><span class="line">// 可以将defaultValue和type传递给input标签，并自动过滤非标准属性inputColor</span><br><span class="line">render(</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;Input defaultValue=&quot;@probablyup&quot; type=&quot;text&quot; /&gt;</span><br><span class="line">    &lt;Input defaultValue=&quot;@geelen&quot; type=&quot;text&quot; inputColor=&quot;rebeccapurple&quot; /&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Note how the inputColor prop is not passed to the DOM, but type and defaultValue are. That is styled-components being smart enough to filter non-standard attributes automatically for you.</p>
+</blockquote>
+<h4 id="基于预处理器-stylis"><a href="#基于预处理器-stylis" class="headerlink" title="基于预处理器 stylis"></a>基于预处理器 <code>stylis</code></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">const Thing = styled.div`</span><br><span class="line">  color: blue;</span><br><span class="line"> &amp;:hover &#123;</span><br><span class="line">    color: red; // &lt;Thing&gt; when hovered</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  &amp; ~ &amp; &#123;</span><br><span class="line">    background: tomato;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  .something &#123;</span><br><span class="line">    border: 1px solid; // an element labeled &quot;.something&quot; inside &lt;Thing&gt;</span><br><span class="line">    display: block;</span><br><span class="line">  &#125;</span><br><span class="line">`;</span><br><span class="line"></span><br><span class="line">render(</span><br><span class="line">  &lt;&gt;</span><br><span class="line">   &lt;Thing&gt;Hello world!&lt;/Thing&gt;</span><br><span class="line">    &lt;Thing&gt;</span><br><span class="line">      &lt;label htmlFor=&quot;foo-button&quot; className=&quot;something&quot;&gt;Mystery button&lt;/label&gt;</span><br><span class="line">      &lt;button id=&quot;foo-button&quot;&gt;What do I do?&lt;/button&gt;</span><br><span class="line">    &lt;/Thing&gt;</span><br><span class="line">  &lt;/&gt;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<h4 id="附加属性"><a href="#附加属性" class="headerlink" title="附加属性"></a>附加属性</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">const Input = styled.input.attrs(props =&gt; (&#123;</span><br><span class="line">  type: &quot;text&quot;,</span><br><span class="line">  size: props.size || &quot;1em&quot;,</span><br><span class="line">&#125;))`</span><br><span class="line">  border: 2px solid palevioletred;</span><br><span class="line">  margin: $&#123;props =&gt; props.size&#125;;</span><br><span class="line">  padding: $&#123;props =&gt; props.size&#125;;</span><br><span class="line">`;</span><br><span class="line"></span><br><span class="line">// Input&#x27;s attrs will be applied first, and then this attrs obj</span><br><span class="line">const PasswordInput = styled(Input).attrs(&#123;</span><br><span class="line">  type: &quot;password&quot;,</span><br><span class="line">&#125;)`</span><br><span class="line">  // similarly, border will override Input&#x27;s border</span><br><span class="line">  border: 2px solid aqua;</span><br><span class="line">`;</span><br><span class="line"></span><br><span class="line">render(</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;Input placeholder=&quot;A bigger text input&quot; size=&quot;2em&quot; /&gt;</span><br><span class="line">    &lt;br /&gt;</span><br><span class="line">    &#123;/* Notice we can still use the size attr from Input */&#125;</span><br><span class="line">    &lt;PasswordInput placeholder=&quot;A bigger password input&quot; size=&quot;2em&quot; /&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<h4 id="动画"><a href="#动画" class="headerlink" title="动画"></a>动画</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">const rotate = keyframes`</span><br><span class="line">  from &#123;</span><br><span class="line">    transform: rotate(0deg);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  to &#123;</span><br><span class="line">    transform: rotate(360deg);</span><br><span class="line">  &#125;</span><br><span class="line">`;</span><br><span class="line"></span><br><span class="line">// Here we create a component that will rotate everything we pass in over two seconds</span><br><span class="line">const Rotate = styled.div`</span><br><span class="line">  display: inline-block;</span><br><span class="line">  animation: $&#123;rotate&#125; 2s linear infinite;</span><br><span class="line">  padding: 2rem 1rem;</span><br><span class="line">  font-size: 1.2rem;</span><br><span class="line">`;</span><br><span class="line"></span><br><span class="line">render(</span><br><span class="line">  &lt;Rotate&gt;&amp;lt; 💅🏾 &amp;gt;&lt;/Rotate&gt;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<h4 id="引用其他组件"><a href="#引用其他组件" class="headerlink" title="引用其他组件"></a>引用其他组件</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">const Link = styled.a`</span><br><span class="line">  display: flex;</span><br><span class="line">  align-items: center;</span><br><span class="line">  padding: 5px 10px;</span><br><span class="line">  background: papayawhip;</span><br><span class="line">  color: palevioletred;</span><br><span class="line">`;</span><br><span class="line"></span><br><span class="line">const Icon = styled.svg`</span><br><span class="line">  flex: none;</span><br><span class="line">  transition: fill 0.25s;</span><br><span class="line">  width: 48px;</span><br><span class="line">  height: 48px;</span><br><span class="line"></span><br><span class="line"> // Link组件hover时会改变Icon的填充色</span><br><span class="line"> // $&#123;.&#125; 此时作为组件选择器</span><br><span class="line">  $&#123;Link&#125;:hover &amp; &#123;</span><br><span class="line">    fill: rebeccapurple;</span><br><span class="line">  &#125;</span><br><span class="line">`;</span><br><span class="line"></span><br><span class="line">const Label = styled.span`</span><br><span class="line">  display: flex;</span><br><span class="line">  align-items: center;</span><br><span class="line">  line-height: 1.2;</span><br><span class="line"></span><br><span class="line">  &amp;::before &#123;</span><br><span class="line">    content: &#x27;◀&#x27;;</span><br><span class="line">    margin: 0 10px;</span><br><span class="line">  &#125;</span><br><span class="line">`;</span><br><span class="line"></span><br><span class="line">render(</span><br><span class="line">  &lt;Link href=&quot;#&quot;&gt;</span><br><span class="line">    &lt;Icon viewBox=&quot;0 0 20 20&quot;&gt;</span><br><span class="line">      &lt;path d=&quot;M10 15h8c1 0 2-1 2-2V3c0-1-1-2-2-2H2C1 1 0 2 0 3v10c0 1 1 2 2 2h4v4l4-4zM5 7h2v2H5V7zm4 0h2v2H9V7zm4 0h2v2h-2V7z&quot;/&gt;</span><br><span class="line">    &lt;/Icon&gt;</span><br><span class="line">    &lt;Label&gt;Hovering my parent changes my style!&lt;/Label&gt;</span><br><span class="line">  &lt;/Link&gt;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>This behaviour is <strong>only supported within the context of <em>Styled</em> Components</strong>: attempting to mount B in the following example will fail because component A is an instance of React.Component not a Styled Component.</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">class A extends React.Component &#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    return &lt;div /&gt;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 报错</span><br><span class="line">const B = styled.div`</span><br><span class="line">  $&#123;A&#125; &#123;</span><br><span class="line">  &#125;</span><br><span class="line">`</span><br><span class="line">// 通过这种方式引用</span><br><span class="line">const StyledA = styled(A)``;</span><br><span class="line">const B = styled.div`</span><br><span class="line">  $&#123;StyledA&#125; &#123;</span><br><span class="line">  &#125;</span><br><span class="line">`</span><br></pre></td></tr></table></figure>
+
+<h4 id="对象式样式"><a href="#对象式样式" class="headerlink" title="对象式样式"></a>对象式样式</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">// Static object</span><br><span class="line">const Box = styled.div(&#123;</span><br><span class="line">  background: &#x27;palevioletred&#x27;,</span><br><span class="line">  height: &#x27;50px&#x27;,</span><br><span class="line">  width: &#x27;50px&#x27;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">// Adapting based on props</span><br><span class="line">const PropsBox = styled.div(props =&gt; (&#123;</span><br><span class="line">  background: props.background,</span><br><span class="line">  height: &#x27;50px&#x27;,</span><br><span class="line">  width: &#x27;50px&#x27;</span><br><span class="line">&#125;));</span><br><span class="line"></span><br><span class="line">render(</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;Box /&gt;</span><br><span class="line">    &lt;PropsBox background=&quot;blue&quot; /&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<h4 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">// Define our button, but with the use of props.theme this time</span><br><span class="line">const Button = styled.button`</span><br><span class="line">  font-size: 1em;</span><br><span class="line">  margin: 1em;</span><br><span class="line">  padding: 0.25em 1em;</span><br><span class="line">  border-radius: 3px;</span><br><span class="line"></span><br><span class="line">  /* Color the border and text with theme.main */</span><br><span class="line">  color: $&#123;props =&gt; props.theme.main&#125;;</span><br><span class="line">  border: 2px solid $&#123;props =&gt; props.theme.main&#125;;</span><br><span class="line">`;</span><br><span class="line"></span><br><span class="line">// We are passing a default theme for Buttons that arent wrapped in the ThemeProvider</span><br><span class="line">Button.defaultProps = &#123;</span><br><span class="line">  theme: &#123;</span><br><span class="line">    main: &quot;palevioletred&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// Define what props.theme will look like</span><br><span class="line">const theme = &#123;</span><br><span class="line">  main: &quot;mediumseagreen&quot;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">render(</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;Button&gt;Normal&lt;/Button&gt;</span><br><span class="line"></span><br><span class="line">    &lt;ThemeProvider theme=&#123;theme&#125;&gt;</span><br><span class="line">      &lt;Button&gt;Themed&lt;/Button&gt;</span><br><span class="line">    &lt;/ThemeProvider&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><ol>
+<li>样式判断是在样式组件 style.js 中编写还是在组件中编写？</li>
+<li>函数功能薄弱的问题如何解决？例如函数。</li>
+</ol>
+
+                </section>
+
+                
+                
+
+                
+
+            </article>
+
+            
+            <nav class="dis_flex al_post_nav">
+                <a class="al_post_nav_item dis_flex_acenter" href="/2022/04/03/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+                    
+                        <svg class="al_arrow">
+                            <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-arrow-left"></use>
+                        </svg>
+                        <span class="al_text_ellipsis al_post_nav_desc">设计模式</span>
+                    
+                </a>
+                <a class="al_post_nav_item dis_flex_acenter" href="/2022/04/03/StoryBook/">
+                    
+                        <span class="al_text_ellipsis al_post_nav_desc">StoryBook</span>
+                        <svg class="al_arrow">
+                            <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-arrow-right"></use>
+                        </svg>
+                    
+                </a>
+            </nav>
+        </div>
+    </div>
+
+
+        <div class="al_index_footer dis_flex_center">
+    <div class="al_index_footer_item al_index_footer_title">
+        Joker Won
+    </div>
+
+    
+    
+
+    <div class="al_index_footer_item al_index_footer_extra">
+        Created By 
+        <a target="_blank" rel="noopener" href="https://github.com/iGuan7u/Acetolog">AcetoLog</a>
+         · Power By 
+        <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+    </div>
+
+    <div class="al_index_footer_item al_index_footer_extra_right">
+        All Right Reserved
+    </div>
+</div>
+
+        <script type="text/javascript" async="async" src="/javascripts/acelog.js"></script>
+        
+        
+        
+        
+        
+
+    </body>
+</html>
