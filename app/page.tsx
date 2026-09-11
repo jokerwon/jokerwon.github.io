@@ -50,8 +50,6 @@ export default function Home() {
             </div>
           </div>
           <figure className="hero-portrait">
-            <div className="portrait-ring ring-one" />
-            <div className="portrait-ring ring-two" />
             <Image
               className="portrait-image"
               src={kaiAvatar}
