@@ -1,11 +1,17 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { ArrowRight } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: '博客 — Kai Weng',
   description: 'Kai Weng 写下的文章与思考。',
 }
+
+const arrowRightIcon = (
+  <svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className="ml-2 inline-block transition-transform duration-150 group-hover:translate-x-1">
+    <path d="M5 12h14" />
+    <path d="m12 5 7 7-7 7" />
+  </svg>
+)
 
 const posts = [
   {
@@ -41,7 +47,7 @@ export default function PostsPage() {
               href={post.href}
             >
               阅读全文
-              <ArrowRight className="ml-2 inline-block transition-transform duration-150 group-hover:translate-x-1" aria-hidden="true" size={16} strokeWidth={1.75} />
+              {arrowRightIcon}
             </Link>
           </article>
         ))}

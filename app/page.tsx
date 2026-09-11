@@ -1,12 +1,6 @@
-'use client'
 import Image from 'next/image'
-import { ArrowDownRight, ArrowRight, ExternalLink } from 'lucide-react'
 import kaiAvatar from '@/public/images/kai-avatar.webp'
 
-import { useState } from 'react'
-
-
-const filters = ['全部', '作品', '文章']
 const githubUrl = 'https://github.com/jokerwon'
 
 const principles = [
@@ -15,9 +9,29 @@ const principles = [
   { number: '03', title: '保持好奇', description: '技术会变，答案也会变。多试一次、多问一句，通常比急着下结论更有用。' },
 ]
 
-export default function Home() {
-  const [activeFilter, setActiveFilter] = useState('全部')
+const arrowDownRightIcon = (
+  <svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+    <path d="m7 7 10 10" />
+    <path d="M17 7v10H7" />
+  </svg>
+)
 
+const arrowRightIcon = (
+  <svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className="ml-2 inline-block transition-transform duration-150 group-hover:translate-x-1">
+    <path d="M5 12h14" />
+    <path d="m12 5 7 7-7 7" />
+  </svg>
+)
+
+const externalLinkIcon = (
+  <svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M15 3h6v6" />
+    <path d="M10 14 21 3" />
+    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+  </svg>
+)
+
+export default function Home() {
   const sectionClass = 'mx-auto grid max-w-7xl grid-cols-2 gap-16 border-t border-border px-10 py-32 max-[700px]:block max-[700px]:px-5 max-[700px]:py-20'
   const sectionTitleClass = 'mt-4 font-serif text-[clamp(32px,4vw,48px)] font-semibold leading-[1.33] tracking-[-0.02em] text-title max-[700px]:text-4xl [&_em]:not-italic [&_em]:text-primary'
   const sectionIndexClass = 'mb-0 text-xs tracking-[0.08em] text-muted'
@@ -27,7 +41,6 @@ export default function Home() {
 
   return (
     <>
-
       <div id="top" className="mx-auto max-w-7xl px-10 max-[700px]:px-5">
         <section
           className="flex min-h-[calc(100vh-80px)] max-h-200 items-center justify-between gap-16 max-[700px]:block max-[700px]:min-h-0 max-[700px]:py-20"
@@ -49,11 +62,11 @@ export default function Home() {
             <p className="mb-10 max-w-125 text-lg leading-[1.67] text-muted max-[700px]:text-base">这里是我的个人网站，放项目、经历和偶尔写下来的思考。</p>
             <div className="flex items-center gap-8">
               <a className={`${buttonClass} bg-primary text-on-primary hover:bg-primary-hover`} href="#work">
-                看看我在做什么 <ArrowDownRight aria-hidden="true" size={16} strokeWidth={1.75} />
+                看看我在做什么 {arrowDownRightIcon}
               </a>
               <a className={textLinkClass} href="#about">
                 先了解我{' '}
-                <ArrowRight className="ml-2 inline-block transition-transform duration-150 group-hover:translate-x-1" aria-hidden="true" size={16} strokeWidth={1.75} />
+                {arrowRightIcon}
               </a>
             </div>
           </div>
@@ -97,40 +110,25 @@ export default function Home() {
       </section>
 
       <section id="work" className={sectionClass} aria-labelledby="work-title">
-        <div className="flex flex-col justify-between max-[700px]:mb-14">
-          <div>
-            <p className={sectionIndexClass}>02 / 作品</p>
-            <h2 id="work-title" className={sectionTitleClass}>
-              做过什么，
-              <br />
-              <em>放在这里。</em>
-            </h2>
-          </div>
-          <div className="flex gap-6" role="group" aria-label="内容筛选">
-            {filters.map((filter) => (
-              <button
-                key={filter}
-                className={`cursor-pointer border-0 border-b bg-transparent px-0 py-1 text-sm ${focusRingClass} ${activeFilter === filter ? 'border-accent text-title' : 'border-transparent text-muted'}`}
-                type="button"
-                onClick={() => setActiveFilter(filter)}
-                aria-pressed={activeFilter === filter}
-              >
-                {filter}
-              </button>
-            ))}
-          </div>
+        <div className="max-[700px]:mb-14">
+          <p className={sectionIndexClass}>02 / 作品</p>
+          <h2 id="work-title" className={sectionTitleClass}>
+            做过什么，
+            <br />
+            <em>放在这里。</em>
+          </h2>
         </div>
         <div className="grid grid-cols-[140px_1fr] self-end border-t border-border-strong py-10 max-[700px]:grid-cols-[90px_1fr] max-[700px]:gap-5">
           <div className="font-serif text-[64px] leading-none text-primary max-[700px]:text-[44px]">
             0<span className="ml-2 font-sans text-sm text-muted">件</span>
           </div>
           <div>
-            <p className="mb-2 text-xs tracking-[0.08em] text-muted">{activeFilter === '全部' ? '还没有公开内容' : `还没有公开${activeFilter}`}</p>
+            <p className="mb-2 text-xs tracking-[0.08em] text-muted">还没有公开内容</p>
             <h3 className="mb-3 text-xl font-semibold text-title">作品还在整理。</h3>
             <p className="mb-6 max-w-100 text-sm text-muted">等资料准备好，我会把项目背景、做法和结果一起放上来。现在可以先了解我，或者直接来聊聊。</p>
             <a className={textLinkClass} href="#about">
               阅读关于我{' '}
-              <ArrowRight className="ml-2 inline-block transition-transform duration-150 group-hover:translate-x-1" aria-hidden="true" size={16} strokeWidth={1.75} />
+              {arrowRightIcon}
             </a>
           </div>
         </div>
@@ -151,7 +149,7 @@ export default function Home() {
             <h3 className="mb-3 text-xl font-semibold text-title">履历还在整理</h3>
             <p className="mb-6 max-w-100 text-sm text-muted">与其先摆上一串空泛的关键词，我更愿意等资料齐了再更新。想先看看代码，可以去 GitHub。</p>
             <a className={`${buttonClass} mt-6 border border-border-strong text-primary`} href={githubUrl} target="_blank" rel="noopener noreferrer">
-              查看 GitHub <ExternalLink aria-hidden="true" size={16} strokeWidth={1.75} />
+              查看 GitHub {externalLinkIcon}
             </a>
           </div>
         </div>
@@ -199,7 +197,7 @@ export default function Home() {
           <p className="mb-7 max-w-120 text-sm leading-[1.8] text-muted">一份面向 Web 产品界面的完整规范，覆盖视觉、组件、内容、交互、无障碍与评审门禁。</p>
           <a className={textLinkClass} href="notes/design/">
             阅读全文{' '}
-            <ArrowRight className="ml-2 inline-block transition-transform duration-150 group-hover:translate-x-1" aria-hidden="true" size={16} strokeWidth={1.75} />
+            {arrowRightIcon}
           </a>
         </article>
       </section>
@@ -213,7 +211,7 @@ export default function Home() {
         </h2>
         <p className="max-w-107.5 text-base text-muted">现在可以在 GitHub 找到我。代码和项目进展也会陆续放在那里。</p>
         <a className={`${buttonClass} mt-6 bg-primary text-on-primary hover:bg-primary-hover`} href={githubUrl} target="_blank" rel="noopener noreferrer">
-          访问 GitHub <ExternalLink aria-hidden="true" size={16} strokeWidth={1.75} />
+          访问 GitHub {externalLinkIcon}
         </a>
       </section>
 
@@ -221,10 +219,9 @@ export default function Home() {
         <span>© 2026 Kai Weng</span>
         <span>开发者 · 热忱之心不可泯灭</span>
         <a className="inline-flex items-center gap-1 no-underline transition-colors duration-150 hover:text-title" href={githubUrl} target="_blank" rel="noopener noreferrer">
-          GitHub <ExternalLink aria-hidden="true" size={13} strokeWidth={1.75} />
+          GitHub {externalLinkIcon}
         </a>
       </footer>
-
     </>
   )
 }
