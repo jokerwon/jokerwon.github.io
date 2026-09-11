@@ -41,7 +41,7 @@ export default function Home() {
       <div id="top" className="hero-wrap">
         <section id="main-content" className="hero" aria-labelledby="hero-title" tabIndex={-1}>
           <div className="hero-copy">
-            <p className="eyebrow"><span className="status-dot" aria-hidden="true" />前端工程师 · Kai Weng</p>
+            <p className="eyebrow"><span className="status-dot" aria-hidden="true" />开发者 · Kai Weng</p>
             <h1 id="hero-title">你好，我是<br /><em>Kai Weng</em>。</h1>
             <p className="hero-lede">热忱之心不可泯灭。这里是我的个人空间，记录我做过的作品、走过的经历，以及那些值得慢慢想清楚的事情。</p>
             <div className="hero-actions">
@@ -65,7 +65,7 @@ export default function Home() {
 
       <section id="about" className="section about-section" aria-labelledby="about-title">
         <div className="section-heading"><p className="section-index">01 / 关于</p><h2 id="about-title">留一点空间，<br /><em>让事情发生。</em></h2></div>
-        <div className="about-body"><p className="large-copy">我是一名专注于把想法做成可用界面的前端工程师。个人网站不必急着证明什么，它首先应该是一处可靠的入口：让你知道我是谁、我正在关注什么，以及我们是否有值得一起完成的事。</p><p className="small-copy">我的座右铭是「热忱之心不可泯灭」。目前这里是我的公开档案起点。随着真实的项目、工作与文字准备好，它们会依次来到这里；没有内容，不代表没有方向，只是还没有把未经整理的东西交出来。</p></div>
+        <div className="about-body"><p className="large-copy">我是一名专注于把想法做成可用产品的开发者。个人网站不必急着证明什么，它首先应该是一处可靠的入口：让你知道我是谁、我正在关注什么，以及我们是否有值得一起完成的事。</p><p className="small-copy">我的座右铭是「热忱之心不可泯灭」。目前这里是我的公开档案起点。随着真实的项目、工作与文字准备好，它们会依次来到这里；没有内容，不代表没有方向，只是还没有把未经整理的东西交出来。</p></div>
       </section>
 
       <section id="work" className="section work-section" aria-labelledby="work-title">
@@ -75,7 +75,7 @@ export default function Home() {
 
       <section id="experience" className="section experience-section" aria-labelledby="experience-title">
         <div className="section-heading"><p className="section-index">03 / 经历</p><h2 id="experience-title">走过的路，<br /><em>仍在路上。</em></h2></div>
-        <div className="timeline-empty"><span className="timeline-marker" aria-hidden="true" /><div><h3>经历资料待补充</h3><p>目前已确认身份：前端工程师。工作经历、技能与合作方式将在整理完成后公开；这里不会用一组漂亮但无从验证的关键词代替真实信息。</p><a className="button button-secondary" href={githubUrl} target="_blank" rel="noopener noreferrer">查看 GitHub <span aria-hidden="true">↗</span></a></div></div>
+        <div className="timeline-empty"><span className="timeline-marker" aria-hidden="true" /><div><h3>经历资料待补充</h3><p>目前已确认身份：开发者。工作经历、技能与合作方式将在整理完成后公开；这里不会用一组漂亮但无从验证的关键词代替真实信息。</p><a className="button button-secondary" href={githubUrl} target="_blank" rel="noopener noreferrer">查看 GitHub <span aria-hidden="true">↗</span></a></div></div>
       </section>
 
       <section className="section principles-section" aria-labelledby="principles-title"><div className="section-heading"><p className="section-index">04 / 方法</p><h2 id="principles-title">我如何<br /><em>靠近问题。</em></h2></div><div className="principles">{principles.map(({ number, title, description }) => <article className="principle" key={number}><p className="principle-number">{number}</p><h3>{title}</h3><p>{description}</p></article>)}</div></section>
@@ -84,7 +84,7 @@ export default function Home() {
 
       <section id="contact" className="contact-section" aria-labelledby="contact-title"><p className="section-index">联系 / GitHub</p><h2 id="contact-title">如果你想聊聊，<br /><em>欢迎找到我。</em></h2><p>目前最直接的公开入口是 GitHub。项目、代码与后续更新会在那里逐步留下记录。</p><a className="button button-primary" href={githubUrl} target="_blank" rel="noopener noreferrer">访问 GitHub <span aria-hidden="true">↗</span></a></section>
 
-      <footer className="site-footer"><span>© 2026 Kai Weng</span><span>前端工程师 · 热忱之心不可泯灭</span><a href={githubUrl} target="_blank" rel="noopener noreferrer">GitHub ↗</a></footer>
+      <footer className="site-footer"><span>© 2026 Kai Weng</span><span>开发者 · 热忱之心不可泯灭</span><a href={githubUrl} target="_blank" rel="noopener noreferrer">GitHub ↗</a></footer>
     </main>
   );
 }

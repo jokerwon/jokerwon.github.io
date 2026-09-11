@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Kai Weng — 前端工程师",
+  title: "Kai Weng — 开发者",
   description: "Kai Weng 的个人主页、作品、经历与思考。"
 };
 
