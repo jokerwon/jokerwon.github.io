@@ -1,5 +1,6 @@
 'use client'
 import Image from 'next/image'
+import { ArrowDownRight, ArrowRight, ExternalLink, Minus, Moon, Sun } from 'lucide-react'
 import kaiAvatar from '@/public/images/kai-avatar.webp'
 
 import { useState } from 'react'
@@ -49,12 +50,12 @@ export default function Home() {
           ))}
         </nav>
         <button
-          className="cursor-pointer border-0 bg-transparent py-2 text-sm text-muted transition-colors duration-150 hover:text-title max-[700px]:ml-auto"
+          className="inline-flex size-10 cursor-pointer items-center justify-center rounded-full border-0 bg-transparent text-muted transition-colors duration-150 hover:bg-surface hover:text-title max-[700px]:ml-auto"
           type="button"
           onClick={() => setDark(!dark)}
           aria-label={dark ? '切换浅色模式' : '切换暗色模式'}
         >
-          <span aria-hidden="true">{dark ? '○' : '◐'}</span> {dark ? '浅色' : '暗色'}
+          {dark ? <Sun aria-hidden="true" size={18} strokeWidth={1.75} /> : <Moon aria-hidden="true" size={18} strokeWidth={1.75} />}
         </button>
       </header>
 
@@ -81,13 +82,11 @@ export default function Home() {
             <p className="mb-10 max-w-125 text-lg leading-[1.67] text-muted max-[700px]:text-base">这里是我的个人网站，放项目、经历和偶尔写下来的思考。</p>
             <div className="flex items-center gap-8">
               <a className={`${buttonClass} bg-primary text-on-primary hover:bg-primary-hover`} href="#work">
-                看看我在做什么 <span aria-hidden="true">↘</span>
+                看看我在做什么 <ArrowDownRight aria-hidden="true" size={16} strokeWidth={1.75} />
               </a>
               <a className={textLinkClass} href="#about">
                 先了解我{' '}
-                <span className="ml-2 inline-block transition-transform duration-150 group-hover:translate-x-1" aria-hidden="true">
-                  →
-                </span>
+                <ArrowRight className="ml-2 inline-block transition-transform duration-150 group-hover:translate-x-1" aria-hidden="true" size={16} strokeWidth={1.75} />
               </a>
             </div>
           </div>
@@ -164,9 +163,7 @@ export default function Home() {
             <p className="mb-6 max-w-100 text-sm text-muted">等资料准备好，我会把项目背景、做法和结果一起放上来。现在可以先了解我，或者直接来聊聊。</p>
             <a className={textLinkClass} href="#about">
               阅读关于我{' '}
-              <span className="ml-2 inline-block transition-transform duration-150 group-hover:translate-x-1" aria-hidden="true">
-                →
-              </span>
+              <ArrowRight className="ml-2 inline-block transition-transform duration-150 group-hover:translate-x-1" aria-hidden="true" size={16} strokeWidth={1.75} />
             </a>
           </div>
         </div>
@@ -187,7 +184,7 @@ export default function Home() {
             <h3 className="mb-3 text-xl font-semibold text-title">履历还在整理</h3>
             <p className="mb-6 max-w-100 text-sm text-muted">与其先摆上一串空泛的关键词，我更愿意等资料齐了再更新。想先看看代码，可以去 GitHub。</p>
             <a className={`${buttonClass} mt-6 border border-border-strong text-primary`} href={githubUrl} target="_blank" rel="noopener noreferrer">
-              查看 GitHub <span aria-hidden="true">↗</span>
+              查看 GitHub <ExternalLink aria-hidden="true" size={16} strokeWidth={1.75} />
             </a>
           </div>
         </div>
@@ -229,16 +226,15 @@ export default function Home() {
             都会一起留在这里。
           </p>
         </div>
-        <div className="flex min-h-52.5 items-start gap-8 self-end border-t border-border-strong py-10 text-muted max-[700px]:min-h-40">
-          <span className="text-2xl text-accent" aria-hidden="true">
-            —
-          </span>
-          <p className="text-lg text-title">
-            这里还空着。
-            <br />
-            想清楚了再写，不赶更新。
-          </p>
-        </div>
+        <article className="self-end border-t border-border-strong py-10">
+          <p className="mb-3 text-xs tracking-[0.08em] text-muted">设计 · 2026.09.11</p>
+          <h3 className="mb-4 font-serif text-2xl font-semibold leading-[1.45] text-title">原研哉式 Web UI 设计规范</h3>
+          <p className="mb-7 max-w-120 text-sm leading-[1.8] text-muted">一份面向 Web 产品界面的完整规范，覆盖视觉、组件、内容、交互、无障碍与评审门禁。</p>
+          <a className={textLinkClass} href="notes/design/">
+            阅读全文{' '}
+            <ArrowRight className="ml-2 inline-block transition-transform duration-150 group-hover:translate-x-1" aria-hidden="true" size={16} strokeWidth={1.75} />
+          </a>
+        </article>
       </section>
 
       <section id="contact" className="mx-auto max-w-7xl border-t border-border px-10 pt-40 pb-32 max-[700px]:px-5 max-[700px]:pt-24 max-[700px]:pb-20" aria-labelledby="contact-title">
@@ -250,15 +246,15 @@ export default function Home() {
         </h2>
         <p className="max-w-107.5 text-base text-muted">现在可以在 GitHub 找到我。代码和项目进展也会陆续放在那里。</p>
         <a className={`${buttonClass} mt-6 bg-primary text-on-primary hover:bg-primary-hover`} href={githubUrl} target="_blank" rel="noopener noreferrer">
-          访问 GitHub <span aria-hidden="true">↗</span>
+          访问 GitHub <ExternalLink aria-hidden="true" size={16} strokeWidth={1.75} />
         </a>
       </section>
 
       <footer className="mx-auto flex max-w-7xl justify-between border-t border-border px-10 pt-6 pb-10 text-xs text-muted max-[700px]:grid max-[700px]:gap-3 max-[700px]:px-5 max-[700px]:pb-8">
         <span>© 2026 Kai Weng</span>
         <span>开发者 · 热忱之心不可泯灭</span>
-        <a className="no-underline transition-colors duration-150 hover:text-title" href={githubUrl} target="_blank" rel="noopener noreferrer">
-          GitHub ↗
+        <a className="inline-flex items-center gap-1 no-underline transition-colors duration-150 hover:text-title" href={githubUrl} target="_blank" rel="noopener noreferrer">
+          GitHub <ExternalLink aria-hidden="true" size={13} strokeWidth={1.75} />
         </a>
       </footer>
     </main>
