@@ -1,8 +1,10 @@
+import fs from 'node:fs'
+import path from 'node:path'
 import type { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: '博客 — Kai Weng',
+  title: '博客',
   description: 'Kai Weng 写下的文章与思考。',
 }
 
@@ -13,15 +15,42 @@ const arrowRightIcon = (
   </svg>
 )
 
-const posts = [
-  {
-    href: '/posts/agency-agnets',
-    category: 'AI 工具',
-    date: '2026.09.11',
-    title: 'Agency Agents：独立开发者如何零成本雇一支 AI 专家团队',
-    description: '介绍 Agency Agents 的核心能力、真实使用案例、安装方式与独立开发者实践建议。',
-  },
-]
+type Post = {
+  href: string
+  category: string
+  date: string
+  title: string
+  description: string
+}
+
+const postsDir = path.join(process.cwd(), 'app', 'posts')
+
+function readPosts(): Post[] {
+  return fs
+    .readdirSync(postsDir, { withFileTypes: true })
+    .filter((entry) => entry.isDirectory())
+    .map((entry) => {
+      const file = 'page.mdx'
+      const source = fs.readFileSync(path.join(postsDir, entry.name, file), 'utf8')
+      const metadata = /export\s+const\s+metadata\s*=\s*\{([\s\S]*?)\}/.exec(source)?.[1] ?? ''
+      const field = (name: string) => new RegExp(`\\b${name}:\\s*['"]([^'"]+)['"]`).exec(metadata)?.[1]
+      const post: Post = {
+        href: `/posts/${entry.name}`,
+        category: field('category') ?? '',
+        date: field('date') ?? '',
+        title: field('title') ?? '',
+        description: field('description') ?? '',
+      }
+      const missing = (Object.keys(post) as (keyof Post)[]).filter((key) => !post[key])
+      if (missing.length > 0) {
+        throw new Error(`app/posts/${entry.name}/${file} 的 metadata 缺少字段：${missing.join('、')}`)
+      }
+      return post
+    })
+    .sort((a, b) => b.date.localeCompare(a.date) || a.href.localeCompare(b.href))
+}
+
+const posts = readPosts()
 
 export default function PostsPage() {
   return (

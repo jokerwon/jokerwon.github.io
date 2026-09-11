@@ -4,7 +4,7 @@ import createMDX from '@next/mdx'
 const basePath = process.env.GITHUB_PAGES_BASE_PATH || ''
 
 const nextConfig = {
-  pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
+  pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'mdx'],
   output: 'export',
   images: { unoptimized: true },
   basePath,
@@ -13,7 +13,6 @@ const nextConfig = {
 }
 
 const withMDX = createMDX({
-  extension: /\.(md|mdx)$/,
   options: {
     remarkPlugins: ['remark-gfm'],
   },
