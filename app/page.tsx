@@ -1,4 +1,7 @@
 "use client";
+import Image from "next/image";
+import kaiAvatarLight from "@/public/images/kai-avatar-light.webp";
+import kaiAvatarDark from "@/public/images/kai-avatar-dark.webp";
 
 import { useState } from "react";
 
@@ -47,10 +50,18 @@ export default function Home() {
               <a className="text-link" href="#about">先了解我 <span aria-hidden="true">→</span></a>
             </div>
           </div>
-          <div className="hero-mark" aria-label="Kai Weng 的个人标记" role="img">
-            <div className="mark-ring ring-one" /><div className="mark-ring ring-two" /><div className="mark-core">J<span>.</span></div>
-            <p>PERSONAL<br />ARCHIVE / 2026</p>
-          </div>
+          <figure className="hero-portrait">
+            <div className="portrait-ring ring-one" />
+            <div className="portrait-ring ring-two" />
+            <Image
+              className="portrait-image"
+              src={dark ? kaiAvatarDark : kaiAvatarLight}
+              alt="Kai Weng 的卡通人物形象"
+              priority
+              sizes="(max-width: 700px) 220px, 320px"
+            />
+            <figcaption>PERSONAL<br />ARCHIVE / 2026</figcaption>
+          </figure>
         </section>
         <div className="hero-foot"><span>向下阅读</span><span className="line" /><span>01 — 05</span></div>
       </div>
