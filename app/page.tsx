@@ -1,7 +1,6 @@
 "use client";
 import Image from "next/image";
-import kaiAvatarLight from "@/public/images/kai-avatar-light.webp";
-import kaiAvatarDark from "@/public/images/kai-avatar-dark.webp";
+import kaiAvatar from "@/public/images/kai-avatar.webp";
 
 import { useState } from "react";
 
@@ -55,7 +54,7 @@ export default function Home() {
             <div className="portrait-ring ring-two" />
             <Image
               className="portrait-image"
-              src={dark ? kaiAvatarDark : kaiAvatarLight}
+              src={kaiAvatar}
               alt="Kai Weng 的卡通人物形象"
               priority
               sizes="(max-width: 700px) 220px, 320px"
