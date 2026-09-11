@@ -10,16 +10,18 @@ const navItems = [
   { label: "联系", href: "#contact" },
 ];
 
+const filters = ["全部", "作品", "文章"];
+const githubUrl = "https://github.com/jokerwon";
+
 const principles = [
-  ["01", "先理解，再行动", "把复杂问题拆成可以被看见、被讨论、被完成的下一步。"],
-  ["02", "让内容留下来", "不追逐短暂的注意力，为值得回看的内容建立清晰结构。"],
-  ["03", "保持开放", "好的作品不是答案的终点，而是下一次思考能够继续发生的容器。"],
+  { number: "01", title: "先理解，再行动", description: "把复杂问题拆成可以被看见、被讨论、被完成的下一步。" },
+  { number: "02", title: "让内容留下来", description: "不追逐短暂的注意力，为值得回看的内容建立清晰结构。" },
+  { number: "03", title: "保持开放", description: "好的作品不是答案的终点，而是下一次思考能够继续发生的容器。" },
 ];
 
 export default function Home() {
   const [dark, setDark] = useState(false);
   const [activeFilter, setActiveFilter] = useState("全部");
-  const filters = ["全部", "作品", "文章"];
 
   return (
     <main className={dark ? "site dark" : "site"}>
@@ -35,7 +37,7 @@ export default function Home() {
       </header>
 
       <div id="top" className="hero-wrap">
-        <section id="main-content" className="hero" aria-labelledby="hero-title">
+        <section id="main-content" className="hero" aria-labelledby="hero-title" tabIndex={-1}>
           <div className="hero-copy">
             <p className="eyebrow"><span className="status-dot" aria-hidden="true" />前端工程师 · Kai Weng</p>
             <h1 id="hero-title">你好，我是<br /><em>Kai Weng</em>。</h1>
@@ -65,16 +67,16 @@ export default function Home() {
 
       <section id="experience" className="section experience-section" aria-labelledby="experience-title">
         <div className="section-heading"><p className="section-index">03 / 经历</p><h2 id="experience-title">走过的路，<br /><em>仍在路上。</em></h2></div>
-        <div className="timeline-empty"><span className="timeline-marker" aria-hidden="true" /><div><h3>经历资料待补充</h3><p>目前已确认身份：前端工程师。工作经历、技能与合作方式将在整理完成后公开；这里不会用一组漂亮但无从验证的关键词代替真实信息。</p><a className="button button-secondary" href="https://github.com/jokerwon" target="_blank" rel="noreferrer">查看 GitHub <span aria-hidden="true">↗</span></a></div></div>
+        <div className="timeline-empty"><span className="timeline-marker" aria-hidden="true" /><div><h3>经历资料待补充</h3><p>目前已确认身份：前端工程师。工作经历、技能与合作方式将在整理完成后公开；这里不会用一组漂亮但无从验证的关键词代替真实信息。</p><a className="button button-secondary" href={githubUrl} target="_blank" rel="noopener noreferrer">查看 GitHub <span aria-hidden="true">↗</span></a></div></div>
       </section>
 
-      <section className="section principles-section" aria-labelledby="principles-title"><div className="section-heading"><p className="section-index">04 / 方法</p><h2 id="principles-title">我如何<br /><em>靠近问题。</em></h2></div><div className="principles">{principles.map(([number, title, description]) => <article className="principle" key={number}><p className="principle-number">{number}</p><h3>{title}</h3><p>{description}</p></article>)}</div></section>
+      <section className="section principles-section" aria-labelledby="principles-title"><div className="section-heading"><p className="section-index">04 / 方法</p><h2 id="principles-title">我如何<br /><em>靠近问题。</em></h2></div><div className="principles">{principles.map(({ number, title, description }) => <article className="principle" key={number}><p className="principle-number">{number}</p><h3>{title}</h3><p>{description}</p></article>)}</div></section>
 
       <section id="notes" className="section notes-section" aria-labelledby="notes-title"><div className="section-heading split-heading"><div><p className="section-index">05 / 文章</p><h2 id="notes-title">一些还没写完的<br /><em>想法。</em></h2></div><p className="aside-note">文章会在这里保持<br />作者、日期与上下文。</p></div><div className="notes-empty"><span aria-hidden="true">—</span><p>暂时没有公开文章。<br />先把想法想清楚，再把它写下来。</p></div></section>
 
-      <section id="contact" className="contact-section" aria-labelledby="contact-title"><p className="section-index">联系 / GitHub</p><h2 id="contact-title">如果你想聊聊，<br /><em>欢迎找到我。</em></h2><p>目前最直接的公开入口是 GitHub。项目、代码与后续更新会在那里逐步留下记录。</p><a className="button button-primary" href="https://github.com/jokerwon" target="_blank" rel="noreferrer">访问 GitHub <span aria-hidden="true">↗</span></a></section>
+      <section id="contact" className="contact-section" aria-labelledby="contact-title"><p className="section-index">联系 / GitHub</p><h2 id="contact-title">如果你想聊聊，<br /><em>欢迎找到我。</em></h2><p>目前最直接的公开入口是 GitHub。项目、代码与后续更新会在那里逐步留下记录。</p><a className="button button-primary" href={githubUrl} target="_blank" rel="noopener noreferrer">访问 GitHub <span aria-hidden="true">↗</span></a></section>
 
-      <footer className="site-footer"><span>© 2026 Kai Weng</span><span>前端工程师 · 热忱之心不可泯灭</span><a href="https://github.com/jokerwon" target="_blank" rel="noreferrer">GitHub ↗</a></footer>
+      <footer className="site-footer"><span>© 2026 Kai Weng</span><span>前端工程师 · 热忱之心不可泯灭</span><a href={githubUrl} target="_blank" rel="noopener noreferrer">GitHub ↗</a></footer>
     </main>
   );
 }
