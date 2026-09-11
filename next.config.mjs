@@ -1,12 +1,22 @@
+import createMDX from '@next/mdx'
+
 /** @type {import('next').NextConfig} */
-const basePath = process.env.GITHUB_PAGES_BASE_PATH || "";
+const basePath = process.env.GITHUB_PAGES_BASE_PATH || ''
 
 const nextConfig = {
-  output: "export",
+  pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
+  output: 'export',
   images: { unoptimized: true },
   basePath,
   assetPrefix: basePath,
   reactStrictMode: true,
-};
+}
 
-export default nextConfig;
+const withMDX = createMDX({
+  extension: /\.(md|mdx)$/,
+  options: {
+    remarkPlugins: ['remark-gfm'],
+  },
+})
+
+export default withMDX(nextConfig)
