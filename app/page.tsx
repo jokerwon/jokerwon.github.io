@@ -1,17 +1,10 @@
 'use client'
 import Image from 'next/image'
-import { ArrowDownRight, ArrowRight, ExternalLink, Minus, Moon, Sun } from 'lucide-react'
+import { ArrowDownRight, ArrowRight, ExternalLink } from 'lucide-react'
 import kaiAvatar from '@/public/images/kai-avatar.webp'
 
 import { useState } from 'react'
 
-const navItems = [
-  { label: '关于', href: '#about' },
-  { label: '作品', href: '#work' },
-  { label: '经历', href: '#experience' },
-  { label: '文章', href: '#notes' },
-  { label: '联系', href: '#contact' },
-]
 
 const filters = ['全部', '作品', '文章']
 const githubUrl = 'https://github.com/jokerwon'
@@ -23,7 +16,6 @@ const principles = [
 ]
 
 export default function Home() {
-  const [dark, setDark] = useState(false)
   const [activeFilter, setActiveFilter] = useState('全部')
 
   const sectionClass = 'mx-auto grid max-w-7xl grid-cols-2 gap-16 border-t border-border px-10 py-32 max-[700px]:block max-[700px]:px-5 max-[700px]:py-20'
@@ -34,37 +26,12 @@ export default function Home() {
   const textLinkClass = `group text-sm text-primary underline decoration-1 underline-offset-[5px] ${focusRingClass}`
 
   return (
-    <main className={`${dark ? 'theme-dark' : ''} min-h-screen bg-page text-body transition-colors duration-150`}>
-      <a className="absolute left-4 -top-25 z-10 bg-primary px-4 py-2 text-on-primary focus:top-4" href="#main-content">
-        跳到主要内容
-      </a>
-      <header className="mx-auto flex h-20 max-w-7xl items-center justify-between border-b border-border px-10 max-[700px]:h-auto max-[700px]:min-h-18 max-[700px]:flex-wrap max-[700px]:gap-4 max-[700px]:px-5 max-[700px]:py-5">
-        <a className="font-serif text-[28px] leading-none text-title no-underline" href="#top" aria-label="Kai Weng 首页">
-          K<span className="text-accent">.</span>
-        </a>
-        <nav className="ml-auto mr-12 flex gap-8 max-[700px]:order-3 max-[700px]:m-0 max-[700px]:w-full max-[700px]:justify-between max-[700px]:gap-3" aria-label="主导航">
-          {navItems.map((item) => (
-            <a className="text-sm text-muted no-underline transition-colors duration-150 hover:text-title focus-visible:text-title max-[700px]:text-[13px]" key={item.href} href={item.href}>
-              {item.label}
-            </a>
-          ))}
-        </nav>
-        <button
-          className="inline-flex size-10 cursor-pointer items-center justify-center rounded-full border-0 bg-transparent text-muted transition-colors duration-150 hover:bg-surface hover:text-title max-[700px]:ml-auto"
-          type="button"
-          onClick={() => setDark(!dark)}
-          aria-label={dark ? '切换浅色模式' : '切换暗色模式'}
-        >
-          {dark ? <Sun aria-hidden="true" size={18} strokeWidth={1.75} /> : <Moon aria-hidden="true" size={18} strokeWidth={1.75} />}
-        </button>
-      </header>
+    <>
 
       <div id="top" className="mx-auto max-w-7xl px-10 max-[700px]:px-5">
         <section
-          id="main-content"
           className="flex min-h-[calc(100vh-80px)] max-h-200 items-center justify-between gap-16 max-[700px]:block max-[700px]:min-h-0 max-[700px]:py-20"
           aria-labelledby="hero-title"
-          tabIndex={-1}
         >
           <div className="max-w-165 py-24 max-[700px]:py-0">
             <p className="mb-8 flex items-center gap-2 text-xs tracking-[0.08em] text-muted">
@@ -257,6 +224,7 @@ export default function Home() {
           GitHub <ExternalLink aria-hidden="true" size={13} strokeWidth={1.75} />
         </a>
       </footer>
-    </main>
+
+    </>
   )
 }
