@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "skills": {
+    "huashu-article-edit": {
+      "source": "alchaincyf/huashu-skills",
+      "sourceType": "github",
+      "skillPath": "huashu-article-edit/SKILL.md",
+      "computedHash": "db496e01c883cb0ec5dfdbdd3dec8c07f3866faf20e8abcb6b0ddf3ebfacf214"
+    },
+    "huashu-proofreading": {
+      "source": "alchaincyf/huashu-skills",
+      "sourceType": "github",
+      "skillPath": "huashu-proofreading/SKILL.md",
+      "computedHash": "4218893868f99f7f5485e79983de63024cd61b1e94150083127bac1747b55192"
+    }
+  }
+}
