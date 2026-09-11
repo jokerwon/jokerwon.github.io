@@ -25,7 +25,7 @@ export default function Home() {
     <main className={dark ? "site dark" : "site"}>
       <a className="skip-link" href="#main-content">跳到主要内容</a>
       <header className="site-header">
-        <a className="wordmark" href="#top" aria-label="Jokerwon 首页">J<span>.</span></a>
+        <a className="wordmark" href="#top" aria-label="Kai Weng 首页">J<span>.</span></a>
         <nav aria-label="主导航">
           {navItems.map((item) => <a key={item.href} href={item.href}>{item.label}</a>)}
         </nav>
@@ -45,7 +45,7 @@ export default function Home() {
               <a className="text-link" href="#about">先了解我 <span aria-hidden="true">→</span></a>
             </div>
           </div>
-          <div className="hero-mark" aria-label="个人标记：Jokerwon" role="img">
+          <div className="hero-mark" aria-label="Kai Weng 的个人标记" role="img">
             <div className="mark-ring ring-one" /><div className="mark-ring ring-two" /><div className="mark-core">J<span>.</span></div>
             <p>PERSONAL<br />ARCHIVE / 2026</p>
           </div>
