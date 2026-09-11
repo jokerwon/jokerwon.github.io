@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 @font-face { font-family:"LXGW Bright"; src:url("/fonts/lxgw-bright-regular.woff2") format("woff2"); font-style:normal; font-weight:400; font-display:swap; }
 @font-face { font-family:"LXGW Bright"; src:url("/fonts/lxgw-bright-medium.woff2") format("woff2"); font-style:normal; font-weight:500 600; font-display:swap; }
 
