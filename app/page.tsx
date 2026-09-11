@@ -29,7 +29,7 @@ export default function Home() {
     <main className={dark ? "site dark" : "site"}>
       <a className="skip-link" href="#main-content">跳到主要内容</a>
       <header className="site-header">
-        <a className="wordmark" href="#top" aria-label="Kai Weng 首页">J<span>.</span></a>
+        <a className="wordmark" href="#top" aria-label="Kai Weng 首页">K<span>.</span></a>
         <nav aria-label="主导航">
           {navItems.map((item) => <a key={item.href} href={item.href}>{item.label}</a>)}
         </nav>
