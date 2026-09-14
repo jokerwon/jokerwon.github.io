@@ -1,0 +1,40 @@
+---
+import { render } from 'astro:content'
+import type { CollectionEntry } from 'astro:content'
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import { estimateReadingMinutes, getSortedPosts } from '../../utils/posts'
+
+export async function getStaticPaths() {
+  const posts = await getSortedPosts()
+  return posts.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }))
+}
+
+interface Props {
+  entry: CollectionEntry<'posts'>
+}
+
+const { entry } = Astro.props
+const { Content } = await render(entry)
+const { title, description, category, date, updatedDate } = entry.data
+const displayDate = updatedDate ?? date
+const isoDate = displayDate.replaceAll('.', '-')
+const readingMinutes = estimateReadingMinutes(entry.body)
+---
+
+<BaseLayout title={title} description={description}>
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">{title}</h1>
+      <p class="post-description">{description}</p>
+      <p class="post-meta">
+        Kai Weng · {category} · <time datetime={isoDate}>{displayDate}</time> · 预计阅读约 {readingMinutes} 分钟
+      </p>
+    </header>
+    <div class="markdown-body">
+      <Content />
+    </div>
+  </article>
+</BaseLayout>

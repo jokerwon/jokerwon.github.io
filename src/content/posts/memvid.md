@@ -1,11 +1,9 @@
-export const metadata = {
-  title: 'Memvid：我为什么开始把 Agent 的记忆装进一个文件里',
-  description: '介绍 Memvid 的单文件 Agent 记忆方案：核心能力、真实案例、集成体验与选型建议。',
-  category: 'AI 工具',
-  date: '2026.09.11',
-}
-
-# Memvid：我为什么开始把 Agent 的记忆装进一个文件里
+---
+title: 'Memvid：我为什么开始把 Agent 的记忆装进一个文件里'
+description: '介绍 Memvid 的单文件 Agent 记忆方案：核心能力、真实案例、集成体验与选型建议。'
+category: 'AI 工具'
+date: '2026.09.11'
+---
 
 ## 1. Agent 开发的记忆困境
 
@@ -323,4 +321,4 @@ Memvid 这个趋势抓得很准：**Agent 基础设施在从"重服务端"往"�
 
 ---
 
-*参考来源：[Memvid 官网](https://memvid.com/) · [Memvid GitHub](https://github.com/memvid/memvid) · [Memvid 文档](https://docs.memvid.com/) · [claude-brain](https://github.com/memvid/claude-brain) · [maw](https://github.com/memvid/maw) · [screenshot-memory](https://github.com/memvid/screenshot-memory) · [knowledge-engine](https://github.com/tashisleepy/knowledge-engine) · [产品定位与竞品分析报告](../../report/memvid-analysis-report.md) · [使用案例研究报告](../../report/case.md)*
+*参考来源：[Memvid 官网](https://memvid.com/) · [Memvid GitHub](https://github.com/memvid/memvid) · [Memvid 文档](https://docs.memvid.com/) · [claude-brain](https://github.com/memvid/claude-brain) · [maw](https://github.com/memvid/maw) · [screenshot-memory](https://github.com/memvid/screenshot-memory) · [knowledge-engine](https://github.com/tashisleepy/knowledge-engine)*

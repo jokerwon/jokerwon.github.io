@@ -1,0 +1,15 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import PostList from '../../components/PostList.astro'
+import { getSortedPosts } from '../../utils/posts'
+
+const posts = await getSortedPosts()
+---
+
+<BaseLayout title="博客" description="Kai Weng 写下的文章与思考。">
+  <section class="mx-auto max-w-300 px-8 py-24 max-[700px]:px-4 max-[700px]:py-16" aria-labelledby="posts-title">
+    <p class="section-index">BLOG / 博客</p>
+    <h1 id="posts-title" class="posts-title title-em">写下来，<br /><em>留着以后再看。</em></h1>
+    <PostList posts={posts} titleLevel="h2" />
+  </section>
+</BaseLayout>

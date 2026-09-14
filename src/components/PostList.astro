@@ -1,0 +1,42 @@
+---
+import type { CollectionEntry } from 'astro:content'
+import { withBase } from '../utils/paths'
+
+interface Props {
+  posts: CollectionEntry<'posts'>[]
+  titleLevel?: 'h2' | 'h3'
+}
+
+const { posts, titleLevel = 'h2' } = Astro.props
+const Heading = titleLevel
+const githubUrl = 'https://github.com/jokerwon'
+---
+
+{
+  posts.length === 0 ? (
+    <div class="empty-state">
+      <Heading class="empty-title">目前没有已发布文章</Heading>
+      <p class="empty-reason">内容集合中还没有文章。</p>
+      <a class="link-text" href={githubUrl} target="_blank" rel="noopener noreferrer">
+        前往 GitHub 查看代码与动态
+      </a>
+    </div>
+  ) : (
+    <div class="post-list">
+      {posts.map((entry) => (
+        <article class="post-row">
+          <p class="post-row-meta">
+            {entry.data.category} · {entry.data.date}
+          </p>
+          <div>
+            <Heading class="post-row-title">{entry.data.title}</Heading>
+            <p class="post-row-description">{entry.data.description}</p>
+          </div>
+          <a class="link-text post-row-link" href={withBase(`/posts/${entry.id}/`)}>
+            阅读全文
+          </a>
+        </article>
+      ))}
+    </div>
+  )
+}

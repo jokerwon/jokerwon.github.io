@@ -1,11 +1,9 @@
-export const metadata = {
-  title: 'Agency Agents：独立开发者如何零成本雇一支 AI 专家团队',
-  description: '介绍 Agency Agents 的核心能力、真实使用案例、安装方式与独立开发者实践建议。',
-  category: 'AI 工具',
-  date: '2026.09.11',
-}
-
-# Agency Agents：独立开发者如何零成本雇一支 AI 专家团队
+---
+title: 'Agency Agents：独立开发者如何零成本雇一支 AI 专家团队'
+description: '介绍 Agency Agents 的核心能力、真实使用案例、安装方式与独立开发者实践建议。'
+category: 'AI 工具'
+date: '2026.09.11'
+---
 
 ## 1. 一个人，干一个团队的活
 
@@ -166,4 +164,4 @@ Agency Agents 抓准的正是这个趋势。我的判断：
 
 ---
 
-*参考来源：[Agency Agents 官网](https://agencyagents.app/) · [agency-agents catalog 仓库](https://github.com/msitarzewski/agency-agents) · [Agency Agents App 仓库](https://github.com/msitarzewski/agency-agents-app) · [调研报告](../../report/agencyagents-research-2026-08-17.md) · [使用案例分析](../../report/case.md)*
+*参考来源：[Agency Agents 官网](https://agencyagents.app/) · [agency-agents catalog 仓库](https://github.com/msitarzewski/agency-agents) · [Agency Agents App 仓库](https://github.com/msitarzewski/agency-agents-app)*

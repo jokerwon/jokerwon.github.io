@@ -1,8 +1,8 @@
 # dependencies
 /node_modules
 
-# Next.js
-/.next
+# Astro
+/.astro
 /out
 
 # production
@@ -15,7 +15,3 @@
 # environment
 .env*
 !.env.example
-
-# TypeScript
-*.tsbuildinfo
-next-env.d.ts

@@ -1,0 +1,16 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import { withBase } from '../utils/paths'
+---
+
+<BaseLayout>
+  <section class="not-found" aria-labelledby="not-found-title">
+    <p class="section-index">404 / NOT FOUND</p>
+    <h1 id="not-found-title" class="not-found-title">页面不存在</h1>
+    <p class="not-found-reason">链接可能已变更或输入有误。</p>
+    <div class="not-found-actions">
+      <a class="button button-primary" href={withBase('/')}>返回首页</a>
+      <a class="link-text" href={withBase('/posts/')}>浏览文章</a>
+    </div>
+  </section>
+</BaseLayout>

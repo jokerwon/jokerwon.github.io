@@ -1,0 +1,124 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import PostList from '../components/PostList.astro'
+import { withBase } from '../utils/paths'
+import { getSortedPosts } from '../utils/posts'
+
+const posts = await getSortedPosts()
+const githubUrl = 'https://github.com/jokerwon'
+
+const principles = [
+  {
+    number: '01',
+    title: '先弄明白，再动手',
+    description: '碰到复杂问题，我会先把目标和边界问清楚，再拆成下一步。',
+  },
+  {
+    number: '02',
+    title: '做能用的东西',
+    description: '想法落到产品里，才有机会被验证。比起漂亮概念，我更在意它能不能解决问题。',
+  },
+  {
+    number: '03',
+    title: '保持好奇',
+    description: '技术会变，答案也会变。多试一次、多问一句，通常比急着下结论更有用。',
+  },
+]
+---
+
+<BaseLayout>
+  <div class="mx-auto max-w-[1200px] px-8 max-[700px]:px-4">
+    <section class="hero" aria-labelledby="hero-title">
+      <div>
+        <p class="hero-eyebrow">开发者 · Kai Weng</p>
+        <h1 id="hero-title" class="display-title title-em">你好，我是<br /><em>Kai Weng</em>。</h1>
+        <p class="hero-intro">这里是我的个人网站，放项目、经历和偶尔写下来的思考。</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#notes">阅读最新文章</a>
+          <a class="link-text" href="#about">先了解我</a>
+        </div>
+      </div>
+      <figure class="hero-figure">
+        <img
+          class="hero-avatar"
+          src={withBase('/images/kai-avatar.webp')}
+          alt="Kai Weng 的卡通人物形象"
+          width="720"
+          height="720"
+          loading="eager"
+          fetchpriority="high"
+          sizes="(max-width: 700px) 220px, 320px"
+        />
+        <figcaption class="hero-caption">PERSONAL<br />ARCHIVE / 2026</figcaption>
+      </figure>
+    </section>
+
+    <section id="about" class="home-section" aria-labelledby="about-title">
+      <div class="section-heading">
+        <p class="section-index">01 / 关于</p>
+        <h2 id="about-title" class="section-title title-em">我是谁，<br /><em>从这里说起。</em></h2>
+      </div>
+      <div class="section-body">
+        <p class="section-lead">
+          我是一名开发者，喜欢从一个模糊的念头出发，把它一点点做成真正能用的产品。这个网站是我的公开入口。你可以在这里了解我做过什么、最近在关注什么。
+        </p>
+        <p class="section-note">
+          「热忱之心不可泯灭」是我一直记着的一句话。网站才刚起步，有些地方还空着。作品、经历和文章整理好后，我会陆续放上来。没准备好的内容，不急着凑数。
+        </p>
+      </div>
+    </section>
+
+    <section id="principles" class="home-section" aria-labelledby="principles-title">
+      <div class="section-heading">
+        <p class="section-index">02 / 方法</p>
+        <h2 id="principles-title" class="section-title title-em">我做事的<br /><em>三个习惯。</em></h2>
+      </div>
+      <div>
+        <div class="principles-grid">
+          {
+            principles.map(({ number, title, description }) => (
+              <article class="principle">
+                <p class="principle-number">{number}</p>
+                <h3>{title}</h3>
+                <p>{description}</p>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section id="notes" class="home-section" aria-labelledby="notes-title">
+      <div class="section-heading">
+        <p class="section-index">03 / 文章</p>
+        <h2 id="notes-title" class="section-title title-em">写下来，<br /><em>留着以后再看。</em></h2>
+      </div>
+      <div>
+        <PostList posts={posts} titleLevel="h3" />
+        <p class="mt-12">
+          <a class="link-text" href={withBase('/posts/')}>查看全部文章</a>
+        </p>
+      </div>
+    </section>
+
+    <section id="contact" class="home-section" aria-labelledby="contact-title">
+      <div class="section-heading">
+        <p class="section-index">联系 / GitHub</p>
+        <h2 id="contact-title" class="section-title title-em">有想法，<br /><em>来聊聊。</em></h2>
+      </div>
+      <div class="section-body">
+        <p class="section-note">现在可以在 GitHub 找到我。代码和项目进展也会陆续放在那里。</p>
+        <p class="mt-6">
+          <a class="link-text" href={githubUrl} target="_blank" rel="noopener noreferrer">
+            访问 GitHub
+            <svg aria-hidden="true" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="inline-block align-baseline">
+              <path d="M15 3h6v6"></path>
+              <path d="M10 14 21 3"></path>
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+            </svg>
+          </a>
+        </p>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
