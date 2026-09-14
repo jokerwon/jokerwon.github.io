@@ -1,38 +1,4 @@
 @import 'tailwindcss';
-/* 自托管字体：LXGW WenKai（霞鹜文楷）与 LXGW WenKai Mono。
-   font-display: swap，无 FOIT；经 Vite 打包，URL 自动带构建 base 前缀与内容哈希。 */
-@font-face {
-  font-family: 'LXGW WenKai';
-  src: url('../assets/fonts/lxgw-wenkai-lite-regular.woff2') format('woff2');
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'LXGW WenKai';
-  src: url('../assets/fonts/lxgw-wenkai-lite-medium.woff2') format('woff2');
-  font-style: normal;
-  font-weight: 500 600;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'LXGW WenKai Mono';
-  src: url('../assets/fonts/lxgw-wenkai-mono-lite-regular.woff2') format('woff2');
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'LXGW WenKai Mono';
-  src: url('../assets/fonts/lxgw-wenkai-mono-lite-medium.woff2') format('woff2');
-  font-style: normal;
-  font-weight: 500 600;
-  font-display: swap;
-}
-
 
 /* ---------------------------------------------------------------------------
  * 设计令牌（DESIGN.md §3，可直接复制的 token）
@@ -66,12 +32,13 @@
   --warning: #8a6510;
   --info: #2f4767;
 
-  /* 字体：LXGW WenKai 优先（旧站字体），系统栈兜底 */
-  --font-sans: 'LXGW WenKai', 'KaiTi', 'STKaiti', -apple-system, 'PingFang SC', 'Hiragino Sans GB',
+  /* 字体：@font-face 由 astro.config.mjs 的 fonts 配置生成，经 Layout 的 <Font /> 注入；
+     此处只声明回退栈（font-display 默认 swap） */
+  --font-sans: var(--font-wenkai), 'KaiTi', 'STKaiti', -apple-system, 'PingFang SC', 'Hiragino Sans GB',
     'Source Han Sans SC', 'Noto Sans SC', 'Microsoft YaHei', sans-serif;
-  --font-serif: 'LXGW WenKai', 'KaiTi', 'STKaiti', 'Songti SC', 'Source Han Serif SC', 'Noto Serif SC',
+  --font-serif: var(--font-wenkai), 'KaiTi', 'STKaiti', 'Songti SC', 'Source Han Serif SC', 'Noto Serif SC',
     serif;
-  --font-mono: 'LXGW WenKai Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  --font-mono: var(--font-wenkai-mono), ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
 
   /* 动效 */
   --dur-1: 100ms;

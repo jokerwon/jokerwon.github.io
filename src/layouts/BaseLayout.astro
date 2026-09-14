@@ -1,4 +1,5 @@
 ---
+import { Font } from 'astro:assets'
 import { withBase } from '../utils/paths'
 import '../styles/global.css'
 
@@ -30,6 +31,8 @@ const isPosts = currentPath.startsWith('/posts')
     <meta name="generator" content={Astro.generator} />
     <link rel="icon" type="image/png" href={withBase('/icon.png')} />
     <link rel="apple-touch-icon" href={withBase('/apple-icon.png')} />
+    <Font cssVariable="--font-wenkai" preload={[{ weight: 400 }]} />
+    <Font cssVariable="--font-wenkai-mono" />
     <script is:inline>
       // 首次绘制前解析主题：存储优先（仅接受 light/dark），否则跟随系统
       ;(function () {

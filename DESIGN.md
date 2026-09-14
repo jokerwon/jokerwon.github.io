@@ -182,12 +182,15 @@
 
 - **字重只用 3 级**：400 / 500 / 600。不用 300（中文细体在屏上发虚），不用 700+。
 - **字距**：中文不调字距；拉丁 20px 以上标题可 `-0.02em`。**不用字距营造「设计感」**。
-- **字体族**（中文优先、系统优先，避免字体包体积）
+- **字体族**（中文优先、系统优先，避免字体包体积）：@font-face 由 Astro Fonts API 在
+  `astro.config.mjs` 的 `fonts` 里声明，经 `BaseLayout.astro` 的 `<Font />` 注入 `--font-wenkai` /
+  `--font-wenkai-mono`；`global.css` 只保留回退栈。
   ```css
-  --font-sans: -apple-system, "PingFang SC", "Hiragino Sans GB",
-               "Source Han Sans SC", "Noto Sans SC", "Microsoft YaHei", sans-serif;
-  --font-serif: "Songti SC", "Source Han Serif SC", "Noto Serif SC", serif;
-  --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --font-sans: var(--font-wenkai), "KaiTi", "STKaiti", -apple-system, "PingFang SC",
+               "Hiragino Sans GB", "Source Han Sans SC", "Noto Sans SC", "Microsoft YaHei", sans-serif;
+  --font-serif: var(--font-wenkai), "KaiTi", "STKaiti", "Songti SC", "Source Han Serif SC",
+                "Noto Serif SC", serif;
+  --font-mono: var(--font-wenkai-mono), ui-monospace, "SF Mono", Menlo, Consolas, monospace;
   ```
 - **数字用等宽**（`font-variant-numeric: tabular-nums`）——表格与数据不跳动。
 
@@ -256,7 +259,7 @@
 
 CJK 字体包含大量汉字，单个字体文件可达数 MB 到数十 MB；再叠加动画库，首屏渲染会急剧恶化。
 
-- 正文优先**系统字体栈**；自托管字体必须**子集化 + `font-display: swap`**，并 `preconnect`；
+- 自托管字体必须**子集化 + `font-display: swap`**；正文首选字重经 Astro Fonts API 生成 `preload`（其余按需下载）；
 - **视觉克制本身就是性能方案——留白不需要下载**；
 - 目标：首屏 JS ≤150KB(gzip)、LCP ≤2.5s（4G 移动）、无 FOIT；
 - 内容站应做到**第三方追踪脚本 = 0**（同时改进速度、隐私与阅读沉浸感）。
