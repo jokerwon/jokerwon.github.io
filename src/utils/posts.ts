@@ -16,3 +16,14 @@ export async function getSortedPosts(): Promise<CollectionEntry<'posts'>[]> {
 export function estimateReadingMinutes(body: string | undefined): number {
   return Math.max(1, Math.ceil((body ?? '').replace(/\s/g, '').length / 500))
 }
+
+/**
+ * 分类：frontmatter 的 category 优先（用于显示名如「AI 工具」），
+ * 否则取 id 的第一段目录名（ai-tools/foo.md → ai-tools），根级文件无分类时返回「未分类」。
+ *
+ * 目录名会逐段 slug 化后进 URL（小写、空格转 -、中文百分号编码），请用 ASCII 命名；
+ * dir/index.md 的 id 会塌缩为 dir（目录即一篇文章）。
+ */
+export function getCategory(entry: CollectionEntry<'posts'>): string {
+  return entry.data.category ?? (entry.id.includes('/') ? entry.id.split('/')[0] : '未分类')
+}

@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content'
+import { getCategory } from '../utils/posts'
 import { withBase } from '../utils/paths'
 
 interface Props {
@@ -26,7 +27,7 @@ const githubUrl = 'https://github.com/jokerwon'
       {posts.map((entry) => (
         <article class="post-row">
           <p class="post-row-meta">
-            {entry.data.category} · {entry.data.date}
+            {getCategory(entry)} · {entry.data.date}
           </p>
           <div>
             <Heading class="post-row-title">{entry.data.title}</Heading>

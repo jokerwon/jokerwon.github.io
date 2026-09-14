@@ -2,7 +2,7 @@
 import { render } from 'astro:content'
 import type { CollectionEntry } from 'astro:content'
 import BaseLayout from '../../layouts/BaseLayout.astro'
-import { estimateReadingMinutes, getSortedPosts } from '../../utils/posts'
+import { estimateReadingMinutes, getCategory, getSortedPosts } from '../../utils/posts'
 
 export async function getStaticPaths() {
   const posts = await getSortedPosts()
@@ -18,7 +18,8 @@ interface Props {
 
 const { entry } = Astro.props
 const { Content } = await render(entry)
-const { title, description, category, date, updatedDate } = entry.data
+const { title, description, date, updatedDate } = entry.data
+const category = getCategory(entry)
 const displayDate = updatedDate ?? date
 const isoDate = displayDate.replaceAll('.', '-')
 const readingMinutes = estimateReadingMinutes(entry.body)
