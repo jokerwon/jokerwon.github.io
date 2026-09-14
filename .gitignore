@@ -15,3 +15,6 @@
 # environment
 .env*
 !.env.example
+
+# harness runtime lock (keep mcp.json)
+/.omp/mcp.json.lock
