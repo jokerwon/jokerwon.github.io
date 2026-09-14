@@ -25,6 +25,7 @@
   --accent: #fad470;
   --accent-text: #8a6510; /*  5.18:1 */
   --accent-soft: #f3c7a1;
+  --on-accent: #2a2624;
 
   /* 语义 */
   --danger: #a32b21;
@@ -554,18 +555,21 @@
   }
 
   .post-header {
-    padding-block-end: 48px;
+    padding-block-end: 64px;
   }
 
   .post-title {
     margin: 0 0 16px;
+    text-wrap: balance;
   }
 
   .post-description {
+    max-inline-size: 30em;
     margin: 0 0 24px;
     color: var(--ink-03);
     font-size: 18px;
     line-height: 30px;
+    text-wrap: pretty;
   }
 
   .post-meta {
@@ -574,6 +578,7 @@
     font-size: 14px;
     line-height: 22px;
     font-variant-numeric: tabular-nums;
+    text-wrap: pretty;
   }
 
   /* 404：现状 / 原因 / 下一步 */
@@ -632,11 +637,11 @@
     color: var(--ink-01);
   }
 
-  /* 长文排版：正文 18/30，段落间距 48px（DESIGN.md §3.4） */
+  /* 长文排版：段落连续，章节通过大留白分组 */
   .markdown-body {
-    font-size: 18px;
-    line-height: 30px;
     color: var(--ink-02);
+    font-size: 18px;
+    line-height: 32px;
   }
 
   .markdown-body > :first-child {
@@ -647,34 +652,47 @@
     margin-bottom: 0;
   }
 
+  .markdown-body h1,
+  .markdown-body h2,
+  .markdown-body h3,
+  .markdown-body h4 {
+    text-wrap: balance;
+  }
+
   .markdown-body h1 {
-    margin: 0 0 48px;
+    margin: 0 0 32px;
     padding-bottom: 24px;
     border-bottom: 1px solid var(--border);
   }
 
   .markdown-body h2 {
-    margin: 96px 0 48px;
+    margin: 96px 0 32px;
     padding-top: 32px;
     border-top: 1px solid var(--border);
   }
 
   .markdown-body h3 {
-    margin: 64px 0 16px;
+    margin: 64px 0 24px;
   }
 
   .markdown-body h4 {
-    margin: 48px 0 12px;
+    margin: 48px 0 16px;
   }
 
   .markdown-body p {
-    margin: 48px 0;
+    margin: 32px 0;
   }
 
-  .markdown-body ul,
-  .markdown-body ol {
-    margin: 48px 0;
+  .markdown-body ul {
+    margin: 32px 0;
     padding-left: 24px;
+    list-style: disc;
+  }
+
+  .markdown-body ol {
+    margin: 32px 0;
+    padding-left: 24px;
+    list-style: decimal;
   }
 
   .markdown-body li {
@@ -682,7 +700,7 @@
   }
 
   .markdown-body blockquote {
-    margin: 48px 0;
+    margin: 32px 0;
     padding: 8px 0 8px 24px;
     border-left: 3px solid var(--accent);
     color: var(--ink-03);
@@ -698,11 +716,12 @@
 
   .markdown-body a:hover {
     color: var(--primary-press);
+    text-decoration-thickness: 2px;
   }
 
   .markdown-body strong {
-    font-weight: 600;
     color: var(--ink-01);
+    font-weight: 600;
   }
 
   .markdown-body hr {
@@ -720,12 +739,12 @@
   }
 
   .markdown-body pre {
-    margin: 48px 0;
+    margin: 32px 0;
     padding: 24px;
     border: 1px solid var(--border);
     border-radius: 4px;
-    line-height: 22px;
     font-size: 14px;
+    line-height: 22px;
     overflow-x: auto;
   }
 
@@ -738,7 +757,7 @@
   .markdown-body table {
     display: block;
     width: 100%;
-    margin: 48px 0;
+    margin: 32px 0;
     border-collapse: collapse;
     font-size: 14px;
     line-height: 22px;
@@ -750,10 +769,10 @@
     min-width: 128px;
     padding: 12px 16px;
     border-bottom: 1px solid var(--border-strong);
+    color: var(--ink-01);
+    font-weight: 600;
     text-align: left;
     vertical-align: top;
-    font-weight: 600;
-    color: var(--ink-01);
   }
 
   .markdown-body td {
@@ -768,7 +787,12 @@
     display: block;
     max-width: 100%;
     height: auto;
-    margin: 48px auto;
+    margin: 32px auto;
+  }
+
+  .post ::selection {
+    background: var(--accent);
+    color: var(--on-accent);
   }
 }
 
@@ -856,6 +880,31 @@
 
   .post {
     padding: 48px 16px 96px;
+  }
+
+  .post-header {
+    padding-block-end: 48px;
+  }
+  .post-description {
+    margin-block-end: 32px;
+    line-height: 32px;
+  }
+
+  .post-meta {
+    line-height: 24px;
+  }
+
+  .markdown-body h2 {
+    margin-block-start: 64px;
+    padding-block-start: 24px;
+  }
+
+  .markdown-body h3 {
+    margin-block-start: 48px;
+  }
+
+  .markdown-body pre {
+    padding: 16px;
   }
 
   .not-found {
