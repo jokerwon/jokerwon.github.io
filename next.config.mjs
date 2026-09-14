@@ -15,6 +15,17 @@ const nextConfig = {
 const withMDX = createMDX({
   options: {
     remarkPlugins: ['remark-gfm'],
+    rehypePlugins: [
+      [
+        '@shikijs/rehype',
+        {
+          themes: {
+            light: 'vitesse-light',
+            dark: 'vitesse-dark',
+          },
+        },
+      ],
+    ],
   },
 })
 
