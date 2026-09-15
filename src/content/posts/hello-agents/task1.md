@@ -1,5 +1,5 @@
 ---
-title: '# Task01 智能体经典范式构建'
+title: 'Task01 智能体经典范式构建'
 description: 'Hello Agents 进阶训练营 Task 01。智能体经典范式构建。'
 category: 'Agent 学习'
 date: '2026.09.15'
