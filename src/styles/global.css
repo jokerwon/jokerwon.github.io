@@ -706,6 +706,14 @@
     color: var(--ink-03);
   }
 
+  .markdown-body blockquote > :first-child {
+    margin-top: 0;
+  }
+
+  .markdown-body blockquote > :last-child {
+    margin-bottom: 0;
+  }
+
   .markdown-body a {
     color: var(--primary);
     text-decoration: underline;
