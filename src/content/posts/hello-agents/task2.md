@@ -47,7 +47,7 @@ uv run python task2/test_exercises.py --real
 
 #### 新供应商
 
-[`core/my_llm.py`](../core/my_llm.py) 的 `MyLLM` 通过继承增加 Gemini：`provider="gemini"` 读取 `GEMINI_API_KEY`，使用 Gemini 的 OpenAI 兼容端点；子类把自身默认的 `"auto"` 先转换为真实检测结果，并重写 `_auto_detect_provider()` 识别该变量。这里不能依赖父类自动识别：父类检测表没有 Gemini，而且已安装库的 `provider` 默认值是 `None`，若直接显式传入字符串 `"auto"`，会因 `provider or ...` 的真值短路跳过自动检测。
+[`core/my_llm.py`](https://github.com/jokerwon/hello-agents/blob/main/core/my_llm.py) 的 `MyLLM` 通过继承增加 Gemini：`provider="gemini"` 读取 `GEMINI_API_KEY`，使用 Gemini 的 OpenAI 兼容端点；子类把自身默认的 `"auto"` 先转换为真实检测结果，并重写 `_auto_detect_provider()` 识别该变量。这里不能依赖父类自动识别：父类检测表没有 Gemini，而且已安装库的 `provider` 默认值是 `None`，若直接显式传入字符串 `"auto"`，会因 `provider or ...` 的真值短路跳过自动检测。
 
 #### 自动检测冲突
 
@@ -97,7 +97,7 @@ uv run python task2/test_exercises.py --real
 
 #### 质量评分 ReflectionAgent
 
-[`agents/scored_reflection_agent.py`](../agents/scored_reflection_agent.py) 继承 `ReflectionAgent`。每轮用结构化 JSON 获取 `score` 和 `feedback`：
+[`agents/scored_reflection_agent.py`](https://github.com/jokerwon/hello-agents/blob/main/agents/scored_reflection_agent.py) 继承 `ReflectionAgent`。每轮用结构化 JSON 获取 `score` 和 `feedback`：
 
 - `score >= score_threshold`：立即结束；
 - 否则根据反馈优化，再进入下一轮；
@@ -105,7 +105,7 @@ uv run python task2/test_exercises.py --real
 
 #### Tree-of-Thought Agent
 
-[`agents/tree_of_thought_agent.py`](../agents/tree_of_thought_agent.py) 继承 `Agent`。每层：
+[`agents/tree_of_thought_agent.py`](https://github.com/jokerwon/hello-agents/blob/main/agents/tree_of_thought_agent.py) 继承 `Agent`。每层：
 
 1. 生成恰好 `beam_width` 条候选；
 2. 让 LLM 返回最优候选索引；
